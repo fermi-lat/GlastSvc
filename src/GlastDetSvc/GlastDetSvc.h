@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.12 2002/03/20 17:53:29 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.13 2002/03/21 15:26:21 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -69,7 +69,10 @@ public:
     virtual double insideActiveArea (const HepPoint3D& p);  
 
     /// location of strip ix in local coords
-    virtual double stripLocalX ( unsigned int ix);    
+    virtual double stripLocalX ( unsigned int istrip); 
+	
+    /// location of strip ix in local coords
+    virtual double stripLocalXDouble ( double strip);    
 
 
 private:

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.8 2002/03/21 15:26:21 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.9 2002/03/29 18:15:44 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -181,7 +181,12 @@ double GlastDetSvc::insideActiveArea (const HepPoint3D& p)
 }
 
     /// location of strip ix in local coords
-double GlastDetSvc::stripLocalX ( unsigned int ix)
+double GlastDetSvc::stripLocalX ( unsigned int istrip)
 {
-    return SiliconPlaneGeometry::localX(ix);
+    return SiliconPlaneGeometry::localX(istrip);
+}
+
+double GlastDetSvc::stripLocalXDouble( double strip)
+{
+    return SiliconPlaneGeometry::localXDouble(strip);
 }

@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.3 2002/03/25 18:31:17 lsrea Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.4 2002/03/29 18:15:44 lsrea Exp $
 
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
@@ -15,10 +15,13 @@ public:
       
     /// compute strip id from local coordinate
     static unsigned int stripId (double x);
-    
+
+   /// location of strip ix in local coords, allows for non-integer strip number
+    static double localXDouble ( double x);    
+     
     /// location of strip ix in local coords
-    static double localX ( unsigned int ix);    
-    
+    static double localX ( unsigned int ix); 
+	  
     /// insideActiveArea for local coords
     static double insideActiveArea(double x, double y); 
     
