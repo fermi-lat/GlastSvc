@@ -1,12 +1,13 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.1 2002/02/27 18:35:00 burnett Exp $
-
 
 #ifndef IMEDIA_H
 #define IMEDIA_H
 
-/** Abstract class that defines callbacks from a traversal of the
-    detector materials
-      */
+/** @class IMedia
+* @brief Abstract class that defines callbacks from a traversal of the
+* detector materials
+*
+* $Header$
+*/
 class IMedia {
 public:
 

@@ -1,13 +1,15 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.5 2002/04/04 18:22:22 jrb Exp $
-
 
 #ifndef GLASTDET_IGEOMETRY_H
 #define GLASTDET_IGEOMETRY_H
 #include <vector>
 #include <string>
-/** Abstract class that defines callbacks from a traversal of the detector geometry tree
 
-  */
+/** @class IGeometry
+* @brief Abstract class that defines callbacks from a traversal of the 
+* detector geometry tree.
+*
+* $Header$
+*/
 class IGeometry {
 public:
 
