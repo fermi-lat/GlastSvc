@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.7 2001/04/19 01:32:29 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.8 2001/04/21 14:34:57 burnett Exp $
 //
 //
 //  GlastEventSelector.cpp
@@ -212,7 +212,7 @@ IEvtSelector::Iterator* GlastEventSelector::begin() const {
     MsgStream log(messageService(), name());
     StatusCode sc;
 
-
+#if 0
     if(m_criteriaType == IRFFILE){
     
         if( (m_it->m_inputDataIt) ==  m_inputDataList->end()) { 
@@ -226,6 +226,7 @@ IEvtSelector::Iterator* GlastEventSelector::begin() const {
         
         // assumes GlastDetectors have been init. Open for read
         //it->m_inputFile = new ResponseFile (fName.c_str(), true);
+
         sc = m_detSvc->openIRF(fName);
         if(sc.isFailure()){
             *(m_it) = m_evtEnd; 
@@ -239,12 +240,20 @@ IEvtSelector::Iterator* GlastEventSelector::begin() const {
         return m_it;
     } else if(m_criteriaType == NONE)
     {
+
         log << MSG::DEBUG << "Using Simple counter GlastEventSelector" << endreq;
         log << MSG::INFO << "No input file selected for GlastEventSelector" << endreq;
         (*m_it)++;
         return m_it;
     } 
     return 0;
+#else
+            log << MSG::DEBUG << "Using Simple counter GlastEventSelector" << endreq;
+        log << MSG::INFO << "No input file selected for GlastEventSelector" << endreq;
+        (*m_it)++;
+        return m_it;
+
+#endif
 }
 
 
@@ -257,8 +266,9 @@ IEvtSelector::Iterator& GlastEventSelector::next(IEvtSelector::Iterator& it) con
     if(m_criteriaType == IRFFILE)
     {
         GlastEvtIterator* irfIt = dynamic_cast<GlastEvtIterator*>(&it);
+#if 0
         
-        log << MSG::DEBUG << "Reading Event " <<  irfIt->m_recId << endreq;
+        log << MSG::DEBUG << "Processing Event " <<  irfIt->m_recId << endreq;
     
 
         irfIt->m_evtCount++;
@@ -278,7 +288,7 @@ IEvtSelector::Iterator& GlastEventSelector::next(IEvtSelector::Iterator& it) con
             *(irfIt) = m_evtEnd;
             log << MSG::INFO << "Stoping loop at user maxEvent Request" << endreq;
         }
-
+#endif
         return *irfIt;
     } 
     else if( m_criteriaType == NONE)

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.1 2002/02/25 01:05:43 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.2 2002/03/07 15:32:48 riccardo Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -99,26 +99,24 @@ StatusCode GlastDetSvc::initialize ()
     MsgStream log( msgSvc(), name() );
     s_log = & log;  // make available globally while executing the following
     
+#if 0
     log << MSG::DEBUG << "Loading instrument ...";
     // now create and initialize the instrurment
     m_instrument = new Instrument;
     if (m_instrument->initialize(m_iniFile, m_xmlFile) ) status=StatusCode::FAILURE;
     log << MSG::DEBUG << "done. Loaded "<< m_instrument->detector_count() << " detectors." << endreq;
-
+#endif
     
     // setup the detModel geometry, so can be visited below
     m_dm = new DMmanager;
-    m_dm->init("-",m_visitorMode,m_topvol);
+    m_dm->init(m_xmlfile,m_visitorMode,m_topvol);
     log << MSG::INFO;
     m_dm->printSetup(log.stream());
     log << endreq;
 
     return status;
 }
-void GlastDetSvc::setDetector(GlastDetector* d)
-{ 
-    m_instrument->setDetector(d);    
-}
+
 
 // finalize
 StatusCode GlastDetSvc::finalize ()
@@ -135,7 +133,11 @@ StatusCode GlastDetSvc::finalize ()
     return status;
 }
 
-
+#if 0
+void GlastDetSvc::setDetector(GlastDetector* d)
+{ 
+    m_instrument->setDetector(d);    
+}
 // loadNextEvent - attempt to load the next event from the
 //                 IRF file.
 StatusCode  GlastDetSvc::readIRF ()
@@ -146,13 +148,13 @@ StatusCode  GlastDetSvc::readIRF ()
     return status;
 }
 
-
+#endif
 // access the type of this service
 const IID&  GlastDetSvc::type () const {
     return IID_IGlastDetSvc;
 }
 
-
+#if 0
 
 // loadIRFFile - attempt to open the IRF file here
 StatusCode  GlastDetSvc::openIRF (std::string filename)
@@ -184,6 +186,7 @@ void GlastDetSvc::accept(DetectorConverter& v)const {
 const xml::IFile* GlastDetSvc::iniFile()const{
     return m_instrument->iniFile();
 }
+#endif
 
 ///! satisfy external. Need to make it really fatal!
 extern void FATAL ( const char* msg )

@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.6 2002/02/25 01:05:42 burnett Exp $
+// $Id: IGlastDetSvc.h,v 1.7 2002/03/07 15:32:47 riccardo Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -29,7 +29,7 @@ public:
 
     //! new detModel interface, will call back. 
     virtual void accept(IMedia& media)=0;
-
+#if 0
     //! open an IRF file
     virtual StatusCode openIRF(std::string filename)=0;
     
@@ -48,7 +48,7 @@ public:
 
     //! set new root detector
     virtual void setDetector(GlastDetector* d)=0;
-
+#endif
 	    /// Retrieve interface ID
     static const InterfaceID& interfaceID() { return IID_IGlastDetSvc; }
 

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.7 2002/02/25 01:05:43 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.8 2002/03/07 15:32:48 riccardo Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -47,6 +47,7 @@ public:
     
     /// kill off the detector hierarchy if it exists
     StatusCode finalize ();
+#if 0
     
     /// return the root detector for this service (implements IGlastDetSvc)
     GlastDetector*  getRootDetector ();
@@ -73,7 +74,7 @@ public:
   
     //! set new root detector
     void setDetector(GlastDetector* d);
-
+#endif
     //! new detModel interface, will call back. 
     virtual void accept(IMedia& media);
 
