@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/IRFConverter.cpp,v 1.1 2000/12/05 22:53:13 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/IRFConverter.cpp,v 1.2 2000/12/11 16:37:29 burnett Exp $
 #include "IRFConverter.h"
 
 
@@ -6,6 +6,7 @@
 #include "instrument/SiDetector.h"
 #include "instrument/CsIDetector.h"
 #include "instrument/MCTruth.h"
+#include "instrument/Tower.h"
 
 
 #include "GlastEvent/Raw/TdCsIData.h"
@@ -41,8 +42,9 @@ void IRFConverter::forward (const Scintillator& s) {
     } 
 }
 
+// just grab the ID to pass onto subsequent visits
 void IRFConverter::forward (const Tower& t) {
-    m_tower = t.getId();
+    m_towerId = t.getId();
 }
 
 //! called due to GlastDetector::accept(), handles Cal data
@@ -58,9 +60,7 @@ void IRFConverter::forward ( const CsIDetector& csi) {
         MCCalorimeterHitContainer->push_back(mcCal);
         
         //Do the Raw information
-        allcsiData->load(csi, m_tower);
-        
-        
+        allcsiData->load(csi, m_towerId);
     }
     
 }
