@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.4 2002/03/18 19:00:35 heather Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.5 2002/05/10 15:15:19 burnett Exp $
 //
 // Description:
 //      EventCnv is the concrete converter for the event header.
@@ -27,11 +27,11 @@ EventCnv::EventCnv(ISvcLocator* svc)
 
 
 StatusCode EventCnv::createObj(IOpaqueAddress* pAddress, DataObject*& refpObject) {
-    refpObject = new Event();
+    refpObject = new Event::EventHeader();
     return StatusCode::SUCCESS;
 };
 
-StatusCode EventCnv::updateObj(int* iarray, Event* pEvent)             {
+StatusCode EventCnv::updateObj(int* iarray, Event::EventHeader* pEvent)             {
     MsgStream log(msgSvc(), "EventCnv");
     log << MSG::DEBUG << "EventCnv::updateObj" << endreq;
     return StatusCode::SUCCESS;

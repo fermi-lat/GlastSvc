@@ -3,7 +3,7 @@
 
 #include "BaseCnv.h"
 
-class Event;
+namespace Event{ class EventHeader; }
 extern const CLID& CLID_Event;
 
 // Abstract factory to create the converter
@@ -13,7 +13,7 @@ template <class TYPE> class CnvFactory;
 /** @class EventCnv
  * @brief Concrete Converter for the Event header
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.h,v 1.2 2002/03/15 21:16:49 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.h,v 1.3 2002/03/18 19:00:35 heather Exp $
  */ 
 
 class EventCnv : public BaseCnv { //public ItemCnv<Event>	    {
@@ -34,7 +34,7 @@ protected:
 
   virtual StatusCode createObj(IOpaqueAddress* pAddress, DataObject*& refpObject);
 
-  virtual StatusCode updateObj(int* data, Event* pObject);
+  virtual StatusCode updateObj(int* data, Event::EventHeader* pObject);
 
 
 };
