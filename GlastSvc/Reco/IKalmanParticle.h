@@ -15,7 +15,7 @@
 * which instantiates the subclass KalParticle.
 *
 * @author Toby Burnett
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.3 2002/09/06 14:34:48 heather Exp $
 */
 class  IKalmanParticle
 {
@@ -31,7 +31,9 @@ public:
     virtual int numberPlanesCrossed()const=0; 
 
     /// is the current point inside the Act Area? 
-    virtual float insideActArea()const=0;
+    virtual double insideActArea() const=0;
+    virtual double insideActLocalX() const = 0;
+    virtual double insideActLocalY() const = 0;
     virtual bool isXPlane() const=0;
 
     /// is the current point at a live strip?
