@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.15 2002/03/30 02:53:04 lsrea Exp $
+// $Id: IGlastDetSvc.h,v 1.16 2002/04/20 19:05:34 lsrea Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -35,7 +35,7 @@ public:
     //! new detModel interface, will call back. 
     virtual void accept(IMedia& media)=0;
 
-    /// retrive the 3D transformation of a volume given a valid ID
+    /// retrieve the 3D transformation of a volume given a valid ID
     virtual StatusCode getTransform3DByID(idents::VolumeIdentifier,HepTransform3D*)=0;
 
     /// Retrieve interface ID
