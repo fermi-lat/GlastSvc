@@ -16,7 +16,7 @@ static const InterfaceID IID_IPropagator("IPropagator", 1 , 0);
 *
 *
 * @author Tracy Usher
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.2 2004/11/09 20:37:13 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.3 2004/12/01 01:07:25 usher Exp $
 */
 class  IPropagator
 {
@@ -27,10 +27,8 @@ public:
     //! Methods to intialize propagator before stepping 
     //! Tracking from intitial point and direction
     virtual void setStepStart(const Point& startPos, const Vector& startDir) = 0;
-    //! Tracking from initial parameters
-    virtual void setStepStart(const Event::TkrTrackParams& trackPar, double z) = 0;
     //! Tracking from initial parameters with up vs down specified
-    virtual void setStepStart(const Event::TkrTrackParams& trackPar, double z, bool upwards) = 0;
+    virtual void setStepStart(const Event::TkrTrackParams& trackPar, double z, bool upwards = false) = 0;
 
     //! Takes a step of distance given by arcLen
     virtual void step(double arcLen) = 0;
