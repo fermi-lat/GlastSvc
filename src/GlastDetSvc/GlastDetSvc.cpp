@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.6 2001/01/08 16:07:34 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.7 2001/01/31 16:25:40 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -46,7 +46,6 @@ GlastDetSvc::GlastDetSvc(const std::string& name,ISvcLocator* svc)
     declareProperty ("IniFile", m_iniFile);
     
 }
-
 /// Standard Destructor
 GlastDetSvc::~GlastDetSvc()  
 {
@@ -97,6 +96,10 @@ StatusCode GlastDetSvc::initialize ()
     if (m_instrument->initialize(m_iniFile, m_xmlFile) ) status=StatusCode::FAILURE;
     log << MSG::DEBUG << "done. Loaded "<< m_instrument->detector_count() << " detectors." << endreq;
     return status;
+}
+void GlastDetSvc::setDetector(GlastDetector* d)
+{ 
+    m_instrument->setDetector(d);    
 }
 
 // finalize
