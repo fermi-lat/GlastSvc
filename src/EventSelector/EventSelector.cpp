@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs//GlastSvc/src/EventSelector/EventSelector.cpp,v 1.4 2000/11/02 15:32:45 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventSelector.cpp,v 1.5 2000/12/11 22:06:22 tlindner Exp $
 //====================================================================
 //  EventSelector.cpp
 //--------------------------------------------------------------------
@@ -24,8 +24,6 @@
 #include "instrument/Scintillator.h"
 
 #include "GlastEvent/TopLevel/ObjectVector.h"
-#include "GlastEvent/MonteCarlo/MCACDHit.h"
-#include "GlastEvent/MonteCarlo/MCCalorimeterHit.h" //TODO: remove this declaration
 
 extern const CLID& CLID_Event;
 
