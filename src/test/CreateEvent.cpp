@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.28 2002/09/23 19:31:16 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.29 2003/02/18 01:00:09 burnett Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -77,10 +77,31 @@ public:
                          : RandomAccess( type, name, parent ) {
     
     }
-  
-
 };
 static  ToolFactory<MyRandomTool>  randFactory;
+//--------------------------------------------------------------------------
+/**
+    @class MyOtherRandomTool
+    @brief example, more test of mechanism
+
+    Add a second RandomAccess sub class (instantiated in the local context),
+    to check that random engines actually get set at different addresses for
+    different tools and different seeds get set for different tools
+    
+  */
+class MyOtherRandomTool : public RandomAccess {
+public:
+    MyOtherRandomTool::MyOtherRandomTool(const std::string& type, 
+                         const std::string& name, 
+                         const IInterface* parent)
+                         : RandomAccess( type, name, parent ) {
+    
+    }
+  
+};
+static  ToolFactory<MyOtherRandomTool>  otherRandFactory;
+
+
 //--------------------------------------------------------------------------
 
 static const AlgFactory<CreateEvent>  Factory;
@@ -165,10 +186,8 @@ StatusCode CreateEvent::execute() {
     log << MSG::INFO << "execute" << endreq;
     
     //TODO: put something in here to get data???
-    
-    
+
     return sc;
-    
 };
 
 StatusCode CreateEvent::finalize() {
@@ -187,6 +206,4 @@ StatusCode CreateEvent::testMcClass() {
     
     return StatusCode::SUCCESS;
 };
-
-
 
