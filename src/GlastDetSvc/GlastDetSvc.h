@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.2 2000/12/05 22:54:50 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -76,7 +76,6 @@ private:
     Instrument*		m_instrument;
     std::string		m_xmlFile;
     std::string		m_iniFile;
-    std::string		m_irfFile;
     
 };
 

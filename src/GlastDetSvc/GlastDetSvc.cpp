@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs//GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.4 2000/12/08 04:29:20 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.5 2000/12/13 00:18:04 tlindner Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -39,13 +39,11 @@ GlastDetSvc::GlastDetSvc(const std::string& name,ISvcLocator* svc)
 , m_instrument (0)
 , m_xmlFile ("")
 , m_iniFile ("")
-, m_irfFile ("")
 {
     
     // declare the properties
     declareProperty ("PersistencyFile", m_xmlFile);
     declareProperty ("IniFile", m_iniFile);
-    declareProperty ("IRFFile", m_irfFile);
     
 }
 
@@ -137,7 +135,7 @@ StatusCode  GlastDetSvc::openIRF (std::string filename)
     MsgStream log( msgSvc(), name() );
     s_log = & log;  // make available globally while executing the following
     
-    int rc = m_instrument->openIRF(m_irfFile);
+    int rc = m_instrument->openIRF(filename);
     return rc==0? StatusCode::SUCCESS : StatusCode::FAILURE;
 }
 
