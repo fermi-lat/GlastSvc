@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.16 2001/03/03 03:55:56 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.17 2001/04/19 01:32:31 igable Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -56,11 +56,8 @@ StatusCode CreateEvent::initialize() {
     setProperties();
     
     // now try to find the GlastDevSvc service
-    IGlastDetSvc* detSvc = 0;
-    const IID&  IID_IGlastDetSvc  =  401; // wired it for now!
 
-    StatusCode sc = serviceLocator()->getService ("GlastDetSvc",
-        IID_IGlastDetSvc, reinterpret_cast<IInterface*&>( detSvc ));
+    StatusCode sc = service("GlastDetSvc", m_detSvc);
     
     if (sc.isSuccess ())
         log << MSG::INFO << "Succeeded in accessing the GlastDetSvc!" << endreq;
@@ -68,7 +65,6 @@ StatusCode CreateEvent::initialize() {
         log << MSG::ERROR << "Couldn't find the GlastDetSvc!" << endreq;
         return StatusCode::FAILURE;
     }
-    m_detSvc = detSvc;
 
 
     return StatusCode::SUCCESS;
