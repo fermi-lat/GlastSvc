@@ -2,11 +2,11 @@
 #define IPropagator_H
 
 #include "GaudiKernel/IAlgTool.h"
-#include "Event/Recon/TkrRecon/TkrFitPar.h"
-#include "Event/Recon/TkrRecon/TkrFitMatrix.h"
+#include "Event/Recon/TkrRecon/TkrTrackParams.h"
 #include "idents/VolumeIdentifier.h"
 #include "geometry/Point.h"
 #include "geometry/Vector.h"
+#include "CLHEP/Matrix/Matrix.h"
 #include <iostream>
 
 static const InterfaceID IID_IPropagator("IPropagator", 1 , 0);
@@ -16,7 +16,7 @@ static const InterfaceID IID_IPropagator("IPropagator", 1 , 0);
 *
 *
 * @author Tracy Usher
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.0 2003/01/23 21:31:58 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.1 2003/04/21 22:43:49 usher Exp $
 */
 class  IPropagator
 {
@@ -28,7 +28,7 @@ public:
     //! Tracking from intitial point and direction
     virtual void setStepStart(const Point& startPos, const Vector& startDir) = 0;
     //! Tracking from initial parameters
-    virtual void setStepStart(const Event::TkrFitPar& trackPar, const Event::TkrFitMatrix& trackCov, double z) = 0;
+    virtual void setStepStart(const Event::TkrTrackParams& trackPar, double z) = 0;
 
     //! Takes a step of distance given by arcLen
     virtual void step(double arcLen) = 0;
@@ -48,13 +48,14 @@ public:
     virtual double getStepArcLen(int stepIdx = -1) const = 0;
 
     //! Return track parameters after stepping, arcLen can be less than step taken
-    virtual Event::TkrFitPar getTrackPar(double arcLen = -1.) const = 0;
-    //! Return track covariance matrix after stepping, arcLen can be less than step taken
-    //! *** NOTE *** this only has meaning if initial matrix given at setStepStart
-    virtual Event::TkrFitMatrix getTrackCov(int propDir, double momentum, double arcLen = -1.) const = 0;
+    virtual Event::TkrTrackParams getTrackParams(double arcLen   = -1.,
+                                                 double momentum = 1.,
+                                                 bool   forward  = true)    const = 0;
 
     //! Return multiple scattering matrix after stepping, arcLen can be less than step taken
-    virtual Event::TkrFitMatrix getMscatCov(double momentum, double arcLen = -1.) const = 0;
+    virtual HepMatrix getMscatCov(double arcLen   = -1.,
+                                  double momentum = 1.,
+                                  bool   forward  = true)   const = 0;
 
     //! Return volume identifer after stepping
     virtual idents::VolumeIdentifier getVolumeId(double arcLen = -1.) const = 0;
