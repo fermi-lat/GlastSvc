@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.19 2003/08/24 23:49:24 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.20 2004/02/19 20:54:52 mcenery Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -43,6 +43,7 @@
 #include "CLHEP/Random/Ranlux64Engine.h"
 #include "CLHEP/Random/RanluxEngine.h"
 #include "CLHEP/Random/RanshiEngine.h"
+#include "CLHEP/Random/RandGauss.h"
 
 
 // declare the service factories for the GlastRandomSvc
@@ -372,6 +373,10 @@ void GlastRandomSvc::applySeeds(int runNo, int seqNo)
             dllEngine->second->setSeed(theSeed,dummy);
             ++multiplier;
         }
+        // Gaussian are always produced in pairs, one of them being returned,
+        // the other one being cached for a second call.  Setting the seed
+        // doesn't flush the cache!
+        RandGauss::setFlag(false);
 
 }
 
