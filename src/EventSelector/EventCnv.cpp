@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.3 2002/03/15 21:16:49 heather Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.4 2002/03/18 19:00:35 heather Exp $
 //
 // Description:
 //      EventCnv is the concrete converter for the event header.
@@ -12,7 +12,7 @@
 #include "EventCnv.h"
 #include "GaudiKernel/MsgStream.h"
 
-#include "GlastEvent/TopLevel/Event.h"
+#include "Event/TopLevel/Event.h"
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service
