@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/mainpage.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/mainpage.h,v 1.3 2000/11/21 02:33:40 igable Exp $
 // Mainpage for doxygen
 
 /*! \mainpage package GlastSvc
@@ -16,6 +16,16 @@ the new set of Monte Carlo classes. They all inherit from from the BaseCnv class
 \section Testing Testing
 
 Heather has made a small testing Algorithm called CreateEvent.
+
+\section GlastEventConverter Changes to GlastEvent Converter
+
+  The GlastEventSelector was modified (02/28/2001) to handle the case of Input set
+  to NONE. i.e.
+
+  EventSelector.Input = "NONE" is now ok.
+
+  Also a basic counter was added to GlastEvtIterator that enable the event loop to 
+  be terminated from the GUI.
 
 Also working in conjuction with the MC Converters is the IRFConverter which uses 
 the IRF parsers defined in the instrument package.

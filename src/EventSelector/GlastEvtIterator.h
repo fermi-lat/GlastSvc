@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.2 2001/01/04 18:39:00 heather Exp $
 //====================================================================
 //  GlastEvtIterator.h
 //--------------------------------------------------------------------
@@ -30,6 +30,7 @@ public:
     : m_glastEvtSel(glastEvtSel){
 	  m_inputDataIt =  inpIt;
 	  m_recId = recId;
+          m_evtCount = 0;
   }
   virtual ~GlastEvtIterator() { }
   virtual IOpaqueAddress* operator*() const  { return m_glastEvtSel->reference(*this);}
@@ -46,11 +47,12 @@ public:
     const GlastEvtIterator* glastIt = dynamic_cast<const GlastEvtIterator*>(&it);
     return((m_recId != glastIt->m_recId));
   }
-
+  void setFileNameIterator(std::list<std::string>::const_iterator inpIt) { m_inputDataIt = inpIt; }
 private:
   const IEvtSelector*   m_glastEvtSel;
   int                   m_recId;
   std::list<std::string>::const_iterator  m_inputDataIt;
+  int                   m_evtCount;
 
 };
 
