@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.7 2000/09/14 23:42:24 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 //====================================================================
 //  GlastSvc_load.cpp
 //--------------------------------------------------------------------
@@ -28,6 +28,12 @@ void GlastSvc_load() {
     DLL_DECL_SERVICE( GlastEventSelector );
     DLL_DECL_SERVICE( EventCnvSvc );
     DLL_DECL_CONVERTER( ACDhitCnv );
+//	extern ICnvFactory& MCCalorimeterHitCnvFactory;
+//	MCCalorimeterHitCnvFactory.addRef();
+
+//  Still having the linking problem here which is 
+//  Why the line below is comented out.
+//	DLL_DECL_CONVERTER( MCCalorimeterHitCnv ); // TODO: Take this out if causes problems
 //    DLL_DECL_SERVICE( EventCnv );
 //    DLL_DECL_SERVICE( GlastIRFLoadSvc );
 } 
