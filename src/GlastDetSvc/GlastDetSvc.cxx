@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.18 2002/10/10 18:22:49 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.19 2002/12/16 19:47:45 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -238,19 +238,3 @@ HepPoint3D GlastDetSvc::getStripPosition(idents::VolumeIdentifier volId, double 
     return volTransform*localPos;
 
 }
-
-void GlastDetSvc::layerToTray (int layer, int view, int& tray, int& botTop)
-{
-    SiliconPlaneGeometry::layerToTray (layer, view, tray, botTop);
-}
-
-void GlastDetSvc::trayToLayer(int tray, int botTop, int& layer, int& view)
-{
-    SiliconPlaneGeometry::trayToLayer (tray, botTop, layer, view);
-}
-
-void GlastDetSvc::planeToLayer(int plane, int& layer, int& view)
-{
-    SiliconPlaneGeometry::planeToLayer (plane, layer, view);
-}
-

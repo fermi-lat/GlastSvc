@@ -1,5 +1,5 @@
 // File and Version Information:
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.cxx,v 1.7 2002/09/06 14:44:07 heather Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.cxx,v 1.8 2002/09/07 23:43:43 lsrea Exp $
 
 #include "SiliconPlaneGeometry.h"
 
@@ -167,40 +167,6 @@ SiliconPlaneGeometry::getLocalStripPosition(idents::VolumeIdentifier &volId,
     if (volId[5]) p = HepPoint3D(p.x(), -p.y(), p.z());
 
     return p;
-}
-
-void SiliconPlaneGeometry::trayToLayer(int tray, int botTop, 
-                                       int& layer, int& view)
-{
-    // Purpose: calculate layer and view from tray and botTop
-    // Method: use knowledge of the structure of the Tracker
-    
-    int plane = 2*tray + botTop - 1;
-    layer = plane/2;
-    view = ((layer%2==0) ? botTop : (1 - botTop));
-    return;
-}
-
-void SiliconPlaneGeometry::layerToTray(int layer, int view, 
-                                       int& tray, int& botTop) 
-{   
-    // Purpose: calculate tray and botTop from layer and view.
-    // Method:  use knowledge of the structure of the Tracker
-    
-    int plane = (2*layer) + (((layer % 2) == 0) ? (1 - view) : (view));
-    tray = (plane+1)/2;
-    botTop = (1 - (plane % 2));
-}
-
-
-void SiliconPlaneGeometry::planeToLayer(int plane, 
-                                       int& layer, int& view)
-{
-    // Purpose: calculate tray and botTop from plane
-    // Method:  use knowledge of the structure of the Tracker
-        layer = plane/2;
-        int element = (plane+3)%4;
-        view = element/2;
 }
 
 unsigned int SiliconPlaneGeometry::n_si_strips ()  {
