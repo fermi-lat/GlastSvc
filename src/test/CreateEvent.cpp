@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.6 2000/11/01 00:39:01 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.7 2000/11/02 15:33:30 heather Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -20,6 +20,9 @@
 #include "GlastEvent/MonteCarlo/MCCalorimeterHit.h"
 #include "GlastEvent/MonteCarlo/MCSiLayer.h"
 #include "GlastEvent/TopLevel/ObjectVector.h"
+
+#include "GlastEvent/Raw/TdCsIData.h"
+
 
 
 
@@ -79,6 +82,10 @@ StatusCode CreateEvent::execute() {
     log << MSG::INFO << "execute" << endreq;
 
     DataObject* pObject;
+
+// commented out so that the output for the new TdCsIData can be seen
+// Turning this on will simply increse the output.
+#if 0
 
 
     /*! Causes the TDS to be searched, if the data is unavailable, the appropriate
@@ -158,6 +165,33 @@ StatusCode CreateEvent::execute() {
                 << (*hit)->noise() << endreq;
         }
       }
+#endif // End of decreased output comment.
+
+
+    sc = eventSvc()->retrieveObject("/Event/Raw/TdCsIDatas", pObject);
+    if( sc.isFailure() ) return sc;                                                             
+    
+        log << MSG::INFO << "Successfully retrieved CsIContainer Container!!!" << endreq;
+
+    TdCsIData* csiList;
+    try {
+        csiList  = dynamic_cast<TdCsIData*>(pObject);
+    } catch(...) {
+        log << MSG::INFO << "Failed to convert object to TdCsIData" << endreq;
+        return StatusCode::FAILURE;
+    }
+    
+    log << MSG::INFO << "Printing all hit crystal information:" << endreq;
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < csiList->nHits(i); j++)
+        {
+            log << MSG::INFO << "Layer: "<< i << " Crystal: " << j << ":" << endreq;
+            log << MSG::INFO << "       Energy: " << csiList->energy(i,j) << endreq;
+            log << MSG::INFO << "        Lresp: " << csiList->Lresp(i,j)  << endreq;
+            log << MSG::INFO << "   Position X: " << csiList->xtalPos(i,j).x() << endreq;
+        }
+    }
 
     return sc;
 }
