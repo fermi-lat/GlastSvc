@@ -1,10 +1,10 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCACDHitCnv.h,v 1.1 2000/10/25 18:50:44 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/MonteCarlo/MCACDHitCnv.h,v 1.1 2000/10/25 20:08:52 heather Exp $
 #ifndef MCACDHitCnv_H 
 #define MCACDHitCnv_H 1
 
 // Include files
 //#include "Gaudi/Kernel/Converter.h"
-#include "BaseCnv.h"
+#include "src/EventSelector/BaseCnv.h"
 
 // Abstract factory to create the converter
 template <class TYPE> class CnvFactory;

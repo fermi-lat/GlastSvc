@@ -1,11 +1,11 @@
 
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCCalorimeterHitCnv.h,v 1.1 2000/10/23 18:55:44 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/MonteCarlo/MCCalorimeterHitCnv.h,v 1.1 2000/10/25 20:08:52 heather Exp $
 #ifndef MCCalorimeterHitCnv_H 
 #define MCCalorimeterHitCnv_H 1
 
 // Include files
 //#include "Gaudi/Kernel/Converter.h"
-#include "BaseCnv.h"
+#include "src/EventSelector/BaseCnv.h"
 
 // Abstract factory to create the converter
 template <class TYPE> class CnvFactory;

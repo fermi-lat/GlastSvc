@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.3 2000/10/24 21:18:03 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.4 2000/10/25 19:04:43 igable Exp $
 //====================================================================
 //  GlastSvc_load.cpp
 //--------------------------------------------------------------------
@@ -14,7 +14,7 @@
 #include "Gaudi/Interfaces/ICnvFactory.h"
 #include "Gaudi/Interfaces/ISvcFactory.h"
 #include "Gaudi/Interfaces/IAlgFactory.h"
-#include "src/EventSelector/MCCalorimeterHitCnv.h"
+#include "GlastSvc/MonteCarlo/MCCalorimeterHitCnv.h"
 
 
 #define DLL_DECL_SERVICE(x)    extern const ISvcFactory& x##Factory; x##Factory.addRef();

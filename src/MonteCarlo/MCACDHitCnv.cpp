@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCACDHitCnv.cpp,v 1.1 2000/10/25 18:50:09 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/MonteCarlo/MCACDHitCnv.cpp,v 1.1 2000/10/25 20:09:15 heather Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
@@ -14,10 +14,10 @@
 #include "GlastEvent/MonteCarlo/MCACDHit.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 
-#include "IRFConverter.h"
+#include "src/EventSelector/IRFConverter.h"
 
 // Inherited sources
-#include "src/EventSelector/MCACDHitCnv.h"
+#include "GlastSvc/MonteCarlo/MCACDHitCnv.h"
 
 
 // Instantiation of a static factory class used by clients to create instances

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCCalorimeterHitCnv.cpp,v 1.2 2000/10/24 21:49:22 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/MonteCarlo/MCCalorimeterHitCnv.cpp,v 1.1 2000/10/25 20:09:15 heather Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
@@ -14,10 +14,10 @@
 #include "GlastEvent/MonteCarlo/MCCalorimeterHit.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 
-#include "IRFConverter.h"
+#include "src/EventSelector/IRFConverter.h"
 
 // Inherited sources
-#include "src/EventSelector/MCCalorimeterHitCnv.h"
+#include "GlastSvc/MonteCarlo/MCCalorimeterHitCnv.h"
 
 
 // Instantiation of a static factory class used by clients to create instances
