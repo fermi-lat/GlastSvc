@@ -1,25 +1,21 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.h,v 1.2 2001/04/19 01:32:29 igable Exp $
 #ifndef Address_H
 #define Address_H 1
-
 
 #include <string>
 #include <vector>
 #include "GaudiKernel/StatusCode.h"
 #include "GaudiKernel/GenericAddress.h"
 
-
 class IDataDirectory;
 
-
-// Externals
 extern unsigned const char SICB_StorageType;
-
 
 /** @class Address
  * @brief Definition of a GLAST address.
  *
- * $Header$
+ * Based on SICb's Address class.
+ *
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.h,v 1.3 2002/03/15 21:16:48 heather Exp $
  */
 class Address : public GenericAddress   {
 public:
@@ -49,8 +45,7 @@ protected:
   References      m_refs;
   int m_recid;  //THB: does this make sense?
 public:
-  /// Validate address
-  //StatusCode validate();
+
   Address( unsigned char svc,const CLID& clid, const std::string& path);
   virtual ~Address()    {}
 };

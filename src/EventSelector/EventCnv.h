@@ -11,12 +11,12 @@ template <class TYPE> class CnvFactory;
 
 
 /** @class EventCnv
- * @brief Concrete Converter for the Event header
+ * @brief Concrete converter for the Event header stored in the TDS /Event
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.h,v 1.3 2002/03/18 19:00:35 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.h,v 1.4 2002/05/10 19:19:11 burnett Exp $
  */ 
 
-class EventCnv : public BaseCnv { //public ItemCnv<Event>	    {
+class EventCnv : public BaseCnv { 
 
   friend class CnvFactory<EventCnv>;
 
@@ -32,8 +32,10 @@ protected:
 
   virtual ~EventCnv() { };
 
+  /// override the BaseCnv version to handle the conversion
   virtual StatusCode createObj(IOpaqueAddress* pAddress, DataObject*& refpObject);
 
+  /// override the BaseCnv version
   virtual StatusCode updateObj(int* data, Event::EventHeader* pObject);
 
 

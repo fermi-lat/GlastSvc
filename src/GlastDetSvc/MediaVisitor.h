@@ -1,4 +1,3 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/G4Generator/src/G4MaterialsVisitor.h,v 1.3 2001/11/30 17:11:56 riccardo Exp $
 #ifndef MEDIAVISITOR_H
 #define MEDIAVISITOR_H
 #include "detModel/Management/MaterialsVisitor.h"
@@ -6,6 +5,11 @@
 #include <fstream>
 #include <vector>
 
+/** @class MediaVisitor
+* @brief
+*
+* $Header$
+*/
 class MediaVisitor: public detModel::MaterialsVisitor {
 
  public:

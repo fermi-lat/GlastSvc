@@ -1,4 +1,9 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.9 2002/05/27 02:49:42 burnett Exp $
+// File and Version Information:
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.10 2002/08/06 20:23:07 jrb Exp $
+//
+// Description:
+// Wrapper class around detModel, to hide all the initialization and 
+// provide defaults.
 
 #include "DMmanager.h"
 
@@ -21,18 +26,17 @@ DMmanager::DMmanager( )
 {
 }
 
-//! initialize with command-line args, supplying defaults
 void DMmanager::init(int argc, char* argv[] ) 
 {
-    // set up args: filename and topvol; defaults are the standard flight.xml and LAT
-    //
+    // Purpose and Method:  Set up args: filename and topvol; 
+    //   defaults are the standard flight.xml and LAT
+    
     std::string filename = (argc<2)? std::string( "-") : std::string(argv[1]);
     std::string topvol   = (argc<3)? std::string("LAT") : std::string(argv[2]);
     std::string mode("fastmc");
     init( filename, mode, topvol);
 }
 
-//! Note that if filename is "-" or blank, use xmlUtil default
 void DMmanager::init(std::string filename, std::string mode, std::string topvol) 
 {
     m_dm->setBuilder(new detModel::XercesBuilder);

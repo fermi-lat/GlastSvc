@@ -1,16 +1,6 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.3 2001/03/01 18:51:39 igable Exp $
-//====================================================================
-//  GlastEvtIterator.h
-//--------------------------------------------------------------------
-//
-//
-//
-//====================================================================
-
 #ifndef GLASTCNV_GLASTEVENTSELECTORITERATOR_H
 #define GLASTCNV_GLASTEVENTSELECTORITERATOR_H 1
 
-// Include files
 #include "GaudiKernel/IEvtSelector.h"
 #include "GaudiKernel/ISvcLocator.h"
 #include "GaudiKernel/Service.h"
@@ -18,8 +8,11 @@
 #include <list>
 #include <string>
 
-// Forward declarations
-
+/* @class GlastEvtIterator
+* @brief
+*
+* $Header$
+*/
 class GlastEvtIterator: public IEvtSelector::Iterator {
 public:
   friend class GlastEventSelector;

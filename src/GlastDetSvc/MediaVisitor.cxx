@@ -1,4 +1,6 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/G4Generator/src/G4MaterialsVisitor.cxx,v 1.11 2001/12/16 16:25:18 burnett Exp $
+// File and Version Information:
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/MediaVisitor.cxx,v 1.1 2002/03/07 15:32:48 riccardo Exp $
+
 #include <vector>
 
 #include "MediaVisitor.h"

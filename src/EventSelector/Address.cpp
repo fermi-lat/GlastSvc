@@ -1,4 +1,10 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.cpp,v 1.2 2001/04/19 01:32:29 igable Exp $
+// File and Version Iinformation:
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.cpp,v 1.3 2002/03/15 21:16:48 heather Exp $
+//
+// Description:
+//   
+//
+
 #define Address_cpp
 
 #include <iostream>

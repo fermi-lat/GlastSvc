@@ -1,8 +1,8 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.5 2002/05/10 15:15:19 burnett Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.6 2002/05/10 19:19:11 burnett Exp $
 //
 // Description:
-//      EventCnv is the concrete converter for the event header.
+//      EventCnv is the concrete converter for the event header on the TDS /Event
 //
 // Author(s):
 
@@ -22,20 +22,25 @@ const ICnvFactory& EventCnvFactory = s_factory;
 EventCnv::EventCnv(ISvcLocator* svc)
 : BaseCnv(classID(), svc)
 {
+    // Here we associate this converter with the /Event path on the TDS.
     declareObject("/Event", objType(), "PASS");
 }
 
 
-StatusCode EventCnv::createObj(IOpaqueAddress* pAddress, DataObject*& refpObject) {
+StatusCode EventCnv::createObj(IOpaqueAddress* pAddress, 
+                               DataObject*& refpObject) {
+    // Purpose and Method:  This converter will create an empty EventHeader on
+    //   the TDS.
     refpObject = new Event::EventHeader();
     return StatusCode::SUCCESS;
 };
 
-StatusCode EventCnv::updateObj(int* iarray, Event::EventHeader* pEvent)             {
+StatusCode EventCnv::updateObj(int* iarray, Event::EventHeader* pEvent) {
+    // Purpose and Method:  This method does nothing other than announce it has
+    //   been called.
     MsgStream log(msgSvc(), "EventCnv");
     log << MSG::DEBUG << "EventCnv::updateObj" << endreq;
     return StatusCode::SUCCESS;
 }
-
 
 

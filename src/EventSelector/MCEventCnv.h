@@ -10,10 +10,10 @@ class MCEvent;
 // Abstract factory to create the converter
 template <class T> class CnvFactory;
 
-/** 
-* @class MCEventCnv
+/** @class MCEventCnv
+* @brief Concrete converter for the McEvent header on the TDS /Event/MC
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.h,v 1.3 2002/03/15 21:16:49 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.h,v 1.4 2002/03/18 19:00:35 heather Exp $
 */
 class MCEventCnv : public BaseCnv { 
     friend class CnvFactory<MCEventCnv>;

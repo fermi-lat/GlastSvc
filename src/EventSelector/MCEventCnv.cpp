@@ -1,14 +1,11 @@
-//------------------------------------------------------------------------------
+// File and Version Information:
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.5 2002/05/10 15:15:20 burnett Exp $
 //
-// Implementation of class :  MCEventCnv
-//
-// Author :                   
-//
-//------------------------------------------------------------------------------
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.4 2002/03/18 19:00:35 heather Exp $
+// Description:
+// Concrete converter for the McEvent header on the TDS /Event/MC
+
 #define CNV_MCEVENTCNV_CPP 
 
-// Include files
 #include "GaudiKernel/CnvFactory.h"
 #include "MCEventCnv.h"
 
@@ -19,7 +16,7 @@
 #include "GaudiKernel/ObjectVector.h"
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: MCEventCnv.cpp,v 1.4 2002/03/18 19:00:35 heather Exp $";
+static const char* rcsid = "$Id: MCEventCnv.cpp,v 1.5 2002/05/10 15:15:20 burnett Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service
@@ -36,6 +33,8 @@ MCEventCnv::MCEventCnv(ISvcLocator* svc)
 
 StatusCode MCEventCnv::createObj(IOpaqueAddress* pAddress, DataObject*& refpObject)
 {
+    // Purpose and Method:  Converter just creates an empty instance of MCEvent
+    //   for the TDS.  The data members will be initialized by other components.
 
     refpObject = new MCEvent();
     StatusCode sc=StatusCode::SUCCESS;

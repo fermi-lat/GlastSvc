@@ -16,11 +16,11 @@ extern unsigned const char SICB_StorageType;
 *
 * Based on SICb's SicbBaseCnv
 *
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/BaseCnv.h,v 1.3 2002/03/15 21:16:48 heather Exp $
 */
 class BaseCnv : public Converter      {
 protected:
-    /// Pointer to (enhanced) event conversion service interface
+    /// Pointer to event conversion service interface
     IEventCnvSvc*  m_CnvSvc;
     /// Leaf objects giving the locations of the objects in the data store
     std::vector<IEventCnvSvc::Leaf>   m_leaves;
