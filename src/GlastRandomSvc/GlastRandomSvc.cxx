@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.12 2003/02/18 16:51:24 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.13 2003/03/16 00:16:22 burnett Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -319,7 +319,7 @@ void GlastRandomSvc::handle(const Incident &inc)
         int dummy = 0; // for 2nd argument to setSeed
         EngineMap::const_iterator dllEngine;
         for (dllEngine = m_engineMap.begin(); dllEngine != m_engineMap.end(); ++dllEngine ) {
-            long theSeed = multiplier * 100000 * ((runNo+1) % 20000) + ((2*seqNo+1) % 100000);
+            long theSeed = multiplier * 100000 * ((runNo+1) % 20000) + 2*seqNo+1;
 
             log << MSG::DEBUG;
             if(log.isActive() ){
