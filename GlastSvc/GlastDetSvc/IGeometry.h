@@ -1,9 +1,10 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.2 2002/03/07 15:32:47 riccardo Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.3 2002/03/11 17:25:14 riccardo Exp $
 
 
 #ifndef GLASTDET_IGEOMETRY_H
 #define GLASTDET_IGEOMETRY_H
-
+#include <vector>
+#include <string>
 /** Abstract class that defines callbacks from a traversal of the detector geometry tree
 
   */

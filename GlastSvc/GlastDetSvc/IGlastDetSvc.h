@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.12 2002/03/20 17:53:28 riccardo Exp $
+// $Id: IGlastDetSvc.h,v 1.13 2002/03/21 20:29:07 burnett Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -8,7 +8,7 @@
 
 // includes
 #include "GaudiKernel/IInterface.h"
-
+#include <string>
 //forward declarations
 class DMmanager;
 class DetectorConverter;
