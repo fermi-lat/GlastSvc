@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.6 2001/03/03 03:31:59 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.7 2001/04/19 01:32:29 igable Exp $
 //
 //
 //  GlastEventSelector.cpp
@@ -22,7 +22,7 @@
 
 #include "GaudiKernel/ObjectVector.h"
 
-extern const CLID CLID_Event;
+//THB: old style extern const CLID CLID_Event;
 
 // Glast address factory
 extern unsigned char GLAST_StorageType;
