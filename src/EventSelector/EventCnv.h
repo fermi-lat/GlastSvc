@@ -13,7 +13,7 @@ template <class TYPE> class CnvFactory;
 /** @class EventCnv
  * @brief Concrete Converter for the Event header
  *
- * $Header$
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.h,v 1.2 2002/03/15 21:16:49 heather Exp $
  */ 
 
 class EventCnv : public BaseCnv { //public ItemCnv<Event>	    {
@@ -31,6 +31,8 @@ protected:
   EventCnv(ISvcLocator* svc);
 
   virtual ~EventCnv() { };
+
+  virtual StatusCode createObj(IOpaqueAddress* pAddress, DataObject*& refpObject);
 
   virtual StatusCode updateObj(int* data, Event* pObject);
 

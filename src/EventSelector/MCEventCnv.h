@@ -13,7 +13,7 @@ template <class T> class CnvFactory;
 /** 
 * @class MCEventCnv
 *
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.h,v 1.3 2002/03/15 21:16:49 heather Exp $
 */
 class MCEventCnv : public BaseCnv { 
     friend class CnvFactory<MCEventCnv>;
@@ -21,7 +21,7 @@ public:
     
     MCEventCnv(ISvcLocator* svc);
     
-    virtual ~MCEventCnv();
+    virtual ~MCEventCnv() { };
     static const CLID& classID();
     
     /// Create object

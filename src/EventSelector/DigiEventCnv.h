@@ -16,7 +16,7 @@ template <class T> class CnvFactory;
  * @brief Right now this converter does nothing particularly useful other than
  * make the Digi branch of the TDS work.
  *
- * $Header$
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/DigiEventCnv.h,v 1.2 2002/03/15 21:16:48 heather Exp $
 */
 class DigiEventCnv : public BaseCnv {
   friend class CnvFactory<DigiEventCnv>;
@@ -30,6 +30,7 @@ public:
 protected:
   DigiEventCnv(ISvcLocator* svc);
   virtual ~DigiEventCnv() { };
+  virtual StatusCode createObj(IOpaqueAddress* pAddress, DataObject*& refpObject);
   virtual StatusCode updateObj(int* data, DigiEvent* pObject);
 };
 #endif // CNV_DIGIEVENTCNV_H
