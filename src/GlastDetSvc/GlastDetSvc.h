@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.10 2002/03/13 09:05:49 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.11 2002/03/14 12:31:43 riccardo Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -89,6 +89,9 @@ public:
     /// retrive the 3D transformation of a volume given a valid ID
     virtual StatusCode getTransform3DByID(idents::VolumeIdentifier,HepTransform3D*);
     
+    /// compute strip id from local coordinate for a tkr plane
+    virtual unsigned int stripId (double x);
+
 private:
     
     // Data Members
@@ -99,7 +102,6 @@ private:
     std::string         m_xmlfile;
     std::string         m_topvol;
     std::string         m_visitorMode;
-    
 };
 
 #endif // _H_GlastDetSvc

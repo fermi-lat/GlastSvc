@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.5 2002/03/13 09:05:49 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.6 2002/03/14 12:31:43 riccardo Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -16,6 +16,7 @@
 #include "idents/VolumeIdentifier.h"
 #include "CLHEP/Geometry/Transform3D.h"
 
+#include "SiliconPlaneGeometry.h"
 #include "DMmanager.h"
 #include "MediaVisitor.h"
 #include "GeometryVisitor.h"
@@ -157,3 +158,11 @@ StatusCode GlastDetSvc::getTransform3DByID(idents::VolumeIdentifier id,HepTransf
     return StatusCode::SUCCESS;
   else return StatusCode::FAILURE;
 }
+
+
+unsigned int GlastDetSvc::stripId (double x)
+{
+    SiliconPlaneGeometry plane;
+    return plane.stripId(x);
+}
+
