@@ -1,19 +1,19 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.5 2000/09/18 17:54:41 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #define EVENTCNV_CPP 
 
 
 // Include files
-#include "Gaudi/Kernel/CnvFactory.h"
-#include "Gaudi/DataSvc/RegistryEntry.h"
+#include "GaudiKernel/CnvFactory.h"
+#include "GaudiKernel/RegistryEntry.h"
 #include "EventCnv.h"
-#include "Gaudi/MessageSvc/MsgStream.h"
+#include "GaudiKernel/MsgStream.h"
 
 #include "GlastEvent/TopLevel/Event.h"
 
 
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnv.cpp,v 1.5 2000/09/18 17:54:41 heather Exp $";
+static const char* rcsid = "$Id: EventCnv.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $";
 
 
 //------------------------------------------------------------------------------

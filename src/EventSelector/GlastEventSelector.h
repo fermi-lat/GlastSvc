@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.h,v 1.1 2001/01/04 18:39:00 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.h,v 1.2 2001/03/01 18:51:39 igable Exp $
 //====================================================================
 //  GLASTEventSelector.h
 //--------------------------------------------------------------------
@@ -16,10 +16,10 @@
 #define GLASTCNV_GLASTEVENTSELECTOR_H 1
 
 // Include files
-#include "Gaudi/Interfaces/IEvtSelector.h"
-#include "Gaudi/Interfaces/IProperty.h"
-#include "Gaudi/Interfaces/ISvcLocator.h"
-#include "Gaudi/Kernel/Service.h"
+#include "GaudiKernel/IEvtSelector.h"
+#include "GaudiKernel/IProperty.h"
+#include "GaudiKernel/ISvcLocator.h"
+#include "GaudiKernel/Service.h"
 #include "GlastEvtIterator.h"
 
 #include <list>

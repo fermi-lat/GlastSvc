@@ -1,14 +1,14 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/GaudiMain.cpp,v 1.1.1.1 2000/09/27 18:55:47 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/GaudiMain.cpp,v 1.2 2001/01/11 01:19:28 tlindner Exp $
 #define COMMON_MAIN_CPP
 
 
 // Include files
-#include "Gaudi/Kernel/SmartIF.h"
-#include "Gaudi/Kernel/Bootstrap.h"
-#include "Gaudi/Interfaces/IAppMgrUI.h"
-#include "Gaudi/Interfaces/IProperty.h"
-#include "Gaudi/JobOptionsSvc/Property.h"
-#include "Gaudi/System/System.h"
+#include "GaudiKernel/SmartIF.h"
+#include "GaudiKernel/Bootstrap.h"
+#include "GaudiKernel/IAppMgrUI.h"
+#include "GaudiKernel/IProperty.h"
+#include "GaudiKernel/Property.h"
+#include "GaudiKernel/System.h"
 
 
 //------------------------------------------------------------------------------

@@ -1,27 +1,30 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.2 2001/02/02 05:38:13 burnett Exp $
 #define EVENTCNVSVC_CPP
 
 
 // Include files
 #include <iostream>
-#include "Gaudi/Kernel/SvcFactory.h"
-#include "Gaudi/Kernel/CnvFactory.h"
-#include "Gaudi/Kernel/AddrFactory.h"
-#include "Gaudi/Kernel/HashTable.h"
-#include "Gaudi/MessageSvc/MsgStream.h"
-#include "Gaudi/Interfaces/ICnvManager.h"
-#include "Gaudi/Interfaces/ISvcLocator.h"
-#include "Gaudi/Interfaces/IDataProviderSvc.h"
-#include "Gaudi/DataSvc/RegistryEntry.h"
+#include "GaudiKernel/SvcFactory.h"
+#include "GaudiKernel/CnvFactory.h"
+#include "GaudiKernel/AddrFactory.h"
+#include "GaudiKernel/HashTable.h"
+#include "GaudiKernel/MsgStream.h"
+#include "GaudiKernel/ICnvManager.h"
+#include "GaudiKernel/ISvcLocator.h"
+#include "GaudiKernel/IDataProviderSvc.h"
+#include "GaudiKernel/RegistryEntry.h"
+#include "BaseCnv.h"
 
-#include "Gaudi/Kernel/AddrFactory.h"
+#include "GaudiKernel/AddrFactory.h"
 
 #include "Address.h"
 #include "EventCnvSvc.h"
 
-
+//extern const IID& IID_ISicbEventCnvSvc;
+static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
+//extern IID& IID_IBaseCnv;
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.2 2001/02/02 05:38:13 burnett Exp $";
 
 
 //------------------------------------------------------------------------------
@@ -149,7 +152,7 @@ StatusCode EventCnvSvc::updateServiceState(IOpaqueAddress* pAddress)    {
 
 /// Query interface
 StatusCode EventCnvSvc::queryInterface(const IID& riid, void** ppvInterface)  {
-  if ( IID_ISicbEventCnvSvc == riid )  {
+  if ( IID_IBaseCnv == riid )  {
     *ppvInterface = (IEventCnvSvc*)this;
   }
   else  {

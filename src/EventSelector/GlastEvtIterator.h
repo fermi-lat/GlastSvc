@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.2 2001/01/04 18:39:00 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.3 2001/03/01 18:51:39 igable Exp $
 //====================================================================
 //  GlastEvtIterator.h
 //--------------------------------------------------------------------
@@ -11,9 +11,9 @@
 #define GLASTCNV_GLASTEVENTSELECTORITERATOR_H 1
 
 // Include files
-#include "Gaudi/Interfaces/IEvtSelector.h"
-#include "Gaudi/Interfaces/ISvcLocator.h"
-#include "Gaudi/Kernel/Service.h"
+#include "GaudiKernel/IEvtSelector.h"
+#include "GaudiKernel/ISvcLocator.h"
+#include "GaudiKernel/Service.h"
 
 #include <list>
 #include <string>

@@ -1,12 +1,12 @@
-// $Header: /cvs/cmt/GlastSvc/src/TopLevel/GlastIRFAddress.cpp,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/TopLevel/GlastIRFAddress.cpp,v 1.1.1.1 2000/09/27 18:55:47 burnett Exp $
 #define GLASTCNV_GLASTADDRESS_CPP 
 
 // Include files
-#include "Gaudi/Kernel/AddrFactory.h"
+#include "GaudiKernel/AddrFactory.h"
 #include "GlastSvc/TopLevel/GlastIRFAddress.h"
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: GlastIRFAddress.cpp,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $";
+static const char* rcsid = "$Id: GlastIRFAddress.cpp,v 1.1.1.1 2000/09/27 18:55:47 burnett Exp $";
 
 
 //------------------------------------------------------------------------------

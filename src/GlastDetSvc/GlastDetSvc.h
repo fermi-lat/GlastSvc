@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.4 2001/02/23 02:16:50 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.5 2001/03/05 03:09:15 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -8,8 +8,8 @@
 #define _H_GlastDetSvc_
 
 // includes
-#include "Gaudi/Kernel/Service.h"
-#include "Gaudi/Interfaces/IEvtSelector.h"
+#include "GaudiKernel/Service.h"
+#include "GaudiKernel/IEvtSelector.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 
 // forward declarations
@@ -72,6 +72,10 @@ public:
   
     //! set new root detector
     void setDetector(GlastDetector* d);
+
+	/// Query interface
+//    virtual StatusCode queryInterface( const IID& riid, void** ppvUnknown );
+
 
     
 private:

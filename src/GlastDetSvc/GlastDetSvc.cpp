@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.8 2001/02/23 17:57:11 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.9 2001/03/05 03:09:15 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -7,8 +7,8 @@
 #include "GlastDetSvc.h"
 
 #include <fstream>
-#include "Gaudi/Kernel/SvcFactory.h"
-#include "Gaudi/MessageSvc/MsgStream.h"
+#include "GaudiKernel/SvcFactory.h"
+#include "GaudiKernel/MsgStream.h"
 #include "instrument/Instrument.h"
 #include "xml/IFile.h"
 
@@ -169,4 +169,5 @@ extern void WARNING ( const char* msg )
 {
     (*s_log) << MSG::WARNING << msg << endreq;
 }
+
 

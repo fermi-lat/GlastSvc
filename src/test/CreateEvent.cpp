@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.15 2001/02/07 19:40:43 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.16 2001/03/03 03:55:56 igable Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -8,15 +8,15 @@
 // Include files
 #include "CreateEvent.h"
 
-#include "Gaudi/MessageSvc/MsgStream.h"
-#include "Gaudi/Kernel/AlgFactory.h"
-#include "Gaudi/Interfaces/IDataProviderSvc.h"
-#include "Gaudi/DataSvc/SmartDataPtr.h"
+#include "GaudiKernel/MsgStream.h"
+#include "GaudiKernel/AlgFactory.h"
+#include "GaudiKernel/IDataProviderSvc.h"
+#include "GaudiKernel/SmartDataPtr.h"
 
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 #include "GlastEvent/TopLevel/EventModel.h"
 #include "GlastEvent/TopLevel/Event.h"
-#include "GlastEvent/TopLevel/ObjectVector.h"
+#include "GaudiKernel/ObjectVector.h"
 
 
 #include "GlastEvent/TopLevel/IrfEvent.h"

@@ -1,12 +1,12 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/ItemCnv.cpp,v 1.2 2000/09/18 13:39:17 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/ItemCnv.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #define ITEMCNV_CPP 
 
 
 // Include files
-#include "Gaudi/Interfaces/IDataProviderSvc.h"
-#include "Gaudi/Interfaces/IDataDirectory.h"
-#include "Gaudi/Kernel/DataObject.h"
-#include "Gaudi/DataSvc/RegistryEntry.h"
+#include "GaudiKernel/IDataProviderSvc.h"
+#include "GaudiKernel/IDataDirectory.h"
+#include "GaudiKernel/DataObject.h"
+#include "GaudiKernel/RegistryEntry.h"
 #include "Address.h"
 #include "ItemCnv.h"
 

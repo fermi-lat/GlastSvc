@@ -1,9 +1,9 @@
-// $Header: /cvs/cmt/GlastSvc/GlastSvc/TopLevel/GlastIRFAddress.h,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/TopLevel/GlastIRFAddress.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #ifndef GLASTCNV_GLASTADDRESS_H
 #define GLASTCNV_GLASTADDRESS_H 1
 
 // Include files
-#include "Gaudi/Kernel/GenericAddress.h"
+#include "GaudiKernel/GenericAddress.h"
 //typedef GenericAddress GlastIRFAddress;
 
 //------------------------------------------------------------------------------

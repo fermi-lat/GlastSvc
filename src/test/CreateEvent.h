@@ -1,10 +1,10 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.h,v 1.3 2000/11/02 15:33:30 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.h,v 1.4 2001/02/07 19:40:43 igable Exp $
 #ifndef _GlastApps_HelloWorld_H
 #define _GlastApps_HelloWorld_H 1
 
 
 // Include files
-#include "Gaudi/Algorithm/Algorithm.h"
+#include "GaudiKernel/Algorithm.h"
 
 
 // forward declarations

@@ -5,16 +5,16 @@
 // Author :                   Markus Frank
 //
 //------------------------------------------------------------------------------
-// $Header: /nfs/slac/g/glast/ground/cvs/SicbCnv/SicbCnv/TopLevel/SicbMCEventCnv.cpp,v 1.1.1.1 2000/10/09 19:33:36 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.1 2000/10/24 21:49:22 heather Exp $
 #define CNV_MCEVENTCNV_CPP 
 
 // Include files
-#include "Gaudi/Kernel/CnvFactory.h"
+#include "GaudiKernel/CnvFactory.h"
 #include "MCEventCnv.h"
 #include "GlastEvent/TopLevel/MCEvent.h"
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: MCEventCnv.cpp,v 1.1.1.1 2000/10/09 19:33:36 burnett Exp $";
+static const char* rcsid = "$Id: MCEventCnv.cpp,v 1.1 2000/10/24 21:49:22 heather Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service

@@ -6,11 +6,11 @@
 #define CNV_DIGIEVENTCNV_CPP 
 
 // Include files
-#include "Gaudi/Kernel/CnvFactory.h"
+#include "GaudiKernel/CnvFactory.h"
 #include "DigiEventCnv.h"
 #include "GlastEvent/TopLevel/DigiEvent.h"
 
-static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.1 2000/11/21 02:17:19 igable Exp $";
+static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.1 2001/02/27 23:19:00 heather Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service

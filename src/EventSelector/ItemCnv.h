@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/ItemCnv.h,v 1.3 2000/09/18 17:54:42 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/ItemCnv.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #ifndef ITEMCNV_H
 #define ITEMCNV_H 1
 
@@ -8,7 +8,7 @@
 
 
 // Externals
-extern unsigned char SICB_StorageType;
+extern unsigned const char SICB_StorageType;
 
 
 //------------------------------------------------------------------------------

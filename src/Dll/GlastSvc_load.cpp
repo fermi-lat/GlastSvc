@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.12 2001/03/03 03:31:59 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.13 2001/03/05 03:09:14 burnett Exp $
 //====================================================================
 //  GlastSvc_load.cpp
 //--------------------------------------------------------------------
@@ -11,9 +11,9 @@
 //
 //====================================================================
 
-#include "Gaudi/Interfaces/ICnvFactory.h"
-#include "Gaudi/Interfaces/ISvcFactory.h"
-#include "Gaudi/Interfaces/IAlgFactory.h"
+#include "GaudiKernel/ICnvFactory.h"
+#include "GaudiKernel/ISvcFactory.h"
+#include "GaudiKernel/IAlgFactory.h"
 
 
 #define DLL_DECL_SERVICE(x)    extern const ISvcFactory& x##Factory; x##Factory.addRef();

@@ -1,11 +1,11 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.2 2000/09/18 13:39:16 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #ifndef EVENTCNVSVC_H
 #define EVENTCNVSVC_H 1
 
 #include <map>
 
 // Include files
-#include "Gaudi/PersistencySvc/ConversionSvc.h"
+#include "GaudiKernel/ConversionSvc.h"
 #include "IEventCnvSvc.h"
 
 

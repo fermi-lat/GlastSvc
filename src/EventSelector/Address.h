@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/Address.h,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #ifndef Address_H
 #define Address_H 1
 
@@ -6,8 +6,8 @@
 // Include files
 #include <string>
 #include <vector>
-#include "Gaudi/Kernel/StatusCode.h"
-#include "Gaudi/Kernel/GenericAddress.h"
+#include "GaudiKernel/StatusCode.h"
+#include "GaudiKernel/GenericAddress.h"
 
 
 // Forward declarations
@@ -15,7 +15,7 @@ class IDataDirectory;
 
 
 // Externals
-extern unsigned char SICB_StorageType;
+extern unsigned const char SICB_StorageType;
 
 
 //------------------------------------------------------------------------------

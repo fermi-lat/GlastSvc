@@ -11,19 +11,20 @@
 //  ====================================================================
 #define _BASECNV_CPP 
 
-#include "Gaudi/Interfaces/IService.h"
-#include "Gaudi/Interfaces/ISvcLocator.h"
+#include "GaudiKernel/IService.h"
+#include "GaudiKernel/ISvcLocator.h"
 
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
-#include "Gaudi/MessageSvc/MsgStream.h"
+#include "GaudiKernel/MsgStream.h"
 
 #include "BaseCnv.h"
 
 
-extern const IID& IID_ISicbEventCnvSvc;
+//extern const IID& IID_ISicbEventCnvSvc;
+static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: BaseCnv.cpp,v 1.2 2000/09/28 04:37:49 burnett Exp $";
+static const char* rcsid = "$Id: BaseCnv.cpp,v 1.3 2000/12/11 16:37:29 burnett Exp $";
 
 /// Convert the transient object to the requested representation.
 StatusCode BaseCnv::createRep(DataObject* pObject, IOpaqueAddress*& refpAddress)   {
@@ -53,7 +54,7 @@ StatusCode BaseCnv::initialize()   {
     IService* isvc = 0;
     status = serviceLocator()->getService("EventCnvSvc", isvc);
     if ( status.isSuccess() )   {
-      status = isvc->queryInterface(IID_ISicbEventCnvSvc, (void**)&m_CnvSvc);
+      status = isvc->queryInterface(IID_IBaseCnv, (void**)&m_CnvSvc);
       if ( status.isSuccess() )   {
         for ( std::vector<IEventCnvSvc::Leaf>::iterator i = m_leaves.begin(); i != m_leaves.end(); i++ )    {
           m_CnvSvc->declareObject(*i);

@@ -1,14 +1,14 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/Address.cpp,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #define SICBCNV_Address_CPP 
 
 
 // Include files
 #include <iostream>
-#include "Gaudi/Kernel/AddrFactory.h"
+#include "GaudiKernel/AddrFactory.h"
 #include "Address.h"
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: Address.cpp,v 1.1.1.1 2000/08/15 17:49:45 burnett Exp $";
+static const char* rcsid = "$Id: Address.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $";
 
 
 //------------------------------------------------------------------------------
