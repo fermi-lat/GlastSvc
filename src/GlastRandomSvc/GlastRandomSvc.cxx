@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.8 2002/11/16 01:20:37 xchen Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.9 2002/12/04 18:38:13 xchen Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -186,7 +186,8 @@ StatusCode GlastRandomSvc::initialize ()
 		// Store its name and address in a map
                 m_engineMap[tooltype] = hr;
             }else{
-            tsvc->releaseTool(itool);
+              itool->release();
+              tsvc->releaseTool(itool);
 	    }
         }
     }
