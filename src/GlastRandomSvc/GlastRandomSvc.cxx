@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.11 2003/02/11 19:22:58 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.12 2003/02/18 16:51:24 burnett Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -234,7 +234,15 @@ StatusCode GlastRandomSvc::initialize ()
                     }
                     log << MSG::INFO << "Setting CLHEP Engine "<< m_randomEngine
                         << " for " << tooltype << " at " << hr << endreq;
-                    ranacc->setTheEngine(hr);
+                    HepRandomEngine* old = ranacc->setTheEngine(hr);
+                    // make sure that the old one was not already stored
+                    for( EngineMap::iterator eit = m_engineMap.begin(); eit != m_engineMap.end(); ++eit){
+                        if( eit->second != old) continue;
+                        log << MSG::WARNING 
+                            << " Previous engine ("<< old << ") for " 
+                            << tooltype << " was also set for "<< eit->first << endreq;
+                        break;
+                    }
                     // Store its name and address in a map
                     m_engineMap[tooltype] = hr;
 		    
