@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.20 2004/02/19 20:54:52 mcenery Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.21 2004/05/31 14:43:19 kuss Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -329,7 +329,6 @@ void GlastRandomSvc::handle(const Incident &inc)
 
         header->setRun(runNo);
         header->setEvent(seqNo);
-        header->setTrigger(0); // flag that not set yet
 
         applySeeds(runNo, seqNo);
 
