@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.15 2003/06/12 21:06:21 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.16 2003/06/13 00:09:01 burnett Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -302,7 +302,7 @@ void GlastRandomSvc::handle(const Incident &inc)
         }
 
         // recorde seeds to TDS
-        mcevt->initialize(runNo, -1, seqNo);
+        mcevt->initialize(runNo, -1, seqNo, 0); // last arg is timestamp, will be set in FluxAlg
 
         // Set run number in EventHeader for consistency with
         // with run number in MCEvent
