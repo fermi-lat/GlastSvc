@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.3 2002/03/08 15:55:14 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.4 2002/03/08 16:06:12 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -140,3 +140,11 @@ void GlastDetSvc::accept(IMedia& media)
 {
     m_dm->accept(&MediaVisitor(media));
 }
+
+StatusCode GlastDetSvc::getNumericConstByName(std::string name, double* res)
+{
+    if (m_dm->getNumericConstByName(name, res))
+      return StatusCode::SUCCESS;
+    else return StatusCode::FAILURE;
+}
+

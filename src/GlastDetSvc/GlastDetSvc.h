@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.8 2002/03/07 15:32:48 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.9 2002/03/08 15:55:14 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -80,6 +80,10 @@ public:
 
     //! start a visitor of the detModel geometry description (implements IGlastDetSvc)
     virtual void accept(IGeometry& geom);
+
+    //! detModel interface to retrive numeric constants
+    virtual StatusCode getNumericConstByName(std::string, double*);
+
     
 private:
     

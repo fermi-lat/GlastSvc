@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.3 2002/03/12 01:07:57 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.4 2002/03/12 01:11:52 burnett Exp $
 
 #include "DMmanager.h"
 
@@ -43,6 +43,11 @@ void DMmanager::init(std::string filename, std::string mode, std::string topvol)
         exit(-1);
     }
     
+}
+
+bool DMmanager::getNumericConstByName(std::string name, double* res)
+{
+  return m_dm->getNumericConstByName(name,res);
 }
 
 void DMmanager::accept( detModel::SectionsVisitor* v){ m_vol->AcceptNotRec(v);  }

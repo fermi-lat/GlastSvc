@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.7 2002/03/07 15:32:47 riccardo Exp $
+// $Id: IGlastDetSvc.h,v 1.8 2002/03/08 15:55:11 burnett Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -24,6 +24,9 @@ static const InterfaceID IID_IGlastDetSvc(901, 1 , 0);
 class   IGlastDetSvc : virtual public IInterface {
 public:
   
+    //! detModel interface to retrive numeric constants
+    virtual StatusCode getNumericConstByName(std::string, double*)=0;
+
     //! new detModel interface, will call back. 
     virtual void accept(IGeometry& geom)=0;
 

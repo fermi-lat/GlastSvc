@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.2 2002/03/07 15:32:48 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.3 2002/03/12 01:07:57 burnett Exp $
 
 #ifndef DM_DMmanager_h
 #define DM_DMmanager_h
@@ -30,6 +30,9 @@ public:
 
     //! start a materials visitor
     void accept( detModel::MaterialsVisitor* v);
+
+    //! retrive a numeric constant
+    bool getNumericConstByName(std::string, double*);
 
     //! summarize setup.
     void printSetup(std::ostream& out);
