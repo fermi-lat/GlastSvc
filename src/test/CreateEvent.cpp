@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.22 2002/03/15 21:14:33 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.23 2002/03/28 02:35:27 burnett Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -14,11 +14,11 @@
 #include "GaudiKernel/SmartDataPtr.h"
 
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
-#include "GlastEvent/TopLevel/EventModel.h"
-#include "GlastEvent/TopLevel/Event.h"
+#include "Event/TopLevel/EventModel.h"
+//#include "Event/TopLevel/Event.h"
 #include "GaudiKernel/ObjectVector.h"
 
-#include "GlastEvent/MonteCarlo/McIntegratingHit.h"
+#include "Event/MonteCarlo/McIntegratingHit.h"
                                 
 static const AlgFactory<CreateEvent>  Factory;
 const IAlgFactory& CreateEventFactory = Factory;
@@ -31,7 +31,7 @@ const IAlgFactory& CreateEventFactory = Factory;
 CreateEvent::CreateEvent(const std::string& name, ISvcLocator* pSvcLocator) :
 Algorithm(name, pSvcLocator), m_detSvc(0), m_irfLoadSvc(0) {
     //GlastSvc_load();
-}
+};
 
 
 //------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ StatusCode CreateEvent::initialize() {
 
 
     return StatusCode::SUCCESS;
-}
+};
 
 
 //------------------------------------------------------------------------------
@@ -87,8 +87,7 @@ StatusCode CreateEvent::execute() {
 
 
     //
-}
-
+};
 
 //------------------------------------------------------------------------------
 StatusCode CreateEvent::finalize() {
@@ -100,13 +99,13 @@ StatusCode CreateEvent::finalize() {
 }
 ;
 
-StatusCode CreateEvent::testMcClass(){
-  mc::McIntegratingHit* integratingHit = new mc::McIntegratingHit();
-   mc:: McParticle* mcParticle =  new mc::McParticle();
+StatusCode CreateEvent::testMcClass() {
+  Event::McIntegratingHit* integratingHit = new Event::McIntegratingHit();
+   Event::McParticle* mcParticle =  new Event::McParticle();
 
     
     return StatusCode::SUCCESS;
-}
+};
 
 
 
