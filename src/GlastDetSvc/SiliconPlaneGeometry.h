@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.1 2002/03/20 17:53:29 riccardo Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.2 2002/03/22 02:20:10 burnett Exp $
 
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
@@ -66,6 +66,9 @@ private:
     static double s_panel_width;
     static unsigned int s_stripPerWafer;
     static unsigned int s_n_si_dies;
+
+	static double s_waferSide;
+	static double s_waferActive;
 
 };
 
