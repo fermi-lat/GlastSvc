@@ -1,9 +1,9 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/Recon/src/SiliconPlaneGeometry.h,v 1.2 2002/03/15 06:30:32 burnett Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.1 2002/03/20 17:53:29 riccardo Exp $
 
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
 
-#include "CLHEP/geometry/Vector3D.h"
+#include "CLHEP/Geometry/Vector3D.h"
 /**
     Static functions only for geometry of individual Si plane
   */
