@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.5 2001/04/19 01:32:28 igable Exp $
+// $Id: IRecoSvc.h,v 1.1 2001/11/24 20:05:17 burnett Exp $
 // 
 //!  \author: Toby Burnett tburnett@u.washington.edu
 //
@@ -27,14 +27,13 @@ static const InterfaceID IID_IRecoSvc(905, 1 , 0);
 class   IRecoSvc : virtual public IInterface {
 public:
  
-    
-    /// return a IKalmanParticle object (auto_ptr guarantees deletion)
-    virtual std::auto_ptr<IKalmanParticle> kalmanParticle(Point p0, Vector v0, double step)=0; 
+
+    // This returns a pointer to the singleton propagator object
+    virtual IKalmanParticle* getPropagator() = 0;
 
 
     /// Retrieve interface ID
     static const InterfaceID& interfaceID() { return IID_IRecoSvc; }
-
 
 };
 

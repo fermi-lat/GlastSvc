@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GismoGenerator/GismoGenerator/IKalmanParticle.h,v 1.3 2001/09/23 18:57:06 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.1 2001/11/24 20:05:17 burnett Exp $
 //
 //
 #ifndef GismoGenerator_IKalmanParticle_H
@@ -20,7 +20,8 @@
 class  IKalmanParticle
 {
 public:
-
+    /// Set the starting point, direction and step length
+    virtual void setStepStart(const Point& startPos, const Vector& startDir, const double stepLen)=0;
 
     /// move from starting point to next plane: return false if failed
     virtual bool trackToNextPlane()=0;
