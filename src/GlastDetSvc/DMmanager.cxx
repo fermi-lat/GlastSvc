@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.8 2002/05/23 09:51:14 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.9 2002/05/27 02:49:42 burnett Exp $
 
 #include "DMmanager.h"
 
@@ -60,6 +60,11 @@ bool DMmanager::getNumericConstByName(std::string name, double* res)
   return m_dm->getNumericConstByName(name,res);
 }
 
+bool DMmanager::getNumericConstByName(std::string name, int* res)
+{
+  return m_dm->getNumericConstByName(name,res);
+}
+
 void DMmanager::accept( detModel::SectionsVisitor* v){ m_vol->AcceptNotRec(v);  }
 
 void DMmanager::accept( detModel::MaterialsVisitor* v){ m_dm->startVisitor(v);  }
@@ -77,9 +82,19 @@ DMmanager::~DMmanager() {        delete m_dm;    }
 
 std::string DMmanager::topvol()const{ return m_vol->getName(); }
 
+idents::VolumeIdentifier DMmanager::getIDPrefix() const
+{
+  return m_idMap->getIDPrefix();
+}
+
 bool DMmanager::getTransform3DByID(idents::VolumeIdentifier id, HepTransform3D* tr)
 {
   return m_idMap->getTransform3DByID(id,tr);
+}
+
+const HepTransform3D& DMmanager::getTransform3DPrefix() const
+{
+  return m_idMap->getTransform3DPrefix();
 }
 
 bool DMmanager::getShapeByID(idents::VolumeIdentifier id,
