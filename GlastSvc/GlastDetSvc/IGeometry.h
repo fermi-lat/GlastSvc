@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.1 2002/02/27 18:35:00 burnett Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.2 2002/03/07 15:32:47 riccardo Exp $
 
 
 #ifndef GLASTDET_IGEOMETRY_H
@@ -12,7 +12,7 @@ public:
 
     typedef std::vector<double> DoubleVector;
     typedef std::vector<unsigned int>UintVector;
-    enum VolumeType{ Simple, Sensitive, Composite, Xstack, Ystack, Zstack };
+    enum VolumeType{ Simple, posSensitive, intSensitive, Composite, Xstack, Ystack, Zstack };
     enum ShapeType{ Box, Tube };
     /** Create a new shape
 
