@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.17 2002/09/25 03:00:26 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.18 2002/10/10 18:22:49 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -195,6 +195,16 @@ unsigned int GlastDetSvc::stripId (const HepPoint3D&  p)
 double GlastDetSvc::insideActiveArea (const HepPoint3D& p)
 {
     return SiliconPlaneGeometry::insideActiveArea(p);
+}
+
+double GlastDetSvc::insideActiveLocalX( const HepPoint3D& p)
+{
+    return SiliconPlaneGeometry::insideActiveArea1D(p.x(), SiliconPlaneGeometry::ladder_gap());
+}
+
+double GlastDetSvc::insideActiveLocalY( const HepPoint3D& p)
+{
+    return SiliconPlaneGeometry::insideActiveArea1D(p.y(), SiliconPlaneGeometry::ssd_gap());
 }
 
 double GlastDetSvc::stripLocalX( double strip)

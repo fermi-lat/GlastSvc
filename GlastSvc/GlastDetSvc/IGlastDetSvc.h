@@ -26,7 +26,7 @@ static const InterfaceID IID_IGlastDetSvc(901, 1 , 0);
 *
 * @author Sawyer Gillespie
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.20 2002/09/06 14:33:17 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.21 2002/09/07 23:43:41 lsrea Exp $
 */
 
 class   IGlastDetSvc : virtual public IInterface {
@@ -81,6 +81,11 @@ public:
 
     /// (-) if non-active or gap (P is in local system)    
     virtual double insideActiveArea (const HepPoint3D& p)=0; 
+
+    /// methods to return separate x and y values for insideActive
+    virtual double insideActiveLocalX( const HepPoint3D& p)=0;
+    virtual double insideActiveLocalY( const HepPoint3D& p)=0;
+
     
     /// return the global position of a strip in the plane, will accept int or double
     virtual HepPoint3D getStripPosition(idents::VolumeIdentifier volId, double stripid)=0;
