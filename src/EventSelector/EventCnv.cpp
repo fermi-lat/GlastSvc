@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.6 2002/05/10 19:19:11 burnett Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.7 2002/09/06 14:40:00 heather Exp $
 //
 // Description:
 //      EventCnv is the concrete converter for the event header on the TDS /Event
@@ -38,9 +38,9 @@ StatusCode EventCnv::createObj(IOpaqueAddress* pAddress,
 StatusCode EventCnv::updateObj(int* iarray, Event::EventHeader* pEvent) {
     // Purpose and Method:  This method does nothing other than announce it has
     //   been called.
+
     MsgStream log(msgSvc(), "EventCnv");
     log << MSG::DEBUG << "EventCnv::updateObj" << endreq;
     return StatusCode::SUCCESS;
 }
-
 
