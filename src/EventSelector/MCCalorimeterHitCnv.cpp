@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.2 2000/09/28 04:37:49 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCCalorimeterHitCnv.cpp,v 1.1 2000/10/23 18:52:06 igable Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
@@ -68,7 +68,7 @@ MCCalorimeterHitCnv::MCCalorimeterHitCnv(ISvcLocator* svc)
 : BaseCnv(classID(), svc)
 {
 
-  declareObject("/Event/MCCalorimeterHit", objType(), "PASS");
+  declareObject("/Event/MC/MCCalorimeterHits", objType(), "PASS");
 }
 
 /// Standard Destructor

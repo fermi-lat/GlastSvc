@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.6 2000/09/20 17:10:38 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.2 2000/09/28 04:37:49 burnett Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
@@ -69,7 +69,8 @@ ACDhitCnv::ACDhitCnv(ISvcLocator* svc)
 : BaseCnv(classID(), svc)
 {
 
-  declareObject("/Event/ACDTile", objType(), "PASS");
+  //declareObject("/Event/ACDTile", objType(), "PASS");
+  declareObject("/Event/MC/MCACDHits", objType(), "PASS");
 }
 
 /// Standard Destructor
