@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.1 2001/01/04 18:39:00 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.2 2001/01/25 21:43:40 igable Exp $
 //====================================================================
 //  GlastEventSelector.cpp
 //--------------------------------------------------------------------
@@ -147,9 +147,11 @@ StatusCode GlastEventSelector::parseStringInList( const std::string& namelist, L
                 std::string envVariable = rest.substr(afterBracket,(envEnd-afterBracket));
                 const char * instruPath = ::getenv(envVariable.data());
                 substitute = rest.replace(envStart,(envEnd+1), instruPath);
+                inputDataList->push_back(substitute);       // insert last item in list and
+                break;
             }
-            inputDataList->push_back(substitute);       // insert last item in list and
-            break;                                 // break
+            inputDataList->push_back(rest);      
+            break;                                 
         }
         inputDataList->push_back( rest.substr(0,lpos ));   // insert in list
         rest = rest.substr(lpos, -1);                      // get the rest
