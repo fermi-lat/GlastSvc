@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.4 2002/03/15 21:16:49 heather Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.5 2002/09/06 14:40:00 heather Exp $
 //
 // Description:
 //      EventCnvSvc is the GLAST converter service.
@@ -26,7 +26,7 @@
 
 static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.4 2002/03/15 21:16:49 heather Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.5 2002/09/06 14:40:00 heather Exp $";
 
 
 // Instantiation of a static factory class used by clients to create
@@ -112,11 +112,10 @@ StatusCode EventCnvSvc::updateServiceState(IOpaqueAddress* pAddress)    {
     
     MsgStream log(msgSvc(), name());
     StatusCode status = INVALID_ADDRESS;
-    
     IRegistry* ent = pAddress->registry();
     if ( 0 != ent )   {
         SmartIF<IDataManagerSvc> iaddrReg(IID_IDataManagerSvc, dataProvider());
-        if ( 0 != iaddrReg )   {
+ //       if ( 0 != iaddrReg )   {
             status = StatusCode::SUCCESS;
             std::string path = ent->identifier();
             LeafMap::iterator itm = m_leaves.find(path);
@@ -144,10 +143,10 @@ StatusCode EventCnvSvc::updateServiceState(IOpaqueAddress* pAddress)    {
                     }
                 }
             }
-        }
-        else  {
-            status = NO_INTERFACE;
-        }
+//     }
+//    else  {
+//        status = NO_INTERFACE;
+//    }
     }
     return status;
 }
