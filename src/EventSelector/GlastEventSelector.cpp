@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.8 2001/04/21 14:34:57 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.9 2002/03/08 15:55:13 burnett Exp $
 //
 //
 //  GlastEventSelector.cpp
@@ -17,8 +17,6 @@
 #include "GaudiKernel/Property.h"
 
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
-#include "instrument/DetectorConverter.h"
-#include "instrument/Scintillator.h"
 
 #include "GaudiKernel/ObjectVector.h"
 
