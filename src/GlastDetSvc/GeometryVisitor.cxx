@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GeometryVisitor.cxx,v 1.6 2002/04/24 00:04:16 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GeometryVisitor.cxx,v 1.7 2002/05/23 09:51:14 riccardo Exp $
 
 #include <string>
 
@@ -143,7 +143,7 @@ void  GeometryVisitor::visitPosXYZ(detModel::PosXYZ* pos)
 void  GeometryVisitor::visitAxisMPos(detModel::AxisMPos* pos)
 {
     
-    IdVector& ids = pos->getIdFields();
+    const IdVector& ids = pos->getIdFields();
     // get the rotation angle
     double rot = pos->getRotation();
     
@@ -163,7 +163,7 @@ void  GeometryVisitor::visitAxisMPos(detModel::AxisMPos* pos)
         
         cacheTransform(x,y,z,rx,ry,rz);
         
-        for( IdVector::iterator j= ids.begin(); j< ids.end(); ++j)
+        for( IdVector::const_iterator j= ids.begin(); j< ids.end(); ++j)
             cacheId(*j,i);
         
         pos->getVolume()->AcceptNotRec(this);
@@ -173,7 +173,7 @@ void  GeometryVisitor::visitAxisMPos(detModel::AxisMPos* pos)
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-void GeometryVisitor::cacheId(detModel::IdField* id, int step )
+void GeometryVisitor::cacheId(const detModel::IdField* id, int step )
 {
     //m_geom.id(id->getName(), id->getValue() + id->getStep()*step);
     m_idvec.push_back(id->getValue() + id->getStep()*step);
