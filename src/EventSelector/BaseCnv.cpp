@@ -23,7 +23,7 @@
 extern const IID& IID_ISicbEventCnvSvc;
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: BaseCnv.cpp,v 1.3 2000/09/20 17:10:38 heather Exp $";
+static const char* rcsid = "$Id: BaseCnv.cpp,v 1.2 2000/09/28 04:37:49 burnett Exp $";
 
 /// Convert the transient object to the requested representation.
 StatusCode BaseCnv::createRep(DataObject* pObject, IOpaqueAddress*& refpAddress)   {
@@ -92,10 +92,8 @@ BaseCnv::BaseCnv(const CLID& clid, ISvcLocator* svc)
         IID_IGlastDetSvc, reinterpret_cast<IInterface*&>( m_detSvc ));
     
     if(sc.isFailure()){
-            log << MSG::ERROR << "Unable start Glast detector service within BaseCnv" << endreq;
-    } else {
-        log << MSG::INFO << "Got Glast detector Service within BaseCnv" << endreq;
-    }
+       log << MSG::ERROR << "Unable start Glast detector service within BaseCnv" << endreq;
+    } 
 }
 
 /// Standard Destructor
