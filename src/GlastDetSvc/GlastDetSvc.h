@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.15 2002/04/20 19:05:34 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.16 2002/04/24 00:04:16 jrb Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -61,6 +61,12 @@ public:
 
     /// retrive the 3D transformation of a volume given a valid ID
     virtual StatusCode getTransform3DByID(idents::VolumeIdentifier,HepTransform3D*);
+
+    /// retrive the type and dimensions of a volume given a valid ID
+    virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
+                                     std::string*, 
+                                     std::vector<double>*);
+
     
     /// compute strip id from local coordinate for a tkr plane
     virtual unsigned int stripId (double x);

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.11 2002/04/20 19:05:34 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.12 2002/04/24 00:04:16 jrb Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -160,6 +160,16 @@ StatusCode GlastDetSvc::getTransform3DByID(idents::VolumeIdentifier id,HepTransf
     return StatusCode::SUCCESS;
   else return StatusCode::FAILURE;
 }
+
+StatusCode  GlastDetSvc::getShapeByID(idents::VolumeIdentifier id,
+                                      std::string* st, 
+                                      std::vector<double>* dv)
+{
+  if (m_dm->getShapeByID(id, st, dv))
+    return StatusCode::SUCCESS;
+  else return StatusCode::FAILURE;
+}
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //            SiliconPlaneGeometry interface calls

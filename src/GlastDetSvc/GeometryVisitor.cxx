@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GeometryVisitor.cxx,v 1.5 2002/04/04 18:23:03 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GeometryVisitor.cxx,v 1.6 2002/04/24 00:04:16 jrb Exp $
 
 #include <string>
 
@@ -144,8 +144,8 @@ void  GeometryVisitor::visitAxisMPos(detModel::AxisMPos* pos)
 {
     
     IdVector& ids = pos->getIdFields();
-    // get the rotation angle, transform as necessary!
-    double rot = -pos->getRotation();
+    // get the rotation angle
+    double rot = pos->getRotation();
     
     for( unsigned int i = 0; i< pos->getNcopy(); ++i) {
         

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.6 2002/03/14 12:31:43 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.7 2002/04/09 13:20:14 riccardo Exp $
 
 #include "DMmanager.h"
 
@@ -6,7 +6,6 @@
 #include "detModel/Management/XercesBuilder.h"
 #include "detModel/Sections/Volume.h"
 #include "detModel/Management/MaterialsVisitor.h"
-#include "detModel/Management/IDmapBuilder.h"
 
 #include "idents/VolumeIdentifier.h"
 
@@ -47,11 +46,11 @@ void DMmanager::init(std::string filename, std::string mode, std::string topvol)
         exit(-1);
     }
 
-    // We setup the IDmap 
+    // We setup the IDmap with the finest choice mode
     std::string temp = m_dm->getFineChoice();
-    if (temp!="0")
-      m_dm->setMode(temp);
     m_idMap = new detModel::IDmapBuilder(topvol);
+    if (temp!="0")
+      m_idMap->setMode(temp);
     m_dm->startVisitor(m_idMap);    
     m_dm->setMode(m_mode=mode);
 }
@@ -80,3 +79,11 @@ bool DMmanager::getTransform3DByID(idents::VolumeIdentifier id, HepTransform3D* 
 {
   return m_idMap->getTransform3DByID(id,tr);
 }
+
+bool DMmanager::getShapeByID(idents::VolumeIdentifier id,
+                             std::string* s, 
+                             std::vector<double>* params){
+
+  return m_idMap->getShapeByID(id,s,params);
+}
+     

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.4 2002/03/13 09:05:49 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.5 2002/03/14 12:31:43 riccardo Exp $
 
 #ifndef DM_DMmanager_h
 #define DM_DMmanager_h
@@ -16,6 +16,7 @@ namespace idents{class VolumeIdentifier;}
 class HepTransform3D;
 
 #include <string>
+#include "detModel/Management/IDmapBuilder.h"
 
 /**
   wrapper class around detModel, to hide all the initialization stuff, provide defaults
@@ -45,6 +46,12 @@ public:
 
     /// retrive the 3D transformation of a volume given a valid ID
     bool getTransform3DByID(idents::VolumeIdentifier, HepTransform3D*);
+
+    /// retrive the parameters (type and dimensions) of a volume given a valid
+    /// ID
+    bool getShapeByID(idents::VolumeIdentifier id,
+                      std::string*, 
+                      std::vector<double>* params);
 
     //! access to name of selected top volume
     std::string topvol()const;
