@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/mainpage.h,v 1.3 2000/11/21 02:33:40 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/mainpage.h,v 1.4 2001/03/01 18:51:32 igable Exp $
 // Mainpage for doxygen
 
 /*! \mainpage package GlastSvc
