@@ -1,9 +1,8 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.5 2000/09/18 18:05:41 heather Exp $
+// $Header: /cvs/cmt/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.6 2000/09/20 17:10:38 heather Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
 //
-// Author :                   Markus Frank
 //
 //------------------------------------------------------------------------------
 #define ACDhitCnv_CPP 
@@ -70,7 +69,6 @@ ACDhitCnv::ACDhitCnv(ISvcLocator* svc)
 : BaseCnv(classID(), svc)
 {
 
-  // For Sicb it is necessary to declare the part the object will be put
   declareObject("/Event/ACDTile", objType(), "PASS");
 }
 

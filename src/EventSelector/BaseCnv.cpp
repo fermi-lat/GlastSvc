@@ -23,7 +23,7 @@
 extern const IID& IID_ISicbEventCnvSvc;
 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: BaseCnv.cpp,v 1.2 2000/09/18 17:54:41 heather Exp $";
+static const char* rcsid = "$Id: BaseCnv.cpp,v 1.3 2000/09/20 17:10:38 heather Exp $";
 
 /// Convert the transient object to the requested representation.
 StatusCode BaseCnv::createRep(DataObject* pObject, IOpaqueAddress*& refpAddress)   {
@@ -86,6 +86,8 @@ BaseCnv::BaseCnv(const CLID& clid, ISvcLocator* svc)
     StatusCode sc;
     MsgStream log(msgSvc(), "BaseCnv");
 
+    // provide access to the Glast Detector Service, so that we may call the accept method
+    // from within our converters
     sc = serviceLocator()->getService ("GlastDetSvc",
         IID_IGlastDetSvc, reinterpret_cast<IInterface*&>( m_detSvc ));
     
