@@ -1,7 +1,7 @@
 /** @file SetSeeds.cxx
 @brief declaration and definition of the class SetSeeds
 
-$Header: /nfs/slac/g/glast/ground/cvs/FluxSvc/src/SetSeeds.cxx,v 1.45 2003/07/30 04:22:36 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.1 2003/08/24 23:49:24 burnett Exp $
 
 */
 
@@ -28,7 +28,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/FluxSvc/src/SetSeeds.cxx,v 1.45 2003/07/30
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/FluxSvc/src/SetSeeds.cxx,v 1.45 2003/07/30 04:22:36 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.1 2003/08/24 23:49:24 burnett Exp $
 */
 
 class SetSeeds : public Algorithm {
@@ -128,6 +128,7 @@ StatusCode SetSeeds::execute()
     h->setRun(run);
     h->setEvent(seq );
     h->setTime(mcheader->time());
+    h->setTrigger(0); // flag that not already set
 
     return StatusCode::SUCCESS;
 }
