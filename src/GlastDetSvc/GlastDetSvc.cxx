@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.15 2002/09/06 14:44:07 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.16 2002/09/07 23:43:43 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -89,6 +89,7 @@ StatusCode GlastDetSvc::initialize ()
     // bind all of the properties for this service
     if ( (status = setProperties()).isFailure() ) {
         log << MSG::ERROR << "Failed to set properties" << endreq;
+        return status;
     }
         
     // setup the detModel geometry, so can be visited below
@@ -99,9 +100,9 @@ StatusCode GlastDetSvc::initialize ()
     log << endreq;
 
     if( (status = SiliconPlaneGeometry::init(this)).isFailure() ) {
-        log << MSG::ERROR << "Failed to initialize SiliconPlane Geometry " << endreq;
+        log << MSG::WARNING << "Failed to initialize SiliconPlane Geometry " << endreq;
     }
-    return status;
+    return StatusCode::SUCCESS;
 }
 
 
