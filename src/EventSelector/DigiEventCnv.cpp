@@ -1,16 +1,12 @@
-// DigiEventCnv.cpp: implementation of the DigiEventCnv class.
-//
-//////////////////////////////////////////////////////////////////////
 
 
 #define CNV_DIGIEVENTCNV_CPP 
 
-// Include files
 #include "GaudiKernel/CnvFactory.h"
 #include "DigiEventCnv.h"
 #include "GlastEvent/TopLevel/DigiEvent.h"
 
-static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.1 2001/02/27 23:19:00 heather Exp $";
+static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.2 2001/04/19 01:32:29 igable Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service
@@ -22,15 +18,10 @@ StatusCode DigiEventCnv::updateObj(int* iarray, DigiEvent* pEvent)          {
   return StatusCode::SUCCESS;
 }
 
-//! Standard Constructor
 DigiEventCnv::DigiEventCnv(ISvcLocator* svc)
-: ItemCnv<DigiEvent>(svc)               
+: BaseCnv(classID(), svc)
 {
   declareObject("/Event/Digi", objType(), "PASS");
 }
 
-
-//! Standard Destructor
-DigiEventCnv::~DigiEventCnv()   { 
-}
 
