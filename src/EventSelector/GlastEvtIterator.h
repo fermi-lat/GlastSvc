@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.4 2000/09/07 15:47:01 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEvtIterator.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 //====================================================================
 //  GlastEvtIterator.h
 //--------------------------------------------------------------------
@@ -22,7 +22,7 @@
 
 class GlastEvtIterator: public IEvtSelector::Iterator {
 public:
-  friend class EventSelector;
+  friend class GlastEventSelector;
   GlastEvtIterator() {}
   GlastEvtIterator( const IEvtSelector* glastEvtSel): m_glastEvtSel(glastEvtSel),
     m_recId(0) { }
