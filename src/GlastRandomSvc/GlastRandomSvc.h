@@ -34,7 +34,7 @@ class IDataProviderSvc;;
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.8 2003/08/22 23:34:21 xchen Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.9 2003/08/24 23:49:24 burnett Exp $
 */
 class GlastRandomSvc : public Service,
 virtual public IIncidentListener
@@ -76,6 +76,7 @@ public:
      typedef   std::map< std::string, HepRandomEngine* > EngineMap;
      EngineMap m_engineMap;
   StringProperty    m_randomEngine;
+  std::string    m_RunNumberString;
   IntegerProperty   m_RunNumber;
   IntegerProperty   m_InitialSequenceNumber;
   int m_SequenceNumber;

@@ -3,12 +3,13 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.21 2004/05/31 14:43:19 kuss Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.22 2004/09/14 21:37:51 burnett Exp $
 //
 // Author: Toby Burnett, Karl Young
 
 
 #include "GlastRandomSvc.h"
+#include "facilities/Util.h"
 
 #include <iterator>
 #include <fstream>
@@ -66,6 +67,7 @@ GlastRandomSvc::GlastRandomSvc(const std::string& name,ISvcLocator* svc) : Servi
     // declare the properties
     declareProperty("RandomEngine",  m_randomEngine="TripleRand");
     declareProperty("RunNumber",      m_RunNumber=10);
+    declareProperty("RunNumberString",      m_RunNumberString="");
     declareProperty("InitialSequenceNumber", m_InitialSequenceNumber=0);
     declareProperty("SeedFile", m_seedFile="");
     declareProperty("EndSeedFile", m_endSeedFile="");
@@ -300,7 +302,9 @@ void GlastRandomSvc::handle(const Incident &inc)
         int runNo, seqNo;
 
         if(m_seedFile.value() == "") {
-            runNo = m_RunNumber;
+	  if (m_RunNumberString != "") runNo = 
+		       facilities::Util::expandEnvVar(&m_RunNumberString);
+	  else runNo = m_RunNumber;
             seqNo = m_SequenceNumber;
             ++m_SequenceNumber;
         }
