@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.2 2000/09/27 19:19:03 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.3 2000/12/05 22:54:50 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -13,10 +13,10 @@
 #include "xml/IFile.h"
 
 // define the class-id (unique) for the GlastDetSvc
-const IID&  IID_IGlastDetSvc  =  401;   // Unique to GLAST 
+// moved to Kernel! const IID&  IID_IGlastDetSvc  =  401;   // Unique to GLAST 
 
 // define the class-id (unique) for the GlastIRFSvc
-const IID&  IID_IGlastIRFLoadSvc  =  402;   // Unique to GLAST
+//const IID&  IID_IGlastIRFLoadSvc  =  402;   // Unique to GLAST
 
 
 // declare the service factories for the GlastDetSvc
@@ -65,10 +65,12 @@ StatusCode  GlastDetSvc::queryInterface (const IID& riid, void **ppvIF)
         *ppvIF = dynamic_cast<IGlastDetSvc*> (this);
         return StatusCode::SUCCESS;
     }
+#if 0
     else if (IID_IGlastIRFLoadSvc == riid) {
         *ppvIF = dynamic_cast<IGlastIRFLoadSvc*> (this);
         return StatusCode::SUCCESS;
     }
+#endif
     else {
         return Service::queryInterface (riid, ppvIF);
     }
