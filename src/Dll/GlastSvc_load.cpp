@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.11 2001/02/27 23:18:31 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Dll/GlastSvc_load.cpp,v 1.12 2001/03/03 03:31:59 igable Exp $
 //====================================================================
 //  GlastSvc_load.cpp
 //--------------------------------------------------------------------
@@ -30,15 +30,12 @@ void GlastSvc_load() {
     //DLL_DECL_CONVERTER( MCACDHitCnv );
     DLL_DECL_CONVERTER( MCEventCnv );
     DLL_DECL_CONVERTER( DigiEventCnv );
-    DLL_DECL_CONVERTER( RawEventCnv );
-   // DLL_DECL_CONVERTER( MCSiLayerCnv );
+
+    // DLL_DECL_CONVERTER( MCSiLayerCnv );
     //DLL_DECL_CONVERTER( MCCalorimeterHitCnv );
+
     DLL_DECL_CONVERTER( LdGlastDataCnv );
 
-    DLL_DECL_CONVERTER( IrfAcdHitCnv );
-    DLL_DECL_CONVERTER( IrfEventCnv );
-    DLL_DECL_CONVERTER( IrfTkrLayerCnv );
-    DLL_DECL_CONVERTER( IrfCalHitCnv );
 } 
 
 extern "C" void GlastSvc_loadRef()    {

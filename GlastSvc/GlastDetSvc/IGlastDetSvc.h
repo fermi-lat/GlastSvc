@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.2 2000/12/05 22:54:49 burnett Exp $
+// $Id: IGlastDetSvc.h,v 1.3 2001/02/23 02:16:50 burnett Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -39,6 +39,7 @@ public:
 
     //! set new root detector
     virtual void setDetector(GlastDetector* d)=0;
+
 
 };
 

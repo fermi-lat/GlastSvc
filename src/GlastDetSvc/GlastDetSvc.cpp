@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.7 2001/01/31 16:25:40 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.8 2001/02/23 17:57:11 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -62,12 +62,6 @@ StatusCode  GlastDetSvc::queryInterface (const IID& riid, void **ppvIF)
         *ppvIF = dynamic_cast<IGlastDetSvc*> (this);
         return StatusCode::SUCCESS;
     }
-#if 0
-    else if (IID_IGlastIRFLoadSvc == riid) {
-        *ppvIF = dynamic_cast<IGlastIRFLoadSvc*> (this);
-        return StatusCode::SUCCESS;
-    }
-#endif
     else {
         return Service::queryInterface (riid, ppvIF);
     }

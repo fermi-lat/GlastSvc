@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.3 2001/01/08 16:07:34 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.4 2001/02/23 02:16:50 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -11,7 +11,6 @@
 #include "Gaudi/Kernel/Service.h"
 #include "Gaudi/Interfaces/IEvtSelector.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
-#include "GlastSvc/GlastDetSvc/IGlastIRFLoadSvc.h"
 
 // forward declarations
 class Instrument;
