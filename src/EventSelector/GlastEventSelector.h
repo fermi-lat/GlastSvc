@@ -27,7 +27,7 @@ class IDataProviderSvc;
 * number of events run my changing the EvtMax property of this Svc. 
 * Examples of how to do this can be found in the GuiSvc.
 *
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.h,v 1.4 2002/03/15 21:16:49 heather Exp $
 */
 class GlastEventSelector : virtual public Service, 
 virtual public IEvtSelector,
@@ -69,14 +69,14 @@ private:
     StatusCode GlastEventSelector::getFileName(ListName::const_iterator* inputIt, std::string& fName) const;
     
     std::string           m_criteria;
-    std::string           m_jobInput;
+    StringProperty         m_jobInput;
     CriteriaType          m_criteriaType;
     GlastEvtIterator      m_evtEnd;
     ListName*             m_inputDataList;
     IGlastDetSvc*         m_detSvc;
     IDataProviderSvc*     m_eventDataSvc;
     GlastEvtIterator*     m_it; 
-    int                   m_evtMax;
+    IntegerProperty           m_evtMax;
     
     IAddressCreator*      m_addrCreator;
     CLID                  m_rootCLID;

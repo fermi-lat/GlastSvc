@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header$
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.13 2002/09/06 14:40:00 heather Exp $
 // 
 // Description:
 
@@ -32,7 +32,7 @@ StatusCode GlastEventSelector::initialize()     {
         log << MSG::ERROR << "Unable to initialize service " << endreq;
     }
     
-    if(m_jobInput != " "){
+    if(m_jobInput.value() != " "){
         sc = setCriteria(m_jobInput);
         if(sc.isFailure()){
             log << MSG::ERROR << "Unable to parse string of input files" << endreq;
