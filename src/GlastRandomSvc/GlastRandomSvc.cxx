@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.16 2003/06/13 00:09:01 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.17 2003/07/18 21:13:10 burnett Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -64,6 +64,7 @@ GlastRandomSvc::GlastRandomSvc(const std::string& name,ISvcLocator* svc) : Servi
     declareProperty("RunNumber",      m_RunNumber=10);
     declareProperty("InitialSequenceNumber", m_InitialSequenceNumber=0);
     declareProperty("SeedFile", m_seedFile="");
+    declareProperty("EndSeedFile", m_endSeedFile="");
 }
 
 GlastRandomSvc::~GlastRandomSvc()  
@@ -161,7 +162,11 @@ StatusCode GlastRandomSvc::initialize ()
     if( status.isFailure() ) return status;
 
     incsvc->addListener(this, "BeginEvent", 0);
+    incsvc->addListener(this, "EndEvent", 0);
 
+    if(m_endSeedFile.value() != "") {
+      m_output.open(m_endSeedFile.value().c_str());
+    }
 
     // read seeds from file
     if(m_seedFile.value() != "") {
@@ -333,6 +338,23 @@ void GlastRandomSvc::handle(const Incident &inc)
             ++multiplier;
         }
     }
+
+    if(inc.type()=="EndEvent" && m_endSeedFile.value() != "") {
+
+      static int i = 0;
+
+      m_output << i << std::endl;
+      ++i;
+
+      EngineMap::const_iterator dllEngine;
+      for (dllEngine = m_engineMap.begin(); dllEngine != m_engineMap.end(); ++dllEngine ) {
+
+	m_output << dllEngine->second->getSeed() << " ";
+      }
+
+      m_output << std::endl;
+    }
+
 }
 
 StatusCode GlastRandomSvc::finalize () 

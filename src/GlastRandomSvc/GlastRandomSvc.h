@@ -32,7 +32,7 @@
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header:$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.7 2003/02/11 19:22:58 burnett Exp $
 */
 class GlastRandomSvc : public Service,
 virtual public IIncidentListener
@@ -70,6 +70,11 @@ public:
   // file name of seeds to be read in
   // if m_seedFile is empty, procceed to normal running of Gleam
   StringProperty m_seedFile;
+
+  // Output seeds at the end of event, only used in testing whether event can
+  // be regenerated
+  StringProperty m_endSeedFile;
+  std::ofstream m_output;
 
   // seeds read from the file
   std::vector<GlastRandomSeed> m_seeds;
