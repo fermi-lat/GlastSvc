@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.4 2000/10/26 22:42:05 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.5 2000/10/30 20:31:40 heather Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -76,7 +76,7 @@ StatusCode CreateEvent::initialize() {
     }
     m_detSvc = detSvc;
 
-    // ----------------------------------------------------
+
     return StatusCode::SUCCESS;
 }
 
@@ -90,7 +90,7 @@ StatusCode CreateEvent::execute() {
 
     DataObject* pObject;
 
-    //! This method call does the bulk of the work
+
     /*! Causes the data store to be searched, if the data is unavailable, the appropriate
     converter is called to retrieve the data. */
     sc = eventSvc()->retrieveObject("/Event/MC/MCACDHits", pObject);

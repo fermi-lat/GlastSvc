@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/test/CreateEvent.h,v 1.1 2000/08/22 13:52:44 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 #ifndef _GlastApps_HelloWorld_H
 #define _GlastApps_HelloWorld_H 1
 
@@ -20,21 +20,20 @@
 class IGlastDetSvc;
 class IGlastIRFLoadSvc;
 
-/**
-  Attempts to create a GlastEvent tree in Gaudi.
-
-  @Author :   Sawyer Gillespie
- */
+/*! Short test algorithm to test the functionality of MCACDHit, MCCalorimeterHit, and MCTRKHit
+*/
 
 class CreateEvent : public Algorithm {
 
 public:
-  /// Constructor of this form must be provided
+  //! Constructor of this form must be provided
   CreateEvent(const std::string& name, ISvcLocator* pSvcLocator); 
 
-  // Three mandatory member functions of any algorithm
+  //! mandatory
   StatusCode initialize();
+  //! mandatory
   StatusCode execute();
+  //! mandatory
   StatusCode finalize();
 
 private:
