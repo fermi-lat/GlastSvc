@@ -3,7 +3,7 @@
 // and sets seeds for them based on run and particle sequence
 // number obtained from the MCHeader
 //
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.4 2002/10/08 22:06:38 kyoung Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.6 2002/10/14 23:48:10 kyoung Exp $
 //
 // Author: Toby Burnett, Karl Young
 
@@ -94,7 +94,7 @@ StatusCode GlastRandomSvc::initialize ()
     SmartDataPtr<Event::EventHeader> header(eventSvc, EventModel::EventHeader);
     if (header == 0) {
       log << MSG::ERROR << "Error accessing Event Header" << endreq;
-      return;
+      return StatusCode::FAILURE;
     }    
     header->setRun(m_RunNumber);
 
