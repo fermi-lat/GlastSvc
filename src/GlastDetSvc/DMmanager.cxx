@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.7 2002/04/09 13:20:14 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.8 2002/05/23 09:51:14 riccardo Exp $
 
 #include "DMmanager.h"
 
@@ -69,6 +69,8 @@ void DMmanager::printSetup(std::ostream& out) {
         << std::setw(15) << "document = " << m_dm->getNameFile() << std::endl
         << std::setw(15) << "mode = "     << m_mode << std::endl
         << std::setw(15) << "topvol = "   << std::string(m_vol->getName())  << std::endl;
+
+     m_idMap->summary(out);
 }
 
 DMmanager::~DMmanager() {        delete m_dm;    }
