@@ -1,10 +1,11 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.4 2002/03/29 18:15:44 lsrea Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.5 2002/03/30 02:53:04 lsrea Exp $
 
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
 
 #include "CLHEP/Geometry/Vector3D.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
+#include "idents/VolumeIdentifier.h"
 /**
     Static functions only for geometry of individual Si plane
   */
@@ -21,6 +22,9 @@ public:
      
     /// location of strip ix in local coords
     static double localX ( unsigned int ix); 
+
+	// Returns the coordinate in the plane from the ladder coordinate
+	static HepPoint3D siPlaneCoord( const HepPoint3D& p, idents::VolumeIdentifier id);
 	  
     /// insideActiveArea for local coords
     static double insideActiveArea(double x, double y); 

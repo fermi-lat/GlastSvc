@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.9 2002/03/29 18:15:44 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.10 2002/03/30 02:53:04 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -189,4 +189,9 @@ double GlastDetSvc::stripLocalX ( unsigned int istrip)
 double GlastDetSvc::stripLocalXDouble( double strip)
 {
     return SiliconPlaneGeometry::localXDouble(strip);
+}
+
+HepPoint3D GlastDetSvc::siPlaneCoord( const HepPoint3D &p, idents::VolumeIdentifier id)
+{   
+	return SiliconPlaneGeometry::siPlaneCoord( p, id);
 }

@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.cxx,v 1.3 2002/03/25 18:31:17 lsrea Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.cxx,v 1.5 2002/03/30 02:53:04 lsrea Exp $
 #include "SiliconPlaneGeometry.h"
 
 #include <cmath>
@@ -127,6 +127,29 @@ double SiliconPlaneGeometry::localX (unsigned ix) {
     
     return  n + (i + 0.5) * si_strip_pitch() - panel_width()/2. + guard_ring();
 	*/
+}
+
+/// siPlaneCoord - return a plane coordinate given a ladder coordinate
+HepPoint3D SiliconPlaneGeometry::siPlaneCoord( const HepPoint3D& p, idents::VolumeIdentifier id) {
+	double xShift = 0, yShift = 0;
+	int view      = id[5];
+	if (id.size()==9) {
+		int ladderNum = id[7];
+		//std::cout << " sgp ladder " << ladderNum << std::endl;
+	    xShift = 0.5*die_width() + ladderNum*(die_width() + ladder_gap()) - 0.5*panel_width();
+	    if (view==1) xShift = -xShift;
+
+    	double panelLength = n_si_dies()*die_width() + (n_si_dies()-1)*ssd_gap();
+	    yShift = 0.5*die_width() + ladderNum*(die_width() + ssd_gap()) - 0.5*panelLength;
+	}
+
+	xShift+= p.x();
+	//std::cout << " spg view " << view << " " << xShift ;
+	if (view==1) xShift = -xShift; 
+	//std::cout << " " << xShift  << std::endl;
+	yShift+= p.y();
+
+	return HepPoint3D(xShift, yShift, p.z());
 }
 
 

@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.14 2002/03/22 04:32:41 burnett Exp $
+// $Id: IGlastDetSvc.h,v 1.15 2002/03/30 02:53:04 lsrea Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -53,6 +53,9 @@ public:
 	
     /// location of strip ix in local coords
     virtual double stripLocalXDouble( double stripid)=0;    
+
+	/// returns plane coord given ladder coord
+	virtual HepPoint3D siPlaneCoord( const HepPoint3D& p, idents::VolumeIdentifier id)=0;
 
     /// (-) if non-active or gap (P is in local system)    
     virtual double insideActiveArea (const HepPoint3D& p)=0;  

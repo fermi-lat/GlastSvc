@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.13 2002/03/21 15:26:21 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.14 2002/03/30 02:53:04 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -72,7 +72,10 @@ public:
     virtual double stripLocalX ( unsigned int istrip); 
 	
     /// location of strip ix in local coords
-    virtual double stripLocalXDouble ( double strip);    
+    virtual double stripLocalXDouble ( double strip);   
+	
+	/// return plane coordinate given wafer coordinate
+	virtual HepPoint3D siPlaneCoord( const HepPoint3D &p, idents::VolumeIdentifier id);
 
 
 private:
