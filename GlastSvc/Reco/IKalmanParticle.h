@@ -15,7 +15,7 @@
 * which instantiates the subclass KalParticle.
 *
 * @author Toby Burnett
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.3 2002/09/06 14:34:48 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.4 2003/01/18 04:31:50 lsrea Exp $
 */
 class  IKalmanParticle
 {
@@ -41,6 +41,7 @@ public:
 
     /// current position
     virtual Point position()const=0;
+    virtual Point position(double arcLen) const = 0;
     
     /// return properties associated with the propagation
     /**
@@ -50,11 +51,12 @@ public:
          asked for.  
  
     */
-    virtual HepMatrix mScat_Covr(float momentum, float s) const=0;
+    virtual HepMatrix mScat_Covr(double momentum, double arcLen) const=0;
 
     virtual double arcLength() const=0; 
 
     virtual double radLength() const=0; 
+    virtual double radLength(double arcLen) const = 0;
 
     /// dump current status, to the stream
     virtual void printOn(std::ostream& str=std::cout )const=0;
