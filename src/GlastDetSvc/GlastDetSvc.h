@@ -19,7 +19,7 @@ namespace idents{class VolumeIdentifier;}
 * which provides parameters and constants associated with the geometry.
 * 
 * @author Sawyer Gillespie
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.21 2002/12/16 19:47:45 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.22 2003/04/07 21:42:27 lsrea Exp $
 */
 class GlastDetSvc : public Service, 
 virtual public IGlastDetSvc
@@ -78,8 +78,11 @@ public:
     virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
         std::string*, 
         std::vector<double>*);
+
+    /// retrieve the name of the top volume
+    virtual std::string getTopVolume() {return m_topvol;}
     
-    
+
     /// compute strip id from local coordinate for a tkr plane
     virtual unsigned int stripId (double x);
     virtual unsigned int stripId (const HepPoint3D&  x);
