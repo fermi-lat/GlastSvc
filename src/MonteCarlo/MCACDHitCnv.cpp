@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/ACDhitCnv.cpp,v 1.3 2000/10/24 21:49:22 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCACDHitCnv.cpp,v 1.1 2000/10/25 18:50:09 igable Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv

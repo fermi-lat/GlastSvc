@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCCalorimeterHitCnv.cpp,v 1.1 2000/10/23 18:52:06 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCCalorimeterHitCnv.cpp,v 1.2 2000/10/24 21:49:22 heather Exp $
 //------------------------------------------------------------------------------
 //
 // Implementation of class :  ACDhitCnv
@@ -11,7 +11,7 @@
 #include "Gaudi/Kernel/CnvFactory.h"
 #include "Gaudi/Interfaces/IDataProviderSvc.h"
 #include "GlastEvent/TopLevel/ObjectVector.h"
-#include "GlastEvent/Hits/MCCalorimeterHit.h"
+#include "GlastEvent/MonteCarlo/MCCalorimeterHit.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 
 #include "IRFConverter.h"
