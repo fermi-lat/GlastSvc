@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.2 2002/03/07 15:32:48 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.3 2002/03/12 01:07:57 burnett Exp $
 
 #include "DMmanager.h"
 
@@ -32,7 +32,7 @@ void DMmanager::init(int argc, char* argv[] )
 void DMmanager::init(std::string filename, std::string mode, std::string topvol) 
 {
     m_dm->setBuilder(new detModel::XercesBuilder);
-    if( filename.empty() || filename == "-" ) filename = "$(XMLGEODBSROOT)/xml/flight.xml" ;
+    if( filename.empty() || filename == "-" ) filename = "$(XMLGEODBSROOT)/xml/flight/flight.xml" ;
     xml::IFile::extractEnvVar(&filename);
     m_dm->setNameFile( filename);
     m_dm->setMode(m_mode=mode);
