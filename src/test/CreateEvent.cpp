@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.9 2000/12/06 03:32:25 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.10 2000/12/12 21:53:09 heather Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -16,9 +16,6 @@
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 #include "GlastEvent/TopLevel/EventModel.h"
 #include "GlastEvent/TopLevel/Event.h"
-#include "GlastEvent/MonteCarlo/MCACDHit.h"
-#include "GlastEvent/MonteCarlo/MCCalorimeterHit.h"
-#include "GlastEvent/MonteCarlo/MCSiLayer.h"
 #include "GlastEvent/TopLevel/ObjectVector.h"
 
 #include "GlastEvent/Raw/TdCsIData.h"
