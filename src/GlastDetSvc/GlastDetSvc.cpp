@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.5 2000/12/13 00:18:04 tlindner Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.6 2001/01/08 16:07:34 heather Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -91,10 +91,11 @@ StatusCode GlastDetSvc::initialize ()
     MsgStream log( msgSvc(), name() );
     s_log = & log;  // make available globally while executing the following
     
+    log << MSG::DEBUG << "Loading instrument ...";
     // now create and initialize the instruemtn
     m_instrument = new Instrument;
     if (m_instrument->initialize(m_iniFile, m_xmlFile) ) status=StatusCode::FAILURE;
-    
+    log << MSG::DEBUG << "done. Loaded "<< m_instrument->detector_count() << " detectors." << endreq;
     return status;
 }
 
