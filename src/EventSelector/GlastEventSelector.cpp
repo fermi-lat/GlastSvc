@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.2 2001/01/25 21:43:40 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/GlastEventSelector.cpp,v 1.3 2001/01/25 22:40:31 igable Exp $
 //====================================================================
 //  GlastEventSelector.cpp
 //--------------------------------------------------------------------
@@ -273,11 +273,9 @@ IOpaqueAddress* GlastEventSelector::reference(const IEvtSelector::Iterator& it) 
     recId++;
     
     ListName::const_iterator* inputDataIt = (ListName::const_iterator*)(&irfIt->m_inputDataIt);
-    log << MSG::DEBUG << "GlastEventSelector::reference: File name is " << fName << endreq;
     
     // finally create an opaque address to pass back
     IOpaqueAddress* addr = DummyAddressFactory.instantiate(CLID_Event, fName, "PASS", recId);
-    log << MSG::DEBUG << "GlastEventSelector::reference: Created address:" << (void*)addr << endreq;
     return addr;
 }
 
