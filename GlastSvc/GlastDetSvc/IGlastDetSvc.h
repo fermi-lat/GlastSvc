@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.8 2002/03/08 15:55:11 burnett Exp $
+// $Id: IGlastDetSvc.h,v 1.9 2002/03/13 09:05:48 riccardo Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -15,7 +15,9 @@ class DetectorConverter;
 class GlastDetector;
 class IGeometry;
 class IMedia;
+class HepTransform3D;
 namespace xml {class IFile; }
+namespace idents{class VolumeIdentifier;}
 
 // Declaration of the interface ID ( interface id, major version, minor version) 
 static const InterfaceID IID_IGlastDetSvc(901, 1 , 0); 
@@ -32,6 +34,11 @@ public:
 
     //! new detModel interface, will call back. 
     virtual void accept(IMedia& media)=0;
+
+
+    /// retrive the 3D transformation of a volume given a valid ID
+    virtual StatusCode getTransform3DByID(idents::VolumeIdentifier,HepTransform3D*)=0;
+
 #if 0
     //! open an IRF file
     virtual StatusCode openIRF(std::string filename)=0;
