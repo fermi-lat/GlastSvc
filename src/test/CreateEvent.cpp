@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.21 2002/03/15 15:29:52 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.22 2002/03/15 21:14:33 heather Exp $
 #define GlastApps_CreateEvent_CPP 
 
 
@@ -102,7 +102,7 @@ StatusCode CreateEvent::finalize() {
 
 StatusCode CreateEvent::testMcClass(){
   mc::McIntegratingHit* integratingHit = new mc::McIntegratingHit();
-    McParticle* mcParticle =  new McParticle();
+   mc:: McParticle* mcParticle =  new mc::McParticle();
 
     
     return StatusCode::SUCCESS;
