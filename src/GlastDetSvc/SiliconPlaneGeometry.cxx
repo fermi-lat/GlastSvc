@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/Recon/src/SiliconPlaneGeometry.cxx,v 1.2 2002/03/15 06:30:32 burnett Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.cxx,v 1.1 2002/03/20 17:53:29 riccardo Exp $
 #include "SiliconPlaneGeometry.h"
 
 #include <cmath>
@@ -20,7 +20,7 @@ Will assume that
   guard ring = 0.5*(SiWaferSide-SiWaferActive) 
 */
 
-// static variable implementations
+// static variable implementations -- TODO: initialize from geometry
 unsigned int SiliconPlaneGeometry::s_n_si_dies=4; // # of Si dies across single SSD plane
 unsigned int SiliconPlaneGeometry::s_stripPerWafer =384;
 double       SiliconPlaneGeometry::s_dice_width     =89.500; // width of a single silicon die 
