@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.3 2000/12/05 22:54:50 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs//GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.4 2000/12/08 04:29:20 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -163,13 +163,13 @@ const xml::IFile* GlastDetSvc::iniFile()const{
 }
 
 ///! satisfy external. Need to make it really fatal!
-extern void __cdecl FATAL ( const char* msg )
+extern void FATAL ( const char* msg )
 {
     (*s_log) << MSG::FATAL <<  msg << endreq;
 }
 
 //! Satisfy external
-extern void __cdecl WARNING ( const char* msg )
+extern void WARNING ( const char* msg )
 {
     (*s_log) << MSG::WARNING << msg << endreq;
 }
