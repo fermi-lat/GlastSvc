@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.h,v 1.2 2000/11/01 00:39:01 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.h,v 1.3 2000/11/02 15:33:30 heather Exp $
 #ifndef _GlastApps_HelloWorld_H
 #define _GlastApps_HelloWorld_H 1
 
@@ -42,6 +42,8 @@ public:
   StatusCode execute();
   //! mandatory
   StatusCode finalize();
+
+  StatusCode testMcClass();
 
 private:
     // the GlastDetSvc objects

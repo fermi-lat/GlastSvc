@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/IRFConverter.cpp,v 1.4 2000/12/12 21:54:08 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/IRFConverter.cpp,v 1.5 2000/12/15 20:37:44 igable Exp $
 #include "IRFConverter.h"
 
 
@@ -9,16 +9,16 @@
 #include "instrument/Tower.h"
 
 
-#include "GlastEvent/Raw/TdCsIData.h"
-#include "GlastEvent/Raw/TdSiData.h"
+#include "GlastEvent/data/TdCsIData.h"
+#include "GlastEvent/data/TdSiData.h"
 
 
 //! constructor - create all object containers
 IRFConverter::IRFConverter() {
     // Added because not sure as of yet how to make the
     // converter without using object vectors
-    allcsiData =  new TdCsIData(9);
-    allsiData = new TdSiData(18); //TODO: Change hardcode.
+    allcsiData =  new LdCsIData(9);
+    allsiData = new LdSiData(18); //TODO: Change hardcode.
 
     IrfAcdHitContainer = new IrfAcdHitVector;
     IrfCalHitContainer = new IrfCalHitVector;
