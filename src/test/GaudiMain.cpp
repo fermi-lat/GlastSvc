@@ -1,4 +1,4 @@
-// $Header: /cvs/cmt/GlastSvc/src/test/GaudiMain.cpp,v 1.1 2000/08/22 13:52:44 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/GaudiMain.cpp,v 1.1.1.1 2000/09/27 18:55:47 burnett Exp $
 #define COMMON_MAIN_CPP
 
 
@@ -18,6 +18,9 @@
 //  Description: Main Program
 //
 //------------------------------------------------------------------------------
+#ifndef WIN32
+void FATAL(const char* text){std::cerr << text << std::endl;}
+#endif // WIN32 
 
 
 //--- Example main program
