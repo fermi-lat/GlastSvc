@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.27 2002/09/06 18:22:45 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.28 2002/09/23 19:31:16 burnett Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -22,15 +22,35 @@
 
 #include "Event/MonteCarlo/McIntegratingHit.h"
 #include "GlastSvc/Reco/IReconTool.h"
+#include "GlastSvc/GlastRandomSvc/RandomAccess.h"
 
+
+/**
+    @class MyRecon
+    @brief example, test of mechanism
+  */
 class MyRecon : public AlgTool, virtual public IReconTool {
- public:
-     
-   MyRecon( const std::string& type, const std::string& name, const IInterface* parent);
+public:
+    
+    MyRecon( const std::string& type, 
+            const std::string& name, 
+            const IInterface* parent)
+            :AlgTool(type,name,parent){
+        
+        // Declare additional interface
+        declareInterface<IReconTool>(this);
+        
+    }
     virtual ~MyRecon() { }
     
     /// implement to get something
-    StatusCode get(const std::string& name, double&);
+    StatusCode get(const std::string& name, double& x){
+        if(name=="test"){
+            x = 99;
+            return StatusCode::SUCCESS;
+        }
+        return StatusCode::FAILURE;
+    } 
     
 };
 
@@ -38,29 +58,30 @@ class MyRecon : public AlgTool, virtual public IReconTool {
 // Static factory for instantiation of algtool objects
 static ToolFactory<MyRecon> afactory;
 
-// Standard Constructor
-MyRecon::MyRecon(const std::string& type, 
+
+//--------------------------------------------------------------------------
+/**
+    @class MyRandomTool
+    @brief example, test of mechanism
+
+    This makes a RandomAccess sub class that is instantiated in the local context,
+    and then will allow the service to replace the pointer to the engine.
+    
+      TODO: put in some code to actually exercise setting the seed.
+  */
+class MyRandomTool : public RandomAccess {
+public:
+    MyRandomTool::MyRandomTool(const std::string& type, 
                          const std::string& name, 
                          const IInterface* parent)
-                         : AlgTool( type, name, parent ) {
+                         : RandomAccess( type, name, parent ) {
     
-    // Declare additional interface
-    declareInterface<IReconTool>(this);
-        
-}
-
-
-StatusCode MyRecon::get(const std::string& name, double& x)
-{
-    if(name=="test"){
-        x = 99;
-        return StatusCode::SUCCESS;
     }
-    return StatusCode::FAILURE;
-} 
+  
 
-
-
+};
+static  ToolFactory<MyRandomTool>  randFactory;
+//--------------------------------------------------------------------------
 
 static const AlgFactory<CreateEvent>  Factory;
 const IAlgFactory& CreateEventFactory = Factory;
