@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.16 2002/09/07 23:43:43 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.17 2002/09/25 03:00:26 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -236,7 +236,7 @@ void GlastDetSvc::layerToTray (int layer, int view, int& tray, int& botTop)
 
 void GlastDetSvc::trayToLayer(int tray, int botTop, int& layer, int& view)
 {
-    SiliconPlaneGeometry::trayToLayer (layer, view, tray, botTop);
+    SiliconPlaneGeometry::trayToLayer (tray, botTop, layer, view);
 }
 
 void GlastDetSvc::planeToLayer(int plane, int& layer, int& view)
