@@ -1,4 +1,4 @@
-// $Id: IGlastDetSvc.h,v 1.5 2000/09/08 01:21:02 burnett Exp $
+// $Id: IGlastDetSvc.h,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
 // 
 //!  \author: Sawyer Gillespie  hgillesp@u.washington.edu
 //
@@ -9,9 +9,10 @@
 // includes
 #include "Gaudi/Interfaces/IInterface.h"
 
-//forward declaration
+//forward declarations
 
 class DetectorConverter;
+namespace xml {class IFile; }
 
 //!  Access to the Glast detector geometry and IRF I/O
 
@@ -32,6 +33,8 @@ public:
     //! accept a visitor to traverse the structure note that must be on a const object
     virtual void accept(DetectorConverter&)const=0;
 
+    //! access to the IFile containing detector constants
+    virtual const xml::IFile* iniFile()const=0;
 };
 
 // IID declaration

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.1.1.1 2000/09/27 18:55:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.2 2000/09/27 19:19:03 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -10,6 +10,7 @@
 #include "Gaudi/Kernel/SvcFactory.h"
 #include "Gaudi/MessageSvc/MsgStream.h"
 #include "instrument/Instrument.h"
+#include "xml/IFile.h"
 
 // define the class-id (unique) for the GlastDetSvc
 const IID&  IID_IGlastDetSvc  =  401;   // Unique to GLAST 
@@ -154,6 +155,10 @@ void GlastDetSvc::accept(DetectorConverter& v)const {
     m_instrument->accept(v);
 }
 
+//! access to the IFile containing detector constants (implements IGlastDetSvc)
+const xml::IFile* GlastDetSvc::iniFile()const{
+    return m_instrument->iniFile();
+}
 
 ///! satisfy external. Need to make it really fatal!
 extern void __cdecl FATAL ( const char* msg )
