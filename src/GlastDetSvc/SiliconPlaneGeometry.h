@@ -1,9 +1,10 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.2 2002/03/22 02:20:10 burnett Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.3 2002/03/25 18:31:17 lsrea Exp $
 
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
 
 #include "CLHEP/Geometry/Vector3D.h"
+#include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
 /**
     Static functions only for geometry of individual Si plane
   */
@@ -56,6 +57,8 @@ public:
     /// width of dead area, aka guarg_ring
     static double guard_ring ();
     static double panel_width(); 
+
+	static void init(IGlastDetSvc * p_detSvc);
 
 private:
 

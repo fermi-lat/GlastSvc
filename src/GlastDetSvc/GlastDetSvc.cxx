@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.7 2002/03/20 17:53:28 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.8 2002/03/21 15:26:21 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -108,6 +108,8 @@ StatusCode GlastDetSvc::initialize ()
     log << MSG::INFO;
     m_dm->printSetup(log.stream());
     log << endreq;
+
+	SiliconPlaneGeometry::init(this);
 
     return status;
 }
