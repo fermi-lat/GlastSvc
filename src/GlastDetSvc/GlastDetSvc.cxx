@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.10 2002/03/30 02:53:04 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.11 2002/04/20 19:05:34 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -139,7 +139,7 @@ const IID&  GlastDetSvc::type () const {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void GlastDetSvc::accept(IGeometry& geom)
 {
-    m_dm->accept(&GeometryVisitor(geom));
+    m_dm->accept(&GeometryVisitor(geom, m_visitorMode));
 }
 
 void GlastDetSvc::accept(IMedia& media)

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.14 2002/03/30 02:53:04 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.15 2002/04/20 19:05:34 lsrea Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -56,7 +56,7 @@ public:
     //! start a visitor of the detModel geometry description (implements IGlastDetSvc)
     virtual void accept(IGeometry& geom);
 
-    //! detModel interface to retrive numeric constants
+    //! detModel interface to retrieve numeric constants
     virtual StatusCode getNumericConstByName(std::string, double*);
 
     /// retrive the 3D transformation of a volume given a valid ID
