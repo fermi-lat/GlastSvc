@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.2 2000/12/05 22:54:50 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.3 2001/01/08 16:07:34 heather Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -15,6 +15,7 @@
 
 // forward declarations
 class Instrument;
+class GlastDetector;
 namespace xml { class IFile; }
 
 /*!  This Gaudi service provides access to a tree of GlastDetector objects.
@@ -40,7 +41,8 @@ public:
     
     /// perform initializations for this service. This will
     ///    read in and create the GlastDetector hierarchy from the file
-    ///    specified by the PersistencyFile property.
+    ///    specified by the PersistencyFile property, unless it is
+    ///    '(none)'
     StatusCode initialize ();
     
     /// kill off the detector hierarchy if it exists
@@ -68,6 +70,9 @@ public:
     //! accept a visitor to traverse the structure 
     void accept(DetectorConverter&)const;
 
+  
+    //! set new root detector
+    void setDetector(GlastDetector* d);
 
     
 private:
