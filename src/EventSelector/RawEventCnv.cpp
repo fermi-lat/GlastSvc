@@ -10,7 +10,7 @@
 #include "RawEventCnv.h"
 #include "GlastEvent/TopLevel/RawEvent.h"
 
-static const char* rcsid = "$Id: RawEvent.cpp,v 1.1 2000/11/16 21:49:22 igable Exp $";
+static const char* rcsid = "$Id: RawEventCnv.cpp,v 1.1 2000/11/21 02:17:19 igable Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service
@@ -28,7 +28,7 @@ StatusCode RawEventCnv::updateObj(int* iarray, RawEvent* pEvent)          {
 RawEventCnv::RawEventCnv(ISvcLocator* svc)
 : ItemCnv<RawEvent>(svc)               
 {
-  declareObject("/Event/Raw", objType(), "PASS");
+  declareObject("/Event/Data", objType(), "PASS");
   //m_sourceDef = SicbObjBank("PASS");
 }
 
