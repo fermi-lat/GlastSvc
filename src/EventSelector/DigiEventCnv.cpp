@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header$
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/DigiEventCnv.cpp,v 1.4 2002/03/18 19:00:34 heather Exp $
 //
 // Description:
 //      DigiEventCnv is the concrete converter for the digi event header.
@@ -13,7 +13,7 @@
 #include "DigiEventCnv.h"
 #include "GlastEvent/TopLevel/DigiEvent.h"
 
-static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.3 2002/03/15 21:16:48 heather Exp $";
+static const char* rcsid = "$Id: DigiEventCnv.cpp,v 1.4 2002/03/18 19:00:34 heather Exp $";
 
 // Instantiation of a static factory class used by clients to create
 // instances of this service
@@ -28,11 +28,8 @@ DigiEventCnv::DigiEventCnv(ISvcLocator* svc)
 
 
 StatusCode DigiEventCnv::createObj(IOpaqueAddress* pAddress, DataObject*& refpObject) {
-    refpObject = new DigiEvent();
+    refpObject = new Event::DigiEvent();
     return StatusCode::SUCCESS;
 };
 
-StatusCode DigiEventCnv::updateObj(int* iarray, DigiEvent* pEvent)          {
-  return StatusCode::SUCCESS;
-}
 
