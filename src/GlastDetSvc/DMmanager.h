@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GismoGenerator/src/dm/DMmanager.h,v 1.1 2001/11/25 18:55:14 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.1 2002/02/25 01:05:42 burnett Exp $
 
 #ifndef DM_DMmanager_h
 #define DM_DMmanager_h
@@ -7,6 +7,7 @@ namespace detModel{
     class Manager;
     class Volume;
     class SectionsVisitor;
+    class MaterialsVisitor;
 }
 #include <string>
 
@@ -26,6 +27,9 @@ public:
 
     //! start a visitor from the top volume
     void accept( detModel::SectionsVisitor* v);
+
+    //! start a materials visitor
+    void accept( detModel::MaterialsVisitor* v);
 
     //! summarize setup.
     void printSetup(std::ostream& out);

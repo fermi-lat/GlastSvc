@@ -1,10 +1,11 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GismoGenerator/src/dm/DMmanager.cxx,v 1.2 2001/12/05 05:31:17 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.1 2002/02/25 01:05:42 burnett Exp $
 
 #include "DMmanager.h"
 
 #include "detModel/Management/Manager.h"
 #include "detModel/Management/XercesBuilder.h"
 #include "detModel/Sections/Volume.h"
+#include "detModel/Management/MaterialsVisitor.h"
 
 #include <string>
 #include <cassert>
@@ -44,6 +45,8 @@ void DMmanager::init(std::string filename, std::string mode, std::string topvol)
 }
 
 void DMmanager::accept( detModel::SectionsVisitor* v){ m_vol->AcceptNotRec(v);  }
+
+void DMmanager::accept( detModel::MaterialsVisitor* v){ m_dm->startVisitor(v);  }
 
 void DMmanager::printSetup(std::ostream& out) { 
     out << " geometry setup: "<< std::endl

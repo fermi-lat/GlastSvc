@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GismoGenerator/src/dm/GeometryVisitor.cxx,v 1.5 2002/01/24 12:45:41 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GeometryVisitor.cxx,v 1.1 2002/02/25 01:05:43 burnett Exp $
 
 #include <string>
 
@@ -36,6 +36,7 @@ void  GeometryVisitor::visitEnsemble(detModel::Ensemble* ensemble)
     using namespace detModel;
     typedef std::vector<detModel::Position*> PosVector;
 //    IGeometry::DoubleVector params;
+
     
     IGeometry::VolumeType type = IGeometry::Composite;
     std::string material;

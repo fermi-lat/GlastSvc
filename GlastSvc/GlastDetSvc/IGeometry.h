@@ -1,4 +1,4 @@
-//$Header:$
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.1 2002/02/27 18:35:00 burnett Exp $
 
 
 #ifndef GLASTDET_IGEOMETRY_H

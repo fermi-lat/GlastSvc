@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.6 2001/04/19 01:32:30 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.7 2002/02/25 01:05:43 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -74,10 +74,11 @@ public:
     //! set new root detector
     void setDetector(GlastDetector* d);
 
+    //! new detModel interface, will call back. 
+    virtual void accept(IMedia& media);
 
     //! start a visitor of the detModel geometry description (implements IGlastDetSvc)
     virtual void accept(IGeometry& geom);
-
     
 private:
     

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cpp,v 1.10 2001/04/19 01:32:30 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.1 2002/02/25 01:05:43 burnett Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -13,8 +13,10 @@
 #include "xml/IFile.h"
 
 #include "GlastSvc/GlastDetSvc/IGeometry.h"
+#include "GlastSvc/GlastDetSvc/IMedia.h"
 
 #include "DMmanager.h"
+#include "MediaVisitor.h"
 #include "GeometryVisitor.h"
 
 // define the class-id (unique) for the GlastDetSvc
@@ -202,6 +204,9 @@ extern void WARNING ( const char* msg )
 void GlastDetSvc::accept(IGeometry& geom)
 {
     m_dm->accept(&GeometryVisitor(geom));
+}
 
-
+void GlastDetSvc::accept(IMedia& media)
+{
+    m_dm->accept(&MediaVisitor(media));
 }
