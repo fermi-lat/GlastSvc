@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.7 2002/09/06 14:40:00 heather Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnv.cpp,v 1.8 2002/09/07 23:43:42 lsrea Exp $
 //
 // Description:
 //      EventCnv is the concrete converter for the event header on the TDS /Event
@@ -44,3 +44,7 @@ StatusCode EventCnv::updateObj(int* iarray, Event::EventHeader* pEvent) {
     return StatusCode::SUCCESS;
 }
 
+const CLID& EventCnv::classID()
+{
+    return Event::EventHeader::classID();
+}
