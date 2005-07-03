@@ -9,7 +9,7 @@
 /** @class SiliconPlaneGeometry
 * @brief Static functions only for geometry of individual Si plane
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.8 2002/09/07 23:43:43 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.9 2003/04/07 21:42:27 lsrea Exp $
 */
 class SiliconPlaneGeometry {
 public:    
@@ -66,6 +66,7 @@ public:
     /// width of dead area, aka guarg_ring
     static double guard_ring ();
     static double panel_width(); 
+    static double panel_width(double spacing);
 
 	static StatusCode init(IGlastDetSvc * p_detSvc);
 
