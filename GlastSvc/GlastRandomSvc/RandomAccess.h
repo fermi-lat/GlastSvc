@@ -8,6 +8,7 @@
 #include "GaudiKernel/AlgTool.h"
 
 #include "CLHEP/Random/Random.h"
+#include "CLHEP/Random/RandGauss.h"
 
 /** @class RandomAccess
 *
@@ -26,7 +27,7 @@
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header:$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastRandomSvc/RandomAccess.h,v 1.4 2003/02/11 19:22:57 burnett Exp $
 */
 
 class RandomAccess : public AlgTool, virtual public IRandomAccess 
@@ -46,6 +47,11 @@ public:
         HepRandomEngine* oldEngine = HepRandom::getTheEngine();
         HepRandom::setTheEngine(newEngine);
         return oldEngine;
+    }
+
+    typedef void(*SetFlag)(bool);
+    virtual  SetFlag getRandSet(){
+        return &RandGauss::setFlag;
     }
 
 };
