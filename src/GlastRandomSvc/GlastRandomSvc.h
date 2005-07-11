@@ -1,7 +1,7 @@
 /** @file GlastRandomSvc.h
 @brief definition of the class GlastRandomSvc
 
-$Header$
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.11 2005/07/10 23:16:00 burnett Exp $
 
 */
 #ifndef _GlastRandomSvc_H
@@ -17,7 +17,7 @@ $Header$
 
 #include "CLHEP/Random/Random.h"
 #include "GlastRandomSeed.h"
-#include "GlastSvc/GlastRandomSvc/RandomAccess.h"
+#include "GlastSvc/GlastRandomSvc/IRandomAccess.h"
 
 class IDataProviderSvc;;
 
@@ -41,7 +41,7 @@ class IDataProviderSvc;;
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.10 2004/11/09 17:51:12 richard Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.11 2005/07/10 23:16:00 burnett Exp $
 */
 class GlastRandomSvc : public Service,
     virtual public IIncidentListener
@@ -105,7 +105,7 @@ private:
     IDataProviderSvc* m_eventSvc;
 
     //! list of pointers to setflag functions
-    std::vector< RandomAccess::SetFlag> m_setFlagPointers;
+    std::vector< IRandomAccess::SetFlag> m_setFlagPointers;
 
 };
 
