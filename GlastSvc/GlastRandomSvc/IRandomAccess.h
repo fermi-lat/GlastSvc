@@ -11,7 +11,7 @@ class HepRandomEngine;
 * @brief Abstract definition of a tool to be called from the
 * GlastRandomSvc to set a local CLHEP static HepRandom instance to use a new engine 
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastRandomSvc/IRandomAccess.h,v 1.2 2003/02/11 19:22:57 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastRandomSvc/IRandomAccess.h,v 1.3 2005/07/11 04:03:29 burnett Exp $
 */
 
 static const InterfaceID IID_IRandomAccess("IRandomAccess", 3 , 0);
@@ -26,7 +26,7 @@ public:
 
     /// return pointer to a static function that sets the flag in the RandGauss
     typedef void(*SetFlag)(bool);
-    virtual  SetFlag getRandSet();
+    virtual  SetFlag getRandSet()=0;
 
 };
 

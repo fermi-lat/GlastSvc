@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cpp,v 1.30 2003/02/25 03:29:23 kyoung Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.1 2004/08/12 22:58:05 burnett Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -18,6 +18,7 @@
 #include "Event/TopLevel/EventModel.h"
 #include "idents/VolumeIdentifier.h"
 #include "CLHEP/Geometry/Transform3D.h"
+#include "CLHEP/Random/RandGauss.h"
 #include "GaudiKernel/ObjectVector.h"
 
 #include "Event/MonteCarlo/McIntegratingHit.h"
@@ -183,7 +184,9 @@ StatusCode CreateEvent::execute() {
     
     StatusCode  sc = StatusCode::SUCCESS;
     MsgStream   log( msgSvc(), name() );
-    log << MSG::INFO << "execute" << endreq;
+    log << MSG::DEBUG <<"Initial RandGauss status: " << RandGauss::getFlag() << endreq;
+    double test = RandGauss::shoot();
+    log << MSG::DEBUG << "RandGauss status after a shoot: " << RandGauss::getFlag() << endreq;
     
     //TODO: put something in here to get data???
 
