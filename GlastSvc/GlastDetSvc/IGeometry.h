@@ -8,14 +8,15 @@
 * @brief Abstract class that defines callbacks from a traversal of the 
 * detector geometry tree.
 *
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.7 2002/09/06 14:33:17 heather Exp $
 */
 class IGeometry {
 public:
 
   typedef std::vector<double> DoubleVector;
   typedef std::vector<unsigned int>UintVector;
-  enum VolumeType{ Simple, posSensitive, intSensitive, Composite, Xstack, Ystack, Zstack };
+  enum VolumeType{ Simple, Composite, Xstack, Ystack, Zstack };
+  enum SenseType {posSensitive, intSensitive, Nonsensitive};
   enum ShapeType{ Box, Tube };
   enum VisitorRet { More, AbortSubtree};
 
@@ -32,7 +33,7 @@ public:
   virtual VisitorRet pushShape(ShapeType s, const UintVector& id, 
                                std::string name, std::string material, 
                                const DoubleVector& params, 
-                               VolumeType type)=0;
+                               VolumeType type, SenseType sense)=0;
     
   //* called to signal end of nesting */
   virtual void popShape()=0;
