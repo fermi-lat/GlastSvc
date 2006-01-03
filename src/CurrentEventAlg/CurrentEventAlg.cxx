@@ -2,7 +2,7 @@
 @brief CurrentEventAlg prints to an ASCII file the event and run id of the
        current event being processed
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/CurrentEventAlg.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.1 2005/11/23 00:30:06 heather Exp $
 
 */
 
@@ -31,7 +31,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/CurrentEventAl
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/CurrentEventAlg.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.1 2005/11/23 00:30:06 heather Exp $
 */
 
 class CurrentEventAlg : public Algorithm {
@@ -67,14 +67,8 @@ StatusCode CurrentEventAlg::initialize(){
 
     facilities::Util::expandEnvVar(&m_outputFileName);
 
-    m_eventFile = new std::ofstream(m_outputFileName.c_str());
-    if (!m_eventFile)  {
-        MsgStream log( msgSvc(), name() );
-        log << MSG::WARNING << "Failed to create output event file" << endreq;
-        return StatusCode::FAILURE;
-    }
+    m_eventFile = 0;
 
-   
     return sc;
 }
 
@@ -83,12 +77,13 @@ StatusCode CurrentEventAlg::execute()
 {
     StatusCode  sc = StatusCode::SUCCESS;
     
-    if (!m_eventFile->good()) {
-        MsgStream   log( msgSvc(), name() );
-        log << MSG::WARNING << "Output file is bad, not writing" << endreq;
-        return sc;
+    m_eventFile = new std::ofstream(m_outputFileName.c_str(),std::ios_base::trunc);
+    if (!m_eventFile)  {
+        MsgStream log( msgSvc(), name() );
+        log << MSG::WARNING << "Failed to create output event file" << endreq;
+        return StatusCode::FAILURE;
     }
-    
+
     SmartDataPtr<Event::EventHeader> header(eventSvc(), EventModel::EventHeader);
     if(0==header) {
         MsgStream   log( msgSvc(), name() );
@@ -96,16 +91,18 @@ StatusCode CurrentEventAlg::execute()
         return StatusCode::SUCCESS;
     }
 
+
     *m_eventFile << "run=" << header->run() << " event=" << header->event() << "  ";
 
     m_eventFile->flush();
+    m_eventFile->close();
+
     return sc; 
 }
 
 StatusCode CurrentEventAlg::finalize(){
     StatusCode  sc = StatusCode::SUCCESS;
-    m_eventFile->close();
-    delete m_eventFile;
+    if (m_eventFile) delete m_eventFile;
     return sc;
 }
 
