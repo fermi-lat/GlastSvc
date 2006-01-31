@@ -1,7 +1,7 @@
 /** @file GlastRandomSvc.h
 @brief definition of the class GlastRandomSvc
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.11 2005/07/10 23:16:00 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.12 2005/07/11 19:59:12 burnett Exp $
 
 */
 #ifndef _GlastRandomSvc_H
@@ -41,7 +41,7 @@ class IDataProviderSvc;;
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.11 2005/07/10 23:16:00 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.12 2005/07/11 19:59:12 burnett Exp $
 */
 class GlastRandomSvc : public Service,
     virtual public IIncidentListener
@@ -76,11 +76,11 @@ public:
 private:  
     static GlastRandomSvc* s_instance;
 
-    HepRandomEngine* createEngine(std::string  engineName) ;
+    CLHEP::HepRandomEngine* createEngine(std::string  engineName) ;
 
     /// Data members
     // store Engine names and addresses in a map
-    typedef   std::map< std::string, HepRandomEngine* > EngineMap;
+    typedef   std::map< std::string, CLHEP::HepRandomEngine* > EngineMap;
     EngineMap m_engineMap;
     StringProperty    m_randomEngine;
     std::string    m_RunNumberString;

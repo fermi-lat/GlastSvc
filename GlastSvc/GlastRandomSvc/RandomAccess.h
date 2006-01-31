@@ -27,7 +27,7 @@
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastRandomSvc/RandomAccess.h,v 1.4 2003/02/11 19:22:57 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastRandomSvc/RandomAccess.h,v 1.5 2005/07/10 23:15:59 burnett Exp $
 */
 
 class RandomAccess : public AlgTool, virtual public IRandomAccess 
@@ -43,15 +43,15 @@ public:
 
     //! Pass on a pointer to a new engine to be used by the local static instance of HepRandom
     //! return pointer to the old one 
-    virtual HepRandomEngine* setTheEngine( HepRandomEngine* newEngine){
-        HepRandomEngine* oldEngine = HepRandom::getTheEngine();
-        HepRandom::setTheEngine(newEngine);
+    virtual CLHEP::HepRandomEngine* setTheEngine( CLHEP::HepRandomEngine* newEngine){
+        CLHEP::HepRandomEngine* oldEngine = CLHEP::HepRandom::getTheEngine();
+        CLHEP::HepRandom::setTheEngine(newEngine);
         return oldEngine;
     }
 
     typedef void(*SetFlag)(bool);
     virtual  SetFlag getRandSet(){
-        return &RandGauss::setFlag;
+        return &CLHEP::RandGauss::setFlag;
     }
 
 };

@@ -2,14 +2,15 @@
 #ifndef SiliconPlaneGeometry_H
 #define SiliconPlaneGeometry_H
 
-#include "CLHEP/Geometry/Vector3D.h"
 #include "GlastSvc/GlastDetSvc/IGlastDetSvc.h"
+#include "CLHEP/Geometry/Vector3D.h"
+#include "CLHEP/Geometry/Point3D.h"
 #include "idents/VolumeIdentifier.h"
 
 /** @class SiliconPlaneGeometry
 * @brief Static functions only for geometry of individual Si plane
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.9 2003/04/07 21:42:27 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/SiliconPlaneGeometry.h,v 1.10 2005/07/03 19:26:42 lsrea Exp $
 */
 class SiliconPlaneGeometry {
 public:    
