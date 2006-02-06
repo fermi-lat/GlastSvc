@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.5 2002/09/06 14:40:00 heather Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.6 2002/11/15 21:20:18 burnett Exp $
 //
 // Description:
 //      EventCnvSvc is the GLAST converter service.
@@ -12,7 +12,7 @@
 #include "GaudiKernel/SmartIF.h"
 #include "GaudiKernel/SvcFactory.h"
 #include "GaudiKernel/CnvFactory.h"
-#include "GaudiKernel/HashTable.h"
+//#include "GaudiKernel/HashTable.h"
 #include "GaudiKernel/MsgStream.h"
 #include "GaudiKernel/ICnvManager.h"
 #include "GaudiKernel/ISvcLocator.h"
@@ -26,7 +26,7 @@
 
 static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.5 2002/09/06 14:40:00 heather Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.6 2002/11/15 21:20:18 burnett Exp $";
 
 
 // Instantiation of a static factory class used by clients to create
@@ -151,7 +151,7 @@ StatusCode EventCnvSvc::updateServiceState(IOpaqueAddress* pAddress)    {
     return status;
 }
 
-StatusCode EventCnvSvc::queryInterface(const IID& riid, void** ppvInterface)  {
+StatusCode EventCnvSvc::queryInterface(const InterfaceID& riid, void** ppvInterface)  {
     if ( IID_IBaseCnv == riid )  {
         *ppvInterface = (IEventCnvSvc*)this;
     }

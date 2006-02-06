@@ -8,14 +8,14 @@
 
 class IDataDirectory;
 
-extern unsigned const char SICB_StorageType;
+extern const long int SICB_StorageType;
 
 /** @class Address
  * @brief Definition of a GLAST address, derived from IOpaqueAddress.
  *
  * Based on SICb's Address class.
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.h,v 1.4 2002/09/06 14:39:59 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/Address.h,v 1.5 2002/09/06 18:21:05 heather Exp $
  */
 class Address : public GenericAddress   {
 public:

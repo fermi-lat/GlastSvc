@@ -9,14 +9,14 @@
 
 class IGlastDetSvc;
 
-extern unsigned const char SICB_StorageType;
+extern const long int SICB_StorageType;
 
 /** @class BaseCnv
 * @brief Base class for all GLAST Converters.
 *
 * Based on SICb's SicbBaseCnv
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/BaseCnv.h,v 1.3 2002/03/15 21:16:48 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/BaseCnv.h,v 1.4 2002/09/06 14:40:00 heather Exp $
 */
 class BaseCnv : public Converter      {
 protected:
@@ -57,6 +57,8 @@ public:
     
     /// Update the references of an already converted object.
     virtual StatusCode updateRepRefs(IOpaqueAddress* pAddress, DataObject* pObject);
+
+    long repSvcType() const { return SICB_StorageType; }
 };
 
 

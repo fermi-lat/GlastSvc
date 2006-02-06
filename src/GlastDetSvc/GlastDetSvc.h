@@ -17,7 +17,7 @@ namespace idents{class VolumeIdentifier;}
 * which provides parameters and constants associated with the geometry.
 * 
 * @author Sawyer Gillespie
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.23 2003/07/25 23:46:13 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.23.4.1 2006/01/31 22:18:32 usher Exp $
 */
 class GlastDetSvc : public Service, 
 virtual public IGlastDetSvc
@@ -32,10 +32,10 @@ public:
     virtual ~GlastDetSvc ();
     
     /// queryInterface - for implementing a Service this is necessary
-    StatusCode queryInterface(const IID& riid, void** ppvUnknown);
+    StatusCode queryInterface(const InterfaceID& riid, void** ppvUnknown);
     
     /// return the service type
-    const IID& type() const;
+    const InterfaceID& type() const;
     
     /// perform initializations for this service. This will
     ///    read in and create the GlastDetector hierarchy from the file
