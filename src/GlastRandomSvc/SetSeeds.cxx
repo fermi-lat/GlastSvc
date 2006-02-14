@@ -1,7 +1,7 @@
 /** @file SetSeeds.cxx
 @brief declaration and definition of the class SetSeeds
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.1 2003/08/24 23:49:24 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
 
 */
 
@@ -28,7 +28,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.1 2003/08/24 23:49:24 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
 */
 
 class SetSeeds : public Algorithm {
@@ -75,7 +75,8 @@ StatusCode SetSeeds::execute()
     MsgStream   log( msgSvc(), name() );
 
     SmartDataPtr<Event::MCEvent> mcheader(eventSvc(), EventModel::MC::Event);
-    if (mcheader == 0) {
+    //if (mcheader == 0) {
+    if (!mcheader) {
             log << MSG::ERROR << " no MC header" << endreq;
             return StatusCode::FAILURE;
     }
@@ -108,7 +109,8 @@ StatusCode SetSeeds::execute()
     Event::EventHeader* h = 0; 
 
     SmartDataPtr<Event::EventHeader> header(eventSvc(), EventModel::EventHeader);
-    if(0==header) {
+    //if(0==header) {
+    if(!header) {
         // not already there: try to register instead
         sc = eventSvc()->registerObject(EventModel::EventHeader, h=new Event::EventHeader);
         if( sc.isFailure()) {

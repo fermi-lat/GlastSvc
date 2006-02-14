@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.6 2002/11/15 21:20:18 burnett Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.6.4.1 2006/02/06 20:41:22 cohen Exp $
 //
 // Description:
 //      EventCnvSvc is the GLAST converter service.
@@ -26,7 +26,7 @@
 
 static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.6 2002/11/15 21:20:18 burnett Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.6.4.1 2006/02/06 20:41:22 cohen Exp $";
 
 
 // Instantiation of a static factory class used by clients to create
@@ -163,11 +163,11 @@ StatusCode EventCnvSvc::queryInterface(const InterfaceID& riid, void** ppvInterf
     return StatusCode::SUCCESS;
 }
 
-StatusCode EventCnvSvc::createAddress(unsigned char svc_type,
-                                      const CLID& clid,
-                                      const std::string* par, 
-                                      const unsigned long* ip,
-                                      IOpaqueAddress*& refpAddress)                                       
+StatusCode EventCnvSvc::createAddress( long svc_type,
+                                       const CLID& clid,
+                                       const std::string* par, 
+                                       const unsigned long* ip,
+                                       IOpaqueAddress*& refpAddress)
 {
     if ( svc_type == repSvcType() )   
     {

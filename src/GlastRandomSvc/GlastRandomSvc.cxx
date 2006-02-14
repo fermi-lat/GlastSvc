@@ -6,7 +6,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.29 2005/07/29 17:33:27 burnett Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.29.2.1 2006/01/31 22:18:33 usher Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -335,7 +335,8 @@ void GlastRandomSvc::handle(const Incident &inc)
 
         // See if MCEvent was set up properly
         SmartDataPtr<Event::MCEvent> mcevt(m_eventSvc, EventModel::MC::Event);
-        if (mcevt == 0) {
+        //if (mcevt == 0) {
+        if (!mcevt) {
             log << MSG::ERROR << "Error accessing MCEvent" << endreq;
             return;
         }
@@ -374,7 +375,8 @@ void GlastRandomSvc::handle(const Incident &inc)
         // with run number in MCEvent
         SmartDataPtr<Event::EventHeader> header(m_eventSvc, 
             EventModel::EventHeader);
-        if (header == 0) {
+        //if (header == 0) {
+        if (!header) {
             log << MSG::ERROR << "Error accessing Event Header: not setting seed" << endreq;
             return;
         }    
