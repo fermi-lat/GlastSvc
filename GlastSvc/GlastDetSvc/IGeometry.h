@@ -8,7 +8,7 @@
 * @brief Abstract class that defines callbacks from a traversal of the 
 * detector geometry tree.
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.7 2002/09/06 14:33:17 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGeometry.h,v 1.8 2005/08/19 19:17:20 jrb Exp $
 */
 class IGeometry {
 public:
@@ -17,7 +17,7 @@ public:
   typedef std::vector<unsigned int>UintVector;
   enum VolumeType{ Simple, Composite, Xstack, Ystack, Zstack };
   enum SenseType {posSensitive, intSensitive, Nonsensitive};
-  enum ShapeType{ Box, Tube };
+  enum ShapeType{ Box, Tube, Sphere };
   enum VisitorRet { More, AbortSubtree};
 
   /** Notification of a new shape
