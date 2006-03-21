@@ -11,7 +11,8 @@ namespace detModel{
 
 namespace idents{class VolumeIdentifier;}
 
-class HepTransform3D;
+namespace HepGeom {class Transform3D;}
+typedef HepGeom::Transform3D HepTransform3D;
 
 #include <string>
 #include "detModel/Management/IDmapBuilder.h"
@@ -20,7 +21,7 @@ class HepTransform3D;
 * @brief Wrapper class around detModel, to hide all the initialization 
 * and provide defaults.
 *
-* $Header$
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.8 2002/09/06 14:44:07 heather Exp $
 */
 class DMmanager  {
 public:

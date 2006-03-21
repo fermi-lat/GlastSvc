@@ -15,7 +15,7 @@
 * which instantiates the subclass KalParticle.
 *
 * @author Toby Burnett
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.4 2003/01/18 04:31:50 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IKalmanParticle.h,v 1.5 2003/01/23 21:31:58 usher Exp $
 */
 class  IKalmanParticle
 {
@@ -51,7 +51,7 @@ public:
          asked for.  
  
     */
-    virtual HepMatrix mScat_Covr(double momentum, double arcLen) const=0;
+    virtual CLHEP::HepMatrix mScat_Covr(double momentum, double arcLen) const=0;
 
     virtual double arcLength() const=0; 
 

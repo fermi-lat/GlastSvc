@@ -2,7 +2,7 @@
 @brief CurrentEventAlg prints to an ASCII file the event and run id of the
        current event being processed
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.1 2005/11/23 00:30:06 heather Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.2 2006/01/03 18:48:05 richard Exp $
 
 */
 
@@ -31,7 +31,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventA
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.1 2005/11/23 00:30:06 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.2 2006/01/03 18:48:05 richard Exp $
 */
 
 class CurrentEventAlg : public Algorithm {
@@ -85,7 +85,8 @@ StatusCode CurrentEventAlg::execute()
     }
 
     SmartDataPtr<Event::EventHeader> header(eventSvc(), EventModel::EventHeader);
-    if(0==header) {
+    //if(0==header) {
+    if(!header) {
         MsgStream   log( msgSvc(), name() );
         log << MSG::WARNING << " could not find the event header" << endreq;
         return StatusCode::SUCCESS;

@@ -16,7 +16,7 @@ static const InterfaceID IID_IPropagator("IPropagator", 1 , 0);
 *
 *
 * @author Tracy Usher
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.3 2004/12/01 01:07:25 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.4 2004/12/01 01:51:09 usher Exp $
 */
 class  IPropagator
 {
@@ -53,9 +53,9 @@ public:
                                                  bool   forward  = true)    const = 0;
 
     //! Return multiple scattering matrix after stepping, arcLen can be less than step taken
-    virtual HepMatrix getMscatCov(double arcLen   = -1.,
-                                  double momentum = 1.,
-                                  bool   forward  = true)   const = 0;
+    virtual CLHEP::HepMatrix getMscatCov(double arcLen   = -1.,
+                                         double momentum = 1.,
+                                         bool   forward  = true)   const = 0;
 
     //! Return volume identifer after stepping
     virtual idents::VolumeIdentifier getVolumeId(double arcLen = -1.) const = 0;

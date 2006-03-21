@@ -16,7 +16,7 @@ template <class TYPE> class SvcFactory;
  * access to the data and put it on the TDS.
  * Based on SICb service written by Markus Frank.
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.3 2002/03/15 21:16:49 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.4 2002/09/06 14:40:00 heather Exp $
  */
 
 class EventCnvSvc  : virtual public ConversionSvc, virtual public IEventCnvSvc	{
@@ -37,7 +37,7 @@ public:
   virtual StatusCode updateServiceState(IOpaqueAddress* pAddress);
 
   /// Override inherited queryInterface due to enhanced interface
-  virtual StatusCode queryInterface(const IID& riid, void** ppvInterface);
+  virtual StatusCode queryInterface(const InterfaceID& riid, void** ppvInterface);
 
   /// Associates a path on TDS with a particular converter
   virtual StatusCode declareObject(const IEventCnvSvc::Leaf& leaf);
@@ -52,11 +52,16 @@ public:
     @param refpAddress    Opaque address information to retrieve object
     @return               StatusCode indicating SUCCESS or failure
   */
-  virtual StatusCode createAddress( unsigned char svc_type,
+  virtual StatusCode createAddress( long  svc_type,
                                     const CLID& clid,
                                     const std::string* par, 
                                     const unsigned long* ip,
                                     IOpaqueAddress*& refpAddress);
+ // virtual StatusCode createAddress( unsigned char svc_type,
+ //                                   const CLID& clid,
+ //                                   const std::string* par, 
+ //                                   const unsigned long* ip,
+ //                                   IOpaqueAddress*& refpAddress);
 protected:
 
   EventCnvSvc(const std::string& name, ISvcLocator* svc);

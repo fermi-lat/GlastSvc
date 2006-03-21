@@ -4,7 +4,7 @@
 * @author Sawyer Gillespie
 * @author Leon Rochester
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.23 2003/04/07 21:42:27 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.24 2003/07/25 23:46:13 lsrea Exp $
 */
 
 
@@ -20,8 +20,13 @@ class DetectorConverter;
 class GlastDetector;
 class IGeometry;
 class IMedia;
-class HepTransform3D;
-class HepPoint3D;
+namespace HepGeom {
+    class Transform3D;
+    template <class T> class Point3D;
+}
+// TU: Hack for CLHEP 1.9.2.2 
+typedef HepGeom::Point3D<double> HepPoint3D;
+typedef HepGeom::Transform3D     HepTransform3D;
 class IDmapBuilder;
 
 namespace idents{class VolumeIdentifier;}
@@ -59,7 +64,7 @@ public:
     virtual StatusCode getTransform3DByID(idents::VolumeIdentifier,HepTransform3D*)=0;
 
     /// Return transform of top volume relative to world
-    virtual const HepTransform3D& getTransform3DPrefix()=0;    
+    virtual const HepGeom::Transform3D& getTransform3DPrefix()=0;    
 
     /// retrieve the type and dimensions of a volume given a valid ID
     virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
