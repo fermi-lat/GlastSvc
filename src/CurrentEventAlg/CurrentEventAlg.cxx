@@ -2,7 +2,7 @@
 @brief CurrentEventAlg prints to an ASCII file the event and run id of the
        current event being processed
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.2 2006/01/03 18:48:05 richard Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.3 2006/03/21 01:26:08 usher Exp $
 
 */
 
@@ -31,7 +31,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventA
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.2 2006/01/03 18:48:05 richard Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.3 2006/03/21 01:26:08 usher Exp $
 */
 
 class CurrentEventAlg : public Algorithm {
@@ -55,7 +55,7 @@ CurrentEventAlg::CurrentEventAlg(const std::string& name, ISvcLocator* pSvcLocat
 :Algorithm(name, pSvcLocator) 
 {
     // declare properties with setProperties calls
-    declareProperty("fileName", m_outputFileName="eventId.txt");
+    declareProperty("fileName", m_outputFileName="");  //eventId.txt
 }
 
 //! set parameters and attach to various perhaps useful services.
@@ -77,6 +77,8 @@ StatusCode CurrentEventAlg::execute()
 {
     StatusCode  sc = StatusCode::SUCCESS;
     
+    if (m_outputFileName.empty()) return StatusCode::SUCCESS;
+
     m_eventFile = new std::ofstream(m_outputFileName.c_str(),std::ios_base::trunc);
     if (!m_eventFile)  {
         MsgStream log( msgSvc(), name() );
