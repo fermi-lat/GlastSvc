@@ -4,7 +4,7 @@
 * @author Sawyer Gillespie
 * @author Leon Rochester
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.24 2003/07/25 23:46:13 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.25 2006/03/21 01:26:06 usher Exp $
 */
 
 
@@ -32,7 +32,7 @@ class IDmapBuilder;
 namespace idents{class VolumeIdentifier;}
 
 // Declaration of the interface ID ( interface id, major version, minor version) 
-static const InterfaceID IID_IGlastDetSvc(901, 3 , 0); 
+static const InterfaceID IID_IGlastDetSvc(901, 3 , 1); 
 ///  Access to the Glast detector geometry
 
 /** @class IGlastDetSvc
@@ -70,6 +70,14 @@ public:
     virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
                                      std::string*, 
                                      std::vector<double>*) = 0;
+
+    /// Get all ribbon segments belonging to specified ribbon on specified
+    /// face. Return in order along relevant axis direction.
+    virtual void 
+    orderRibbonSegments(std::vector<idents::VolumeIdentifier>& segs,
+                        unsigned face, unsigned ribbonNumber, 
+                        bool xOrient, bool increasing=true) = 0;
+
     /// retrieve name of top volume
     virtual std::string getTopVolume() = 0;
 

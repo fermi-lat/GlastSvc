@@ -21,7 +21,7 @@ typedef HepGeom::Transform3D HepTransform3D;
 * @brief Wrapper class around detModel, to hide all the initialization 
 * and provide defaults.
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.8 2002/09/06 14:44:07 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.h,v 1.9 2006/03/21 01:26:08 usher Exp $
 */
 class DMmanager  {
 public:
@@ -63,6 +63,10 @@ public:
     bool getShapeByID(idents::VolumeIdentifier id,
                       std::string*, 
                       std::vector<double>* params);
+
+    void orderRibbonSegments(std::vector<idents::VolumeIdentifier>& segs,
+                             unsigned face, unsigned ribbonNumber, 
+                             bool xOrient, bool increasing=true);
 
     /// access to name of selected top volume
     std::string topvol() const;

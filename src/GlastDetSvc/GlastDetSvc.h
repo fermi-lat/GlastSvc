@@ -17,7 +17,7 @@ namespace idents{class VolumeIdentifier;}
 * which provides parameters and constants associated with the geometry.
 * 
 * @author Sawyer Gillespie
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.23 2003/07/25 23:46:13 lsrea Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.h,v 1.24 2006/03/21 01:26:08 usher Exp $
 */
 class GlastDetSvc : public Service, 
 virtual public IGlastDetSvc
@@ -76,6 +76,13 @@ public:
     virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
         std::string*, 
         std::vector<double>*);
+
+    /// Get all ribbon segments belonging to specified ribbon on specified
+    /// face. Return in order along relevant axis direction.
+    virtual void 
+    orderRibbonSegments(std::vector<idents::VolumeIdentifier>& segs,
+                        unsigned face, unsigned ribbonNumber, 
+                        bool xOrient, bool increasing=true);
 
     /// retrieve the name of the top volume
     virtual std::string getTopVolume() {return m_topvol;}

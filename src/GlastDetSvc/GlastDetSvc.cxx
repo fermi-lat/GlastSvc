@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.20 2003/04/07 21:42:27 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.21 2006/03/21 01:26:08 usher Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -128,12 +128,16 @@ const InterfaceID&  GlastDetSvc::type () const {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void GlastDetSvc::accept(IGeometry& geom)
 {
-    m_dm->accept(&GeometryVisitor(geom, m_visitorMode));
+  GeometryVisitor gv(geom, m_visitorMode);
+  m_dm->accept(&gv);
+    //    m_dm->accept(&GeometryVisitor(geom, m_visitorMode));
 }
 
 void GlastDetSvc::accept(IMedia& media)
 {
-  m_dm->accept(&MediaVisitor(media));
+  MediaVisitor mv(media);
+  m_dm->accept(&mv);
+  //  m_dm->accept(&MediaVisitor(media));
 }
 
 StatusCode GlastDetSvc::getNumericConstByName(std::string name, double* res)
@@ -176,6 +180,15 @@ StatusCode  GlastDetSvc::getShapeByID(idents::VolumeIdentifier id,
     return StatusCode::SUCCESS;
   else return StatusCode::FAILURE;
 }
+
+void 
+GlastDetSvc::orderRibbonSegments(std::vector<idents::VolumeIdentifier>& segs,
+                                 unsigned face, unsigned ribbonNumber, 
+                                 bool xOrient, bool increasing) 
+{
+  m_dm->orderRibbonSegments(segs, face, ribbonNumber, xOrient, increasing);
+}
+
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
