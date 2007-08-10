@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.2 2005/07/11 17:38:19 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.3 2007/06/15 15:57:02 jrb Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -158,6 +158,13 @@ StatusCode CreateEvent::initialize() {
             << " (X-measuring) in order of increasing Y are:" << endreq;
         for (unsigned ix = 0; ix < segs.size(); ix++) {
           log <<  segs[ix].name() << endreq;
+        }
+        log << endreq;
+        IGlastDetSvc::NamedId nid;
+        nid = m_detSvc->getNamedId(segs[0]);
+        log << "Named id corresponding to first segment is:" << endreq;
+        for (unsigned ifld = 0; ifld < nid.size(); ifld++) {
+          log << nid[ifld].first << "=" << nid[ifld].second << endreq;
         }
         log << endreq;
         

@@ -4,7 +4,7 @@
 * @author Sawyer Gillespie
 * @author Leon Rochester
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.25 2006/03/21 01:26:06 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/GlastDetSvc/IGlastDetSvc.h,v 1.26 2007/06/15 15:57:02 jrb Exp $
 */
 
 
@@ -14,6 +14,7 @@
 #include "GaudiKernel/IInterface.h"
 #include <vector>
 #include <string>
+#include <utility>
 
 class DMmanager;
 class DetectorConverter;
@@ -42,6 +43,9 @@ static const InterfaceID IID_IGlastDetSvc(901, 3 , 1);
 class   IGlastDetSvc : virtual public IInterface {
 public:
   
+    typedef std::pair<std::string, unsigned> IdField;
+    typedef std::vector<IdField> NamedId;
+
     /// detModel interface to retrive numeric constants
     virtual StatusCode getNumericConstByName(std::string, double*)=0;
 
@@ -70,6 +74,10 @@ public:
     virtual StatusCode  getShapeByID(idents::VolumeIdentifier id,
                                      std::string*, 
                                      std::vector<double>*) = 0;
+
+    virtual NamedId getNamedId(const idents::VolumeIdentifier& vid) = 0;
+
+    // ACD specific stuff
 
     /// Get all ribbon segments belonging to specified ribbon on specified
     /// face. Return in order along relevant axis direction.

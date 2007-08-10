@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.12 2003/12/10 19:42:03 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.13 2007/06/15 15:57:02 jrb Exp $
 //
 // Description:
 // Wrapper class around detModel, to hide all the initialization and 
@@ -191,4 +191,8 @@ DMmanager::orderRibbonSegments(std::vector<idents::VolumeIdentifier>& segs,
 
   m_idMap->orderSensitive(segs, sample, wild, dir, increasing);
 
+}
+
+xmlUtil::IdDict* DMmanager::getIdDictionary() {
+  return m_dm->getGdd()->getIdDictionary();
 }
