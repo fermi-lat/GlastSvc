@@ -5,6 +5,7 @@
  package manager:T.Burnett
            EOH
 
+ v9r23p1gr4 30-Nov-2007 hmk another try, using Michael Kuss' equation
  v9r23p1gr3 29-Nov-2007 hmk Adjust applySeed for m_autoSeed == false, to 
             eliminate multiplier and allow for 1 million run numbers
  v9r23p1gr2 29-Nov-2007 jrb Remember to update requirements, this file when tagging!

@@ -6,7 +6,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.32.8.1 2007/11/30 01:34:11 jrb Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.32.8.2 2007/11/30 04:48:26 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -376,7 +376,8 @@ void GlastRandomSvc::applySeeds(int runNo, int seqNo)
             }
             else {
                 long bigEnough = 1000000;
-                theSeed = (runNo+1) % bigEnough + bigEnough * (seqNo + 1);
+                // From Michael Kuss Nov 30, 2007
+                theSeed = 2 * ( (runNo+1) % bigEnough + multiplier * bigEnough * (seqNo+1) ) + 1;
             }
                 
 
