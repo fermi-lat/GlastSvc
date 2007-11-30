@@ -5,6 +5,8 @@
  package manager:T.Burnett
            EOH
 
+ v9r23p1gr3 29-Nov-2007 hmk Adjust applySeed for m_autoSeed == false, to 
+            eliminate multiplier and allow for 1 million run numbers
  v9r23p1gr2 29-Nov-2007 jrb Remember to update requirements, this file when tagging!
  v9r23p1gr1 29-Nov-2007 jrb Adjust applySeed according to Richard's instructions in case 1 seed/run
  v9r23p1  24-Oct-2007  mk   fix code for random number seed based on run
