@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.13 2007/06/15 15:57:02 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/src/GlastDetSvc/DMmanager.cxx,v 1.14 2007/08/10 20:01:10 jrb Exp $
 //
 // Description:
 // Wrapper class around detModel, to hide all the initialization and 
@@ -42,7 +42,7 @@ void DMmanager::init(int argc, char* argv[] )
 void DMmanager::init(std::string filename, std::string mode, std::string topvol) 
 {
     m_dm->setBuilder(new detModel::XercesBuilder);
-    if( filename.empty() || filename == "-" ) filename = "$(XMLGEODBSROOT)/xml/flight/flight.xml" ;
+    if( filename.empty() || filename == "-" ) filename = "$(XMLGEODBSXMLPATH)/flight/flight.xml" ;
     facilities::Util::expandEnvVar(&filename);
     m_dm->setNameFile( filename);
     m_dm->build(detModel::Manager::all);
