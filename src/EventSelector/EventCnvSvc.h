@@ -4,7 +4,6 @@
 #include <map>
 
 #include "GaudiKernel/ConversionSvc.h"
-#include "IEventCnvSvc.h"
 
 template <class TYPE> class SvcFactory;
 
@@ -16,17 +15,12 @@ template <class TYPE> class SvcFactory;
  * access to the data and put it on the TDS.
  * Based on SICb service written by Markus Frank.
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.4 2002/09/06 14:40:00 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.5 2006/03/21 01:26:08 usher Exp $
  */
 
-class EventCnvSvc  : virtual public ConversionSvc, virtual public IEventCnvSvc	{
+class EventCnvSvc  : virtual public ConversionSvc	{
 
   friend class SvcFactory<EventCnvSvc>;
-
-  /// Map with leaf entries
-  typedef std::map<std::string, Leaf*> LeafMap;
-  LeafMap m_leaves;
-
 
 public:
 
@@ -38,9 +32,6 @@ public:
 
   /// Override inherited queryInterface due to enhanced interface
   virtual StatusCode queryInterface(const InterfaceID& riid, void** ppvInterface);
-
-  /// Associates a path on TDS with a particular converter
-  virtual StatusCode declareObject(const IEventCnvSvc::Leaf& leaf);
 
   /** IAddressCreator implementation: Address creation.
     Create an address using the link infotmation together with
