@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.7 2002/09/13 16:14:34 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
 //
 // Description:
 // Concrete converter for the McEvent header on the TDS /Event/MC
@@ -14,7 +14,7 @@
 #include "GlastSvc/EventSelector/IGlastCnv.h"
 
 #include "Event/TopLevel/EventModel.h"
-#include "Event/TopLevel/McEvent.h"
+#include "Event/TopLevel/MCEvent.h"
 
 class  MCEventCnv : virtual public IGlastCnv, public Converter 
 {
