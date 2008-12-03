@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.7 2006/03/21 01:26:08 usher Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
 //
 // Description:
 //      EventCnvSvc is the GLAST converter service.
@@ -36,7 +36,7 @@ static const InterfaceID IID_EventCnvSvc("EventCnvSvc", 1, 0);
  * access to the data and put it on the TDS.
  * Based on SICb service written by Markus Frank.
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.h,v 1.5 2006/03/21 01:26:08 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
  */
 
 class EventCnvSvc  : virtual public ConversionSvc	
@@ -93,7 +93,7 @@ private:
 
 //static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.7 2006/03/21 01:26:08 usher Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $";
 
 
 // Instantiation of a static factory class used by clients to create
@@ -219,34 +219,38 @@ StatusCode EventCnvSvc::updateServiceState(IOpaqueAddress* pAddress)
         // Find the list of possible daughter paths
         SubPathMap::iterator pathIter = m_subPathMap.find(path);
 
-        // Loop over the list of daughter paths
-        for(std::vector<std::string>::iterator subIter = pathIter->second.begin(); subIter != pathIter->second.end(); subIter++)
+        // Check to be sure something was found
+        if (pathIter != m_subPathMap.end())
         {
-            // Now look up the pointer to the converter
-            PathToCnvMap::iterator cnvIter  = m_pathToCnvMap.find(*subIter);
-            IGlastCnv*             glastCnv = cnvIter->second;
-
-            if (glastCnv->getPath() == path) continue;
-
-            if (glastCnv)
+            // Loop over the list of daughter paths
+            for(std::vector<std::string>::iterator subIter = pathIter->second.begin(); subIter != pathIter->second.end(); subIter++)
             {
-                IOpaqueAddress* newAddr = 0;
-                unsigned long ipars[2] = {0, 0}; //{(*il)->userParameter, new_rid};
-                const std::string spars[2] = {"", ""}; //{par[0], (*il)->bank};
-                StatusCode ir =
-            
-                addressCreator()->createAddress(SICB_StorageType, 
-                                                glastCnv->objType(), 
-                                                spars, 
-                                                ipars,
-                                                newAddr);
-                if ( ir.isSuccess() )   
+                // Now look up the pointer to the converter
+                PathToCnvMap::iterator cnvIter  = m_pathToCnvMap.find(*subIter);
+                IGlastCnv*             glastCnv = cnvIter->second;
+
+                if (glastCnv->getPath() == path) continue;
+
+                if (glastCnv)
                 {
-                    ir = iaddrReg->registerAddress(glastCnv->getPath(), newAddr);
-                    if ( !ir.isSuccess() )    
+                    IOpaqueAddress* newAddr = 0;
+                    unsigned long ipars[2] = {0, 0}; //{(*il)->userParameter, new_rid};
+                    const std::string spars[2] = {"", ""}; //{par[0], (*il)->bank};
+                    StatusCode ir =
+            
+                    addressCreator()->createAddress(SICB_StorageType, 
+                                                    glastCnv->objType(), 
+                                                    spars, 
+                                                    ipars,
+                                                    newAddr);
+                    if ( ir.isSuccess() )   
                     {
-                        newAddr->release();
-                        status = ir;
+                        ir = iaddrReg->registerAddress(glastCnv->getPath(), newAddr);
+                        if ( !ir.isSuccess() )    
+                        {
+                            newAddr->release();
+                            status = ir;
+                        }
                     }
                 }
             }
