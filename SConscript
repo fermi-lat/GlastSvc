@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/SConscript,v 1.6 2008/12/03 20:30:06 glastrm Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/SConscript,v 1.2 2008/07/28 23:30:05 glastrm Exp $
 # Authors: T. Burnett <tburnett@u.washington.edu>
-# Version: GlastSvc-09-27-03
+# Version: GlastSvc-09-26-01
 import os
 Import('baseEnv')
 Import('listFiles')
@@ -20,6 +20,7 @@ progEnv.Tool('identsLib')
 test_GlastSvc = progEnv.GaudiProgram('test_GlastSvc', listFiles(['src/test/*.cxx']), test = 1)
 
 progEnv.Tool('registerObjects', package = 'GlastSvc', libraries = [GlastSvcLib], testApps = [test_GlastSvc], includes = listFiles(['GlastSvc/*'], recursive = True))
+
 
 
 
