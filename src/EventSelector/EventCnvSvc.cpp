@@ -1,5 +1,5 @@
 // File and Version Information:
-//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
+//      $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.9 2008/12/03 20:00:36 usher Exp $
 //
 // Description:
 //      EventCnvSvc is the GLAST converter service.
@@ -36,7 +36,7 @@ static const InterfaceID IID_EventCnvSvc("EventCnvSvc", 1, 0);
  * access to the data and put it on the TDS.
  * Based on SICb service written by Markus Frank.
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/EventCnvSvc.cpp,v 1.9 2008/12/03 20:00:36 usher Exp $
  */
 
 class EventCnvSvc  : virtual public ConversionSvc	
@@ -93,7 +93,7 @@ private:
 
 //static const InterfaceID IID_IBaseCnv(902, 1 , 0); 
 // RCS Id for identification of object version
-static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $";
+static const char* rcsid = "$Id: EventCnvSvc.cpp,v 1.9 2008/12/03 20:00:36 usher Exp $";
 
 
 // Instantiation of a static factory class used by clients to create
@@ -118,7 +118,7 @@ StatusCode EventCnvSvc::initialize()     {
 
     if ( status.isSuccess() )   
     {
-        ISvcLocator* svclocator = serviceLocator();
+        // HMK Unused ISvcLocator* svclocator = serviceLocator();
         IDataProviderSvc *pIDP = 0;
         // Set event data service
         status = service("EventDataSvc", pIDP, true);
@@ -183,7 +183,7 @@ StatusCode EventCnvSvc::initialize()     {
             // An orphan?
             if (orphan)
             {
-                int j = 0;
+                // HMK Unused int j = 0;
             }
         }
     }
@@ -274,7 +274,7 @@ StatusCode EventCnvSvc::queryInterface(const InterfaceID& riid, void** ppvInterf
 StatusCode EventCnvSvc::createAddress( long svc_type,
                                        const CLID& clid,
                                        const std::string* par, 
-                                       const unsigned long* ip,
+                                       const unsigned long* /*ip*/,
                                        IOpaqueAddress*& refpAddress)
 {
     if ( svc_type == repSvcType() )   

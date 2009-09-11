@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.22 2007/06/15 15:57:02 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.23 2007/08/10 20:01:10 jrb Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -187,7 +187,7 @@ GlastDetSvc::getNamedId(const idents::VolumeIdentifier& vid) {
   // first create an xmlUtil::Identifier - vector of unsigned - from
   // the volume identifier.
   xmlUtil::Identifier identifier;
-  unsigned iField;
+  int iField;
   for (iField = 0; iField < vid.size(); iField++) {
     identifier.append(vid[iField]);
   }

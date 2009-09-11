@@ -1,4 +1,4 @@
-// $Id: HistorySvc.cpp,v 1.2 2004/07/14 18:51:06 leggett Exp $
+// $Id: GlastHistorySvc.cxx,v 1.1 2007/08/22 16:14:14 heather Exp $
 
 #ifndef GLASTSVC_HISTORYSVC_H
  #include "GlastSvc/HistorySvc/GlastHistorySvc.h"
@@ -93,7 +93,7 @@ StatusCode GlastHistorySvc::initialize() {
     incsvc->addListener(this, "BeginEvent", 100);
 
 
-  static const bool CREATEIF(true);
+  // HMK Unused? static const bool CREATEIF(true);
 
   //if ( service("AlgContextSvc",p_algCtxSvc,CREATEIF).isFailure() ) {
   //  log << MSG::ERROR << "unable to get the AlgContextSvc" << endreq;
@@ -384,8 +384,9 @@ GlastHistorySvc::getJobHistory() const {
 
 
 
-DataHistory* GlastHistorySvc::createDataHistoryObj(const CLID& id, const std::string& key, 
-				 const std::string& storeName) {
+DataHistory* GlastHistorySvc::createDataHistoryObj(const CLID& /*id*/, 
+                                 const std::string& /*key*/, 
+				 const std::string& /*storeName*/) {
 
                      /*
   MsgStream log( msgSvc(), name() );
