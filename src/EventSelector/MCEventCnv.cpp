@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.8 2008/12/01 23:01:31 usher Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/MCEventCnv.cpp,v 1.9 2008/12/02 17:39:03 usher Exp $
 //
 // Description:
 // Concrete converter for the McEvent header on the TDS /Event/MC
@@ -90,7 +90,7 @@ StatusCode MCEventCnv::finalize()
 }
 
 // (To TDS) Conversion stuff
-StatusCode MCEventCnv::createObj(IOpaqueAddress* addr, DataObject*& refpObject) 
+StatusCode MCEventCnv::createObj(IOpaqueAddress* /*addr*/, DataObject*& refpObject) 
 {
     StatusCode ret = StatusCode::SUCCESS;
 
