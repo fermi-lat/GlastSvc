@@ -6,7 +6,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.32.8.3 2007/11/30 20:49:17 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.33 2007/12/17 03:46:35 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -76,7 +76,7 @@ GlastRandomSvc::GlastRandomSvc(const std::string& name,ISvcLocator* svc) : Servi
     declareProperty("SeedFile", m_seedFile="");
     declareProperty("EndSeedFile", m_endSeedFile="");
 #endif
-    declareProperty("autoSeed", m_autoSeed=true); // allow turn off
+    declareProperty("autoSeed", m_autoSeed=false); // allow turn off
     s_instance=this; // for access local to GlastSvc
 }
 
@@ -285,6 +285,14 @@ StatusCode GlastRandomSvc::initialize ()
 
     log << MSG::DEBUG << "initialize(): calling applySeeds(" << m_RunNumber
         << ", " << m_InitialSequenceNumber << ')' <<endreq;
+
+    if ((m_autoSeed) && (m_RunNumber > 20000)) {
+        log << MSG::WARNING << "Should not set run number > 20000 when setting"
+            << " seeds event by event.  RunNo is set to " << m_RunNumber
+            << " this will result in events that duplicate some other "
+            << " run number " << "20000" << endreq;
+    }
+
     applySeeds(m_RunNumber, m_InitialSequenceNumber);
 
     return StatusCode::SUCCESS;

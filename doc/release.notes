@@ -5,6 +5,8 @@
  package manager:T.Burnett
            EOH
 
+ v9r26p1gr1 25-Sep-2009 HMK apply updates for random service to apply seed
+      once per run the default
  v9r26p1  28-Jul-2008 THB tag change to avoid CMT-generated env var XMLGEODBSROOT
  v9r26  16-Dec-2007 hmk Merge in GlastReleasev13r5 branch
  v9r25p1 04-Nov-2007 hmk  Patch to find includes on windows
