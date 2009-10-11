@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/MediaVisitor.cxx,v 1.1 2002/03/07 15:32:48 riccardo Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/MediaVisitor.cxx,v 1.2 2002/09/06 14:44:07 heather Exp $
 
 #include <vector>
 
@@ -85,5 +85,7 @@ void MediaVisitor::visitComposite(detModel::Composite* composite)
     }
   
   m_media.addComposite(name, type, density, components, qty);
-  m_materials.push_back(name);
+  if(std::find(m_materials.begin(),m_materials.end(), name)==m_materials.end()) {
+      m_materials.push_back(name);
+  }
 }
