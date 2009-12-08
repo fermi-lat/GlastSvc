@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/SConscript,v 1.11 2009/09/15 17:40:55 heather Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/SConscript,v 1.12 2009/10/11 19:20:16 lsrea Exp $
 # Authors: T. Burnett <tburnett@u.washington.edu>
 # Version: GlastSvc-09-28-01
 import os
@@ -24,7 +24,7 @@ test_GlastSvc = progEnv.GaudiProgram('test_GlastSvc',
                                      listFiles(['src/test/*.cxx']), test = 1)
 
 progEnv.Tool('registerTargets', package = 'GlastSvc',
-             sharedLibraryCxts = [[GlastSvcLib, libEnv]],
+             libraryCxts = [[GlastSvcLib, libEnv]],
              testAppCxts = [[test_GlastSvc, progEnv]],
              includes = listFiles(['GlastSvc/*'], recursive = True))
 
