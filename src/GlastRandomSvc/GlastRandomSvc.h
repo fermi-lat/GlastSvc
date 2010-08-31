@@ -1,7 +1,7 @@
 /** @file GlastRandomSvc.h
 @brief definition of the class GlastRandomSvc
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.12 2005/07/11 19:59:12 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.13 2006/03/21 01:26:09 usher Exp $
 
 */
 #ifndef _GlastRandomSvc_H
@@ -18,6 +18,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc
 #include "CLHEP/Random/Random.h"
 #include "GlastRandomSeed.h"
 #include "GlastSvc/GlastRandomSvc/IRandomAccess.h"
+#include "GlastRandomObs.h"
 
 class IDataProviderSvc;;
 
@@ -41,7 +42,7 @@ class IDataProviderSvc;;
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.12 2005/07/11 19:59:12 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.13 2006/03/21 01:26:09 usher Exp $
 */
 class GlastRandomSvc : public Service,
     virtual public IIncidentListener
@@ -76,6 +77,8 @@ public:
 private:  
     static GlastRandomSvc* s_instance;
 
+    IToolSvc *m_toolSvc; // to handle observer
+
     CLHEP::HepRandomEngine* createEngine(std::string  engineName) ;
 
     /// Data members
@@ -107,6 +110,9 @@ private:
     //! list of pointers to setflag functions
     std::vector< IRandomAccess::SetFlag> m_setFlagPointers;
 
+    GlastRandomObs *m_randObs;
+
 };
 
 #endif // _GlastRandomSvc_H
+

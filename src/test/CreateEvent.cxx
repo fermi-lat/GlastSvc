@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.4 2007/08/10 20:01:10 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.5 2009/09/11 03:19:38 heather Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -57,7 +57,9 @@ public:
 
 
 // Static factory for instantiation of algtool objects
-static ToolFactory<MyRecon> afactory;
+//static ToolFactory<MyRecon> afactory;
+DECLARE_TOOL_FACTORY( MyRecon );
+
 
 
 //--------------------------------------------------------------------------
@@ -79,7 +81,9 @@ public:
     
     }
 };
-static  ToolFactory<MyRandomTool>  randFactory;
+//static  ToolFactory<MyRandomTool>  randFactory;
+DECLARE_TOOL_FACTORY( MyRandomTool );
+
 //--------------------------------------------------------------------------
 /**
     @class MyOtherRandomTool
@@ -100,13 +104,17 @@ public:
     }
   
 };
-static  ToolFactory<MyOtherRandomTool>  otherRandFactory;
+//static  ToolFactory<MyOtherRandomTool>  otherRandFactory;
+DECLARE_TOOL_FACTORY( MyOtherRandomTool );
+
 
 
 //--------------------------------------------------------------------------
 
-static const AlgFactory<CreateEvent>  Factory;
-const IAlgFactory& CreateEventFactory = Factory;
+//static const AlgFactory<CreateEvent>  Factory;
+//const IAlgFactory& CreateEventFactory = Factory;
+DECLARE_ALGORITHM_FACTORY( CreateEvent );
+
 
 CreateEvent::CreateEvent(const std::string& name, ISvcLocator* pSvcLocator) :
 Algorithm(name, pSvcLocator), m_detSvc(0) {

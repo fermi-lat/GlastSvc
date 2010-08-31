@@ -6,7 +6,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.33 2007/12/17 03:46:35 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.cxx,v 1.34 2009/09/15 17:40:56 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -23,8 +23,9 @@ gets adresses
 #include "GaudiKernel/DataStoreItem.h"
 #include "GaudiKernel/IDataProviderSvc.h"
 #include "GaudiKernel/IDataManagerSvc.h"
-#include "GaudiKernel/IObjManager.h"
-#include "GaudiKernel/IToolFactory.h"
+//#include "GaudiKernel/IObjManager.h" HMK No longer available in Gaudi v21r7
+//#include "GaudiKernel/IToolFactory.h" HMK No Longer available in Gaudi v21r7
+#include "GaudiKernel/IAlgManager.h" // HMK Gaudi v21r7
 #include "GaudiKernel/SmartDataPtr.h"
 
 
@@ -51,13 +52,14 @@ gets adresses
 
 
 // declare the service factories for the GlastRandomSvc
-static SvcFactory<GlastRandomSvc> a_factory;
-const ISvcFactory& GlastRandomSvcFactory = a_factory; 
+//static SvcFactory<GlastRandomSvc> a_factory;
+//const ISvcFactory& GlastRandomSvcFactory = a_factory; 
+DECLARE_SERVICE_FACTORY( GlastRandomSvc );
 
 GlastRandomSvc* GlastRandomSvc::instance(){ return s_instance; }
 GlastRandomSvc* GlastRandomSvc::s_instance;
 
-GlastRandomSvc::GlastRandomSvc(const std::string& name,ISvcLocator* svc) : Service(name,svc)
+GlastRandomSvc::GlastRandomSvc(const std::string& name,ISvcLocator* svc) : Service(name,svc), m_randObs(0)
 {
     // Purpose and Method: Constructor - Declares and sets default properties
     //                     
@@ -85,6 +87,11 @@ GlastRandomSvc::~GlastRandomSvc()
     // this is  repetetive in case finalize was
     // not called.
     finalize();
+    if (m_randObs) {
+        m_toolSvc->unRegisterObserver(m_randObs);
+        delete m_randObs;
+        m_randObs = 0;
+    }
 }
 
 
@@ -161,9 +168,12 @@ StatusCode GlastRandomSvc::initialize ()
     // Call super-class
     Service::initialize ();
 
-    if( serviceLocator() ) {
-        status = serviceLocator()->service("EventDataSvc", m_eventSvc, true );
-    }
+status = service ( "EventDataSvc" , m_eventSvc , true ) ;
+
+
+//    if( serviceLocator() ) {
+ //       status = serviceLocator()->service("EventDataSvc", m_eventSvc, true );
+  ///  }
     if(status.isFailure())
     {
         log << MSG::ERROR << "Could not find EventDataSvc" << endreq;
@@ -216,6 +226,19 @@ StatusCode GlastRandomSvc::initialize ()
     incsvc->addListener(this, "EndEvent", 0);
 
 
+      // get a pointer to the tool service
+  status = service( "ToolSvc", m_toolSvc, true );
+  if (!status.isSuccess()) {
+    log << MSG::ERROR << "Unable to get a handle to the tool service" << endmsg;
+    return status;
+  } else {
+    log << MSG::DEBUG << "Got pointer to ToolSvc " << endmsg;
+  }
+
+
+
+/* HMK Move to Gaudi v21r7
+
     // Look for a factory of an AlgTool that implements the
     // IRandomAccess interface:
     // if found, make one and call the special method
@@ -241,7 +264,8 @@ StatusCode GlastRandomSvc::initialize ()
         // is it a tool factory?
         const IFactory* factory = objManager->objFactory( tooltype );
         IFactory* fact = const_cast<IFactory*>(factory);
-        status = fact->queryInterface( IID_IToolFactory, (void**)&toolfactory );
+//        status = fact->queryInterface( IID_IToolFactory, (void**)&toolfactory );
+        status = fact->queryInterface( IToolFactory::interfaceID(), (void**)&toolfactory );
         if( status.isSuccess() ) 
         {
             std::string fullname = this->name()+"."+tooltype;
@@ -281,7 +305,9 @@ StatusCode GlastRandomSvc::initialize ()
             itool->release();
         }
     }
-    // now initialize seeds to be unique for each run 
+     HMK Move to Gaudi v21r7 */
+  
+  // now initialize seeds to be unique for each run 
 
     log << MSG::DEBUG << "initialize(): calling applySeeds(" << m_RunNumber
         << ", " << m_InitialSequenceNumber << ')' <<endreq;
@@ -291,7 +317,14 @@ StatusCode GlastRandomSvc::initialize ()
             << " this will result in events that duplicate some run number < "
             << " 20000" << endreq;
     }
-    applySeeds(m_RunNumber, m_InitialSequenceNumber);
+//    applySeeds(m_RunNumber, m_InitialSequenceNumber);
+
+    m_randObs = new GlastRandomObs();
+    m_toolSvc->registerObserver(m_randObs);
+    m_randObs->setRunNumber(m_RunNumber);
+    m_randObs->setSequenceNumber(m_SequenceNumber);
+    m_randObs->setRandomEngine(m_randomEngine.toString());
+    m_randObs->setAutoSeed(m_autoSeed);
 
     return StatusCode::SUCCESS;
 }
@@ -312,16 +345,27 @@ void GlastRandomSvc::handle(const Incident &inc)
     if( inc.type()=="BeginEvent" ) {
 
         // See if MCEvent was set up properly
-        SmartDataPtr<Event::MCEvent> mcevt(m_eventSvc, EventModel::MC::Event);
-        //if (mcevt == 0) {
+        DataObject* obj = 0;     
+        StatusCode sc = m_eventSvc->retrieveObject(EventModel::MC::Event, obj);
+        Event::MCEvent *mcevt = dynamic_cast<Event::MCEvent *>(obj);
         if (!mcevt) {
-            log << MSG::ERROR << "Error accessing MCEvent" << endreq;
-            return;
-        }
+            log << MSG::WARNING << "de is null too" << endreq;
+    }
 
+     //   SmartDataPtr<Event::MCEvent> mcevt(m_eventSvc, EventModel::MC::Event);
+      //  StatusCode sc = m_eventSvc->retrieveObject(EventModel::MC::Event, mcevt);
+ 
+
+        //if (mcevt == 0) {
+       // if (!mcevt) {
+       //     log << MSG::ERROR << "Error accessing MCEvent" << endreq;
+        //    return;
+       // }
 
         int runNo = m_RunNumber, 
             seqNo = m_SequenceNumber++;
+
+       // m_randObs->setSequenceNumber(m_SequenceNumber);
 
 
         // recorde seeds to TDS
@@ -357,11 +401,10 @@ void GlastRandomSvc::handle(const Incident &inc)
       ++i;
 
       EngineMap::const_iterator dllEngine;
+      EngineMap m_engineMap = m_randObs->getEngineMap();
       for (dllEngine = m_engineMap.begin(); dllEngine != m_engineMap.end(); ++dllEngine ) {
-
-    m_output << dllEngine->second->getSeed() << " ";
+          m_output << dllEngine->second->getSeed() << " ";
       }
-
       m_output << std::endl;
     }
 
@@ -375,6 +418,7 @@ void GlastRandomSvc::applySeeds(int runNo, int seqNo)
         int multiplier = 1; 
         int dummy = 0; // for 2nd argument to setSeed
         EngineMap::const_iterator dllEngine;
+        EngineMap m_engineMap = m_randObs->getEngineMap();
         for (dllEngine = m_engineMap.begin(); dllEngine != m_engineMap.end(); ++dllEngine ) {
             long theSeed;
             if (m_autoSeed) {
@@ -402,8 +446,8 @@ void GlastRandomSvc::applySeeds(int runNo, int seqNo)
         CLHEP::RandGauss::setFlag(false);
 
         // now make sure the external ones (if any) are done too!
-        for( std::vector< IRandomAccess::SetFlag>::iterator it = m_setFlagPointers.begin();
-            it != m_setFlagPointers.end(); ++it)
+        for( std::vector< IRandomAccess::SetFlag>::const_iterator it = m_randObs->getSetFlagPtrs().begin();
+            it != m_randObs->getSetFlagPtrs().end(); ++it)
         {
             (**it)(false);
         }
@@ -419,11 +463,8 @@ StatusCode GlastRandomSvc::finalize ()
     // Dependencies: None
     // Restrictions and Caveats:  None
 
-    for (EngineMap::iterator dllEngine = m_engineMap.begin(); 
-        dllEngine != m_engineMap.end(); ++dllEngine ) {
-        delete dllEngine->second;       
-    }
-    m_engineMap.clear();
+
     return StatusCode::SUCCESS;
 }
+
 

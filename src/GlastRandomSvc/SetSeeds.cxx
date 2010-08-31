@@ -1,7 +1,7 @@
 /** @file SetSeeds.cxx
 @brief declaration and definition of the class SetSeeds
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.3 2006/03/21 01:26:09 usher Exp $
 
 */
 
@@ -28,7 +28,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.2 2003/08/29 21:22:58 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/SetSeeds.cxx,v 1.3 2006/03/21 01:26:09 usher Exp $
 */
 
 class SetSeeds : public Algorithm {
@@ -44,8 +44,10 @@ private:
 };
 //------------------------------------------------------------------------
 
-static const AlgFactory<SetSeeds>  Factory;
-const IAlgFactory& SetSeedsFactory = Factory;
+//static const AlgFactory<SetSeeds>  Factory;
+//const IAlgFactory& SetSeedsFactory = Factory;
+DECLARE_ALGORITHM_FACTORY( SetSeeds );
+
 
 //------------------------------------------------------------------------
 //! ctor
