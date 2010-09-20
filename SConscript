@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/SConscript,v 1.13 2009/12/08 03:22:33 jrb Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/SConscript,v 1.14 2009/12/08 03:23:05 jrb Exp $
 # Authors: T. Burnett <tburnett@u.washington.edu>
-# Version: GlastSvc-09-28-02
+# Version: GlastSvc-09-28-02-gr01
 import os
 Import('baseEnv')
 Import('listFiles')
