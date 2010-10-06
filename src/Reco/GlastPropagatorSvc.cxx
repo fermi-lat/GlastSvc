@@ -9,7 +9,7 @@
  * 
  * @author Tracy Usher
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Reco/GlastPropagatorSvc.cxx,v 1.2 2003/03/09 00:18:07 lsrea Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/Reco/GlastPropagatorSvc.cxx,v 1.3.652.1 2010/08/31 02:45:18 heather Exp $
  */
 
 #include "GaudiKernel/Service.h"
@@ -54,8 +54,9 @@ private:
 
 
 
-static const SvcFactory<GlastPropagatorSvc> s_factory;
-const ISvcFactory& GlastPropagatorSvcFactory = s_factory;
+//static const SvcFactory<GlastPropagatorSvc> s_factory;
+//const ISvcFactory& GlastPropagatorSvcFactory = s_factory;
+DECLARE_SERVICE_FACTORY( GlastPropagatorSvc );
 
 
 //------------------------------------------------------------------------------
@@ -118,7 +119,7 @@ StatusCode GlastPropagatorSvc::finalize()
 
 StatusCode  GlastPropagatorSvc::queryInterface (const InterfaceID& riid, void **ppvIF)
 {
-    if (IID_IPropagatorSvc == riid) {
+    if (IPropagatorSvc::interfaceID() == riid) {
         *ppvIF = dynamic_cast<IPropagatorSvc*> (this);
         return StatusCode::SUCCESS;
     }

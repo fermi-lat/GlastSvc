@@ -1,4 +1,4 @@
-// $Id: DbEvtSelector.cpp,v 1.1.2.1 2006/02/14 18:12:58 usher Exp $
+// $Id: DbEvtSelector.cpp,v 1.2.652.1 2010/08/31 02:45:17 heather Exp $
 //====================================================================
 //	DbEvtSelector.cpp
 //--------------------------------------------------------------------
@@ -139,8 +139,11 @@ protected:
 };
 
 
-static const SvcFactory<DbEvtSelector> s_DbEvtSelectorFactory;
-const ISvcFactory& DbEvtSelectorFactory = s_DbEvtSelectorFactory;
+//static const SvcFactory<DbEvtSelector> s_DbEvtSelectorFactory;
+//const ISvcFactory& DbEvtSelectorFactory = s_DbEvtSelectorFactory;
+
+DECLARE_SERVICE_FACTORY(DbEvtSelector);
+
 
 /** @class DbContext
  *
@@ -206,7 +209,7 @@ DbEvtSelector::~DbEvtSelector() {
 
 // IInterface::queryInterface
 StatusCode DbEvtSelector::queryInterface(const InterfaceID& riid, void** ppvIf) {
-  if ( riid == IID_IEvtSelector )  {
+  if ( riid == IEvtSelector::interfaceID() )  {
     *ppvIf = (IEvtSelector*)this;
     addRef();
     return SUCCESS;
