@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.5 2009/09/11 03:19:38 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.6 2011/01/28 14:39:17 kuss Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -105,6 +105,26 @@ public:
 };
 static ToolFactory<MyOtherRandomTool> otherRandFactory;
 const IToolFactory& MyOtherRandomToolFactory = otherRandFactory;
+
+//--------------------------------------------------------------------------
+/**
+    @class MyThirdRandomTool
+    @brief example, more test of mechanism
+
+    Add a third RandomAccess sub class (instantiated in the local context),
+    to check that random engines actually get set at different addresses for
+    different tools and different seeds get set for different tools.  And,
+    I need a number of engines not equal to 2^n for testing.
+  */
+class MyThirdRandomTool : public RandomAccess {
+public:
+    MyThirdRandomTool::MyThirdRandomTool(const std::string& type, 
+                                         const std::string& name, 
+                                         const IInterface* parent)
+        : RandomAccess( type, name, parent ) {}
+};
+static ToolFactory<MyThirdRandomTool> thirdRandFactory;
+const IToolFactory& MyThirdRandomToolFactory = thirdRandFactory;
 
 //--------------------------------------------------------------------------
 
