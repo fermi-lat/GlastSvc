@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.4 2007/08/10 20:01:10 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.7 2011/01/31 10:26:40 kuss Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -19,6 +19,7 @@
 #include "idents/VolumeIdentifier.h"
 #include "CLHEP/Geometry/Transform3D.h"
 #include "CLHEP/Random/RandGauss.h"
+#include "CLHEP/Random/RandFlat.h"
 #include "GaudiKernel/ObjectVector.h"
 
 #include "Event/MonteCarlo/McIntegratingHit.h"
@@ -62,14 +63,14 @@ static ToolFactory<MyRecon> afactory;
 
 //--------------------------------------------------------------------------
 /**
-    @class MyRandomTool
-    @brief example, test of mechanism
+  @class MyRandomTool
+  @brief example, test of mechanism
 
-    This makes a RandomAccess sub class that is instantiated in the local context,
-    and then will allow the service to replace the pointer to the engine.
+  This makes a RandomAccess sub class that is instantiated in the local context,
+  and then will allow the service to replace the pointer to the engine.
     
-      TODO: put in some code to actually exercise setting the seed.
-  */
+  TODO: put in some code to actually exercise setting the seed.
+*/
 class MyRandomTool : public RandomAccess {
 public:
     MyRandomTool::MyRandomTool(const std::string& type, 
@@ -79,7 +80,9 @@ public:
     
     }
 };
-static  ToolFactory<MyRandomTool>  randFactory;
+static ToolFactory<MyRandomTool> randFactory;
+const IToolFactory& MyRandomToolFactory = randFactory;
+
 //--------------------------------------------------------------------------
 /**
     @class MyOtherRandomTool
@@ -100,8 +103,28 @@ public:
     }
   
 };
-static  ToolFactory<MyOtherRandomTool>  otherRandFactory;
+static ToolFactory<MyOtherRandomTool> otherRandFactory;
+const IToolFactory& MyOtherRandomToolFactory = otherRandFactory;
 
+//--------------------------------------------------------------------------
+/**
+    @class MyThirdRandomTool
+    @brief example, more test of mechanism
+
+    Add a third RandomAccess sub class (instantiated in the local context),
+    to check that random engines actually get set at different addresses for
+    different tools and different seeds get set for different tools.  And,
+    I need a number of engines not equal to 2^n for testing.
+  */
+class MyThirdRandomTool : public RandomAccess {
+public:
+    MyThirdRandomTool::MyThirdRandomTool(const std::string& type, 
+                                         const std::string& name, 
+                                         const IInterface* parent)
+        : RandomAccess( type, name, parent ) {}
+};
+static ToolFactory<MyThirdRandomTool> thirdRandFactory;
+const IToolFactory& MyThirdRandomToolFactory = thirdRandFactory;
 
 //--------------------------------------------------------------------------
 
@@ -200,9 +223,12 @@ StatusCode CreateEvent::execute() {
     
     StatusCode  sc = StatusCode::SUCCESS;
     MsgStream   log( msgSvc(), name() );
-    log << MSG::DEBUG <<"Initial RandGauss status: " << RandGauss::getFlag() << endreq;
+    log << MSG::DEBUG <<"Initial RandGauss status: " << RandGauss::getFlag()
+        << endreq;
     // HMK Unused double test = RandGauss::shoot();
-    log << MSG::DEBUG << "RandGauss status after a shoot: " << RandGauss::getFlag() << endreq;
+    log << MSG::DEBUG << "RandGauss status after a shoot: "
+        << RandGauss::getFlag() << endreq;
+    log << MSG::DEBUG << "RandFlat random number: " <<RandFlat::shoot()<<endreq;
     
     //TODO: put something in here to get data???
 

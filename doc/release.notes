@@ -5,6 +5,9 @@
  package manager:T.Burnett
            EOH
 
+ GlastSvc-09-28-04-gr01 01-Dec-2011 hmk Merge in Michael Kuss' new version of
+     GlastRandomSvc to hopefully provide reproducibility between the CMT and
+     SCons builds 
  GlastSvc-09-28-04 01-Dec-2010    jrb Make new main branch tag for SCons RM
  GlastSvc-09-28-03 12-Jun-2010    jrb upgrades for SCons builds
  GlastSvc-09-28-02 07-Dec-2009    jrb Little bug fix in SConscsript
