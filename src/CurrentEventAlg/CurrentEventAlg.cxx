@@ -2,7 +2,7 @@
 @brief CurrentEventAlg prints to an ASCII file the event and run id of the
        current event being processed
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.3 2006/03/21 01:26:08 usher Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.4.588.1 2010/10/06 03:55:26 heather Exp $
 
 */
 
@@ -31,7 +31,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventA
 * \brief This is an Algorithm designed to set the event seeds by accessing a function member in GlastRandomSvc 
 * \author Toby Burnett
 * 
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.3 2006/03/21 01:26:08 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/CurrentEventAlg/CurrentEventAlg.cxx,v 1.4.588.1 2010/10/06 03:55:26 heather Exp $
 */
 
 class CurrentEventAlg : public Algorithm {
@@ -48,8 +48,11 @@ private:
   std::ofstream *m_eventFile;
 };
 
-static const AlgFactory<CurrentEventAlg>  Factory;
-const IAlgFactory& CurrentEventAlgFactory = Factory;
+//static const AlgFactory<CurrentEventAlg>  Factory;
+//const IAlgFactory& CurrentEventAlgFactory = Factory;
+
+DECLARE_ALGORITHM_FACTORY( CurrentEventAlg );
+
 
 CurrentEventAlg::CurrentEventAlg(const std::string& name, ISvcLocator* pSvcLocator)
 :Algorithm(name, pSvcLocator) 

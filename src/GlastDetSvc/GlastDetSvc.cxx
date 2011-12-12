@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.23 2007/08/10 20:01:10 jrb Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastDetSvc/GlastDetSvc.cxx,v 1.24.22.1 2010/10/06 03:55:27 heather Exp $
 // 
 //  Original author: Sawyer Gillespie
 //                   hgillesp@u.washington.edu
@@ -31,8 +31,10 @@
 
 
 // declare the service factories for the GlastDetSvc
-static SvcFactory<GlastDetSvc> a_factory;
-const ISvcFactory& GlastDetSvcFactory = a_factory;
+//static SvcFactory<GlastDetSvc> a_factory;
+//const ISvcFactory& GlastDetSvcFactory = a_factory;
+DECLARE_SERVICE_FACTORY(GlastDetSvc);
+
 
 // external declarations of the service identifiers
 // HSG - not necessary from the Gaudi example - extern const InterfaceID& IID_IGlastDetSvc;
@@ -66,7 +68,7 @@ GlastDetSvc::~GlastDetSvc()
 
 StatusCode  GlastDetSvc::queryInterface (const InterfaceID& riid, void **ppvIF)
 {
-    if (IID_IGlastDetSvc == riid) {
+    if (IGlastDetSvc::interfaceID() == riid) {
         *ppvIF = dynamic_cast<IGlastDetSvc*> (this);
         return StatusCode::SUCCESS;
     }
@@ -119,7 +121,7 @@ StatusCode GlastDetSvc::finalize ()
 }
 
 const InterfaceID&  GlastDetSvc::type () const {
-    return IID_IGlastDetSvc;
+    return IGlastDetSvc::interfaceID();
 }
 
 

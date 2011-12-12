@@ -19,7 +19,7 @@
  *
  * @authors Toby Burnett, Karl Young, Michael Kuss
  *
- * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.13 2006/03/21 01:26:09 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.14 2011/01/28 14:39:16 kuss Exp $
  */
 
 #ifndef _GlastRandomSvc_H
@@ -34,9 +34,32 @@
 #include "CLHEP/Random/Random.h"
 #include "GlastRandomSeed.h"
 #include "GlastSvc/GlastRandomSvc/IRandomAccess.h"
+#include "GlastRandomObs.h"
 
 class IDataProviderSvc;;
 
+/** @class GlastRandomSvc
+*
+* @brief Gaudi Service for setting the random engines and seeds
+* for shared libraries that use random numbers (via CLHEP) 
+* 
+* This service, in its initialize() method, collects the adresses 
+* of all tools that implement the  IRandomAccess interface (one in each
+* Dll that uses random numbers). The RandomAccess tool lives in 
+* GlastRandomSvc. The initialize() method also sets the random engine
+* for each of its Dll's either via the job options parameter
+* RandomEngine or the default which is currently TripleRand. The
+* handle() methods listens for BeginEvent events via the
+* IncidentListener service and increments the run and particle 
+* sequence numbers, sets those in the MCEvent header, then sets the
+* seed for each of the Dll's that use randoms, based on the run and
+* particle sequence numbers.
+* 
+*
+* @authors Toby Burnett, Karl Young
+*
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomSvc.h,v 1.13.654.1 2010/10/06 03:55:27 heather Exp $
+*/
 class GlastRandomSvc : public Service,
     virtual public IIncidentListener
 {
@@ -70,7 +93,11 @@ public:
 private:  
     static GlastRandomSvc* s_instance;
 
-    CLHEP::HepRandomEngine* createEngine(std::string  engineName) ;
+    IToolSvc *m_toolSvc; // to handle observer
+  
+    void parameterChecks();
+
+    //CLHEP::HepRandomEngine* createEngine(std::string  engineName) ;
 
     /// Data members
     // store Engine names and addresses in a map
@@ -114,6 +141,9 @@ private:
     //! list of pointers to setflag functions
     std::vector< IRandomAccess::SetFlag> m_setFlagPointers;
 
+    GlastRandomObs *m_randObs;
+
 };
 
 #endif // _GlastRandomSvc_H
+
