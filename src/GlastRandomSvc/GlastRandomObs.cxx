@@ -5,7 +5,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/Attic/GlastRandomObs.cxx,v 1.1.4.1 2010/10/06 03:55:27 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomObs.cxx,v 1.2 2011/12/12 20:16:10 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */

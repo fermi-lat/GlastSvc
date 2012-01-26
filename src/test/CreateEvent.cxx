@@ -1,5 +1,5 @@
 // File and Version Information:
-// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.7 2011/01/31 10:26:40 kuss Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/test/CreateEvent.cxx,v 1.9 2011/12/12 20:16:11 heather Exp $
 
 #define GlastApps_CreateEvent_CPP 
 
@@ -58,7 +58,9 @@ public:
 
 
 // Static factory for instantiation of algtool objects
-static ToolFactory<MyRecon> afactory;
+//static ToolFactory<MyRecon> afactory;
+DECLARE_TOOL_FACTORY( MyRecon );
+
 
 
 //--------------------------------------------------------------------------
@@ -80,8 +82,11 @@ public:
     
     }
 };
-static ToolFactory<MyRandomTool> randFactory;
-const IToolFactory& MyRandomToolFactory = randFactory;
+//static ToolFactory<MyRandomTool> randFactory;
+//const IToolFactory& MyRandomToolFactory = randFactory;
+
+//static  ToolFactory<MyRandomTool>  randFactory;
+DECLARE_TOOL_FACTORY( MyRandomTool );
 
 //--------------------------------------------------------------------------
 /**
@@ -103,8 +108,9 @@ public:
     }
   
 };
-static ToolFactory<MyOtherRandomTool> otherRandFactory;
-const IToolFactory& MyOtherRandomToolFactory = otherRandFactory;
+//static  ToolFactory<MyOtherRandomTool>  otherRandFactory;
+DECLARE_TOOL_FACTORY( MyOtherRandomTool );
+
 
 //--------------------------------------------------------------------------
 /**
@@ -123,13 +129,16 @@ public:
                                          const IInterface* parent)
         : RandomAccess( type, name, parent ) {}
 };
-static ToolFactory<MyThirdRandomTool> thirdRandFactory;
-const IToolFactory& MyThirdRandomToolFactory = thirdRandFactory;
+//static ToolFactory<MyThirdRandomTool> thirdRandFactory;
+//const IToolFactory& MyThirdRandomToolFactory = thirdRandFactory;
+DECLARE_TOOL_FACTORY(MyThirdRandomTool);
 
 //--------------------------------------------------------------------------
 
-static const AlgFactory<CreateEvent>  Factory;
-const IAlgFactory& CreateEventFactory = Factory;
+//static const AlgFactory<CreateEvent>  Factory;
+//const IAlgFactory& CreateEventFactory = Factory;
+DECLARE_ALGORITHM_FACTORY( CreateEvent );
+
 
 CreateEvent::CreateEvent(const std::string& name, ISvcLocator* pSvcLocator) :
 Algorithm(name, pSvcLocator), m_detSvc(0) {
@@ -169,8 +178,8 @@ StatusCode CreateEvent::initialize() {
         idents::VolumeIdentifier prefix = m_detSvc->getIDPrefix();
         log << "Size of id prefix is " << prefix.size() << endreq;
         
-        const HepTransform3D trans = m_detSvc->getTransform3DPrefix();
-        const Hep3Vector vec = trans.getTranslation();
+        const HepGeom::Transform3D trans = m_detSvc->getTransform3DPrefix();
+        const CLHEP::Hep3Vector vec = trans.getTranslation();
         log << "Prefix translation (x, y, z) is" << endreq;
         log << " (" << vec.x() << ", "
             << vec.y() << ", " << vec.z() << ")" << endreq;
@@ -223,12 +232,12 @@ StatusCode CreateEvent::execute() {
     
     StatusCode  sc = StatusCode::SUCCESS;
     MsgStream   log( msgSvc(), name() );
-    log << MSG::DEBUG <<"Initial RandGauss status: " << RandGauss::getFlag()
+    log << MSG::DEBUG <<"Initial RandGauss status: " << CLHEP::RandGauss::getFlag()
         << endreq;
-    // HMK Unused double test = RandGauss::shoot();
+    // HMK Unused double test = CLHEP::RandGauss::shoot();
     log << MSG::DEBUG << "RandGauss status after a shoot: "
-        << RandGauss::getFlag() << endreq;
-    log << MSG::DEBUG << "RandFlat random number: " <<RandFlat::shoot()<<endreq;
+        << CLHEP::RandGauss::getFlag() << endreq;
+    log << MSG::DEBUG << "RandFlat random number: " <<CLHEP::RandFlat::shoot()<<endreq;
     
     //TODO: put something in here to get data???
 

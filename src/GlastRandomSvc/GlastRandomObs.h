@@ -1,7 +1,7 @@
 /** @file GlastRandomObs.h
 @brief definition of the class GlastRandomObs
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/Attic/GlastRandomObs.h,v 1.1.4.1 2010/10/06 03:55:27 heather Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomObs.h,v 1.2 2011/12/12 20:16:10 heather Exp $
 
 */
 #ifndef _GlastRandomObs_H
@@ -37,7 +37,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/Attic/GlastRan
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/Attic/GlastRandomObs.h,v 1.1.4.1 2010/10/06 03:55:27 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomObs.h,v 1.2 2011/12/12 20:16:10 heather Exp $
 */
 class GlastRandomObs : public IToolSvc::Observer
 {

@@ -1,29 +1,27 @@
 #ifndef _BASECNV_H
 #define _BASECNV_H 1
 
-#include <vector>
-#include <string>
 #include "GaudiKernel/Converter.h"
 #include "GaudiKernel/CnvFactory.h"
-#include "IEventCnvSvc.h"
 
+class ISvcLocator;
+class DataObject;
 class IGlastDetSvc;
 
-extern const long int SICB_StorageType;
+//extern const long int SICB_StorageType;
+
+template <class TYPE> class CnvFactory;
+
 
 /** @class BaseCnv
 * @brief Base class for all GLAST Converters.
 *
 * Based on SICb's SicbBaseCnv
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/BaseCnv.h,v 1.4 2002/09/06 14:40:00 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/EventSelector/BaseCnv.h,v 1.6 2011/12/12 20:16:10 heather Exp $
 */
 class BaseCnv : public Converter      {
 protected:
-    /// Pointer to event conversion service interface
-    IEventCnvSvc*  m_CnvSvc;
-    /// Leaf objects giving the locations of the objects in the data store
-    std::vector<IEventCnvSvc::Leaf>   m_leaves;
     // access to the GlastDetSvc
     IGlastDetSvc* m_detSvc;
     
@@ -32,10 +30,10 @@ public:
     
     BaseCnv(const CLID& clid, ISvcLocator* svc);
     
-    virtual ~BaseCnv() { };
+    ~BaseCnv() { };
     
     /// Storage type and class ID
-    static const unsigned char storageType()      { 
+    static long storageType()      { 
         return SICB_StorageType; 
     }
     
@@ -44,7 +42,7 @@ public:
     virtual StatusCode finalize();
     
     /// Store TDS path to link a particular converter to an object on the TDS
-    void declareObject(const std::string& fullPath, const CLID& clid, const std::string& bank, long par=0);
+    //void declareObject(const std::string& fullPath, const CLID& clid, const std::string& bank, long par=0);
     
     /// Convert the transient object to the requested representation.
     virtual StatusCode createRep(DataObject* pObject, IOpaqueAddress*& refpAddress);
@@ -58,7 +56,7 @@ public:
     /// Update the references of an already converted object.
     virtual StatusCode updateRepRefs(IOpaqueAddress* pAddress, DataObject* pObject);
 
-    long repSvcType() const { return SICB_StorageType; }
+    virtual long repSvcType() const { return SICB_StorageType; }
 };
 
 
