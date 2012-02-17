@@ -5,7 +5,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomObs.cxx,v 1.2 2011/12/12 20:16:10 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/src/GlastRandomSvc/GlastRandomObs.cxx,v 1.3 2012/02/15 20:18:31 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -107,16 +107,18 @@ CLHEP::HepRandomEngine* GlastRandomObs::createEngine(std::string  engineName)
     return 0;
 }
 
+//void GlastRandomObs::onRetrieve(const IAlgTool* tool) {
+//	StatusCode status;//
+//}
 
-
-void GlastRandomObs::onCreate(IAlgTool& tool) {
+void GlastRandomObs::onCreate(const IAlgTool* tool) {
 
     //MsgStream log (msgSvc(), name() ); 
     IRandomAccess* ranacc ;
-    StatusCode status =tool.queryInterface(IRandomAccess::interfaceID(), (void**)&ranacc);
+    StatusCode status =const_cast<IAlgTool*>(tool)->queryInterface(IRandomAccess::interfaceID(), (void**)&ranacc);
     if( status.isSuccess() )
     {   
-        std::string tooltype = tool.type();
+        std::string tooltype = tool->type();
         // Set the Random engine by name
         CLHEP::HepRandomEngine* hr = createEngine(m_randomEngine);
         if( hr==0) 

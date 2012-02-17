@@ -5,6 +5,7 @@
  package manager:T.Burnett
            EOH
 
+ GlastSvc-09-28-04-gr03 17-Feb-2012 hmk Merge fix for observer
  GlastSvc-09-28-04-gr02 25-Jan-2012 hmk Merge in Gaudi upgrade v21r7
  GlastSvc-09-28-04-gr01 01-Dec-2011 hmk Merge in Michael Kuss' new version of
      GlastRandomSvc to hopefully provide reproducibility between the CMT and
