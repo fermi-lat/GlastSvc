@@ -16,7 +16,7 @@ static const InterfaceID IID_IPropagator("IPropagator", 1 , 0);
 *
 *
 * @author Tracy Usher
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.4 2004/12/01 01:51:09 usher Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GlastSvc/GlastSvc/Reco/IPropagator.h,v 1.5 2006/03/21 01:26:07 usher Exp $
 */
 class  IPropagator
 {
@@ -61,6 +61,11 @@ public:
     virtual idents::VolumeIdentifier getVolumeId(double arcLen = -1.) const = 0;
     //! Return volume identifer at given step index
     virtual idents::VolumeIdentifier getStepVolumeId(int stepIdx = -1) const = 0;
+
+    //! Return material name 
+    virtual std::string getMaterialName(int stepIdx = -1)  const = 0;
+    //! Return the index into the material properties table
+    virtual int         getMaterialIndex(int stepIdx = -1) const = 0;
 
     //! Return radiation lengths traversed
     virtual double getRadLength(double arcLen = -1.) const = 0;
